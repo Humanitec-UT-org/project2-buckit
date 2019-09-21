@@ -1,0 +1,27 @@
+{{#each users}}
+<h4>{{this.username}}</h4>
+<p>{{this.imageUrl}}</p>
+<a href="/users/{{this._id}}/edit"> Edit your Data</a>
+
+
+{{/each}}
+
+{{#each experiences}}
+
+<h4>Your Experiences: {{this.title}}</h4>
+<p>{{this.imageUrl}}</p>
+
+<a href="/profile/{{this._id}}/add-experience"> Add experience</a>
+<a href="/profile/{{this._id}}/add-location"> Add location</a>
+
+{{/each}}
+
+{{#each locations}}
+
+<h4>Your Locations: {{this.title}}</h4>
+<p>{{this.imageUrl}}</p>
+
+<a href="/profile/{{this._id}}/add-experience"> Add experience</a>
+<a href="/profile/{{this._id}}/add-location"> Add location</a>
+
+{{/each}}
