@@ -18,6 +18,8 @@ const MongoStore = require("connect-mongo")(session);
 
 const app = express();
 
+
+
 app.use(session({
   secret: "abc", // does not matter at all
   store: new MongoStore({ // this is going to create the `sessions` collection in the db
@@ -58,7 +60,7 @@ app.use('/feed', feedRouter);
 //CH: this is a try***START (We want exp and location BOTH on /profile)
 app.use('/profile', profileRouter);
 //CH: this is a try***END
-// app.use('/people', peopleRouter);
+app.use('/people', peopleRouter);
 
 
 // catch 404 and forward to error handler

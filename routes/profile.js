@@ -65,6 +65,35 @@ router.post('/', isAuthenticated, function (req, res, next) {
             res.render('experiences/add'))
 });
 
+// GET /location/add
+router.get('/add-location', isAuthenticated, function (req, res, next) { //isAuthenticated?
+    res.render('profile/add-location')
+});
+
+router.post('/', isAuthenticated, function (req, res, next) {
+    let { title } = req.body;
+    Location.create({ title, owner: req.user })
+        .then(() => {
+            res.redirect('/profile');
+        })
+})
+
+//POST /location
+router.post('/', isAuthenticated, function (req, res, next) {
+    let { title, description } = req.body;
+    const newLocation = new Location({ title, description });
+    console.log("created new location")
+    // newExperience.create({ name, description }).then(() => { //.create or .save Method? CHANGES from LL to CH
+    //     res.redirect('/rooms')
+    // })
+    newLocation.save()
+        .then(() =>
+            res.redirect('/profile/index') //where to redirect to?
+        )
+        .catch((err) =>
+            res.render('location/add'))
+});
+
 // // GET /rooms/:room_id/edit
 // router.get('/:room_id/edit', isAuthenticated, function (req, res, next) {
 //     Room.findById(req.params.room_id).then((room) => {
