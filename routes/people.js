@@ -15,7 +15,20 @@ const isAuthenticated = (req, res, next) => {
 }
 
 
-// GET /users/
+
+// router.get('/', (req, res, next) => {
+//     Movie.find().populate('actors').then((allMovies) => { // TODO: Note that this should use 'populate'
+//       res.render('movies/index', { movies: allMovies });
+//     })
+//   });
+
+router.get('/', (req, res, next) => {
+    User.find().populate('usernames').then((allUsers) => { // TODO: Note that this should use 'populate'
+        res.render('people/index', { users: allUsers });
+    })
+});
+
+
 router.get('/', function (req, res, next) {
     User.find().then((users) => {  // LL 2009
         res.render('people/index', { users, user: req.user }) // LL 2009

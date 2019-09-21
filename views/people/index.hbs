@@ -1,11 +1,27 @@
-<h1>Welcome to our awesome community!</h1>
-<h4>Just sniff a little bit in others people's buckits by clicking on their usernames
-    and get ideas by thousands of inspiring users!</h4>
+<table class="table">
 
-{{#each users}}
-<h4>{{this.username}}</h4>
-{{!-- <img src="{{this.imageUrl}}"> // ? --}}
-<a href="/profile/{{this._id}}"> Go to this Users Buckit</a>
+    <tr>
+        <h1>Welcome to our awesome community!</h1>
+        <h4>Just sniff a little bit in others people's buckits by clicking on their usernames
+            and get ideas by thousands of inspiring users!</h4>
+    </tr>
+    {{#each users}}
+    <tr>
+
+        <td>
+            <h4>{{this.username}}</h4>
+            {{!-- <img src="{{this.imageUrl}}"> // ? --}}
+
+            <a href="/people/{{this._id}}"> Go to {{this.username}}'s Buckit!</a>
+
+            {{!-- // route to movies/id in browser (we are not in movies.js right now!) --}}
+        </td>
+
+    </tr>
+    {{/each}}
 
 
-{{/each}}
+
+    <a href="/feed"> Back to Feed </a>
+    <a href="/profile"> Back to my Buckit </a>
+</table>
