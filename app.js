@@ -5,7 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://localhost/project2-buckit`);
+const dbName = 'project2-buckit';
+mongoose.connect(`mongodb://localhost/${dbName}`);
+
+
 
 const session = require("express-session");
 const bcrypt = require("bcrypt");
@@ -37,7 +40,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//CH: this is a try***START
+// const profileRouter = require("./routes/profile");
+// const location = require("./routes/profile");
+//CH: this is a try***END
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const feedRouter = require('./routes/feed');
@@ -49,8 +55,10 @@ app.use('/', indexRouter);
 app.use('/', authRouter); // /login instead of /auth/login
 // app.use('/auth', authRouter);  // /auth/login would look like this
 app.use('/feed', feedRouter);
+//CH: this is a try***START (We want exp and location BOTH on /profile)
 app.use('/profile', profileRouter);
-app.use('/people', peopleRouter);
+//CH: this is a try***END
+// app.use('/people', peopleRouter);
 
 
 // catch 404 and forward to error handler
