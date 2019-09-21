@@ -23,18 +23,18 @@ const isAuthenticated = (req, res, next) => {
 //   });
 
 router.get('/', (req, res, next) => {
-    User.find().populate('usernames').then((allUsers) => { // TODO: Note that this should use 'populate'
+    User.find().then((allUsers) => { // TODO: Note that this should use 'populate'
         res.render('people/index', { users: allUsers });
     })
 });
 
 
-router.get('/', function (req, res, next) {
-    User.find().then((users) => {  // LL 2009
-        res.render('people/index', { users, user: req.user }) // LL 2009
-    })
+// router.get('/', function (req, res, next) {
+//     User.find().then((users) => {  // LL 2009
+//         res.render('people/index', { users, user: req.user }) // LL 2009
+//     })
 
-});
+// });
 
 // // GET /experiences/add
 // router.get('/add', isAuthenticated, function (req, res, next) {
