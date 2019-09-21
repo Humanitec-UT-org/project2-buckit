@@ -43,7 +43,7 @@ const authRouter = require('./routes/auth');
 const feedRouter = require('./routes/feed');
 // /feed will bring you to other users lists 
 const profileRouter = require('./routes/profile');
-const peopleRouter = require('./routes/profile')
+const peopleRouter = require('./routes/people')
 
 app.use('/', indexRouter);
 app.use('/', authRouter); // /login instead of /auth/login

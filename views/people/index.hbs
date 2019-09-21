@@ -1,0 +1,30 @@
+<table class="table">
+
+    <tr>
+        <h1>Welcome to our awesome community!</h1>
+        <h4>Just sniff a little bit in others people's buckits by clicking on their usernames
+            and get ideas by thousands of inspiring users!</h4>
+    </tr>
+    {{#each users}}
+    <tr>
+
+        <td>
+            <h1>{{this.email}}</h1>
+            {{!-- <img src="{{this.imageUrl}}"> // ? --}}
+
+            <a href="/people/{{this._id}}"> Go to {{this.email}}'s Buckit!</a>
+
+            {{!-- // route to movies/id in browser (we are not in movies.js right now!) --}}
+        </td>
+
+    </tr>
+    {{/each}}
+
+
+
+
+</table>
+</br>
+
+<a href="/profile"> Back to my Buckit </a></br>
+<a href="/feed"> Back to Feed </a>
