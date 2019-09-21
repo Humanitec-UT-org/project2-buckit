@@ -23,8 +23,6 @@ app.use(session({
   })
 }));
 
-
-
 require('./config/passport.js')
 app.use(passport.initialize());
 app.use(passport.session());
