@@ -1,39 +1,49 @@
+<h1>Add Destination</h1>
 <form action="/profiles" method="post">
-    <input type="text" name="name" placeholder="name">
-    <input type="text" name="description" placeholder="description">
-    <button type="submit"> SUBMIT</button>
-
-</form>
-<div>
-    <div id='map' style='width: 1000px; height: 1000px;'></div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [0, 0],
-            zoom: 13
-        });
-
-        var geocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        });
-
-        map.addControl(geocoder, 'top-left');
+    <input type="text" name="name" placeholder="Title">
+    <br>
+    <input type="date" name="expireDate" placeholder="Due date">
+    <br>
+    <textarea name="description" placeholder="Write your plan here" rows="10" cols="30">
+</textarea>
 
 
-        map.on('load', function () {
+    <br>
+    Check off my Bucket List: <input type="checkbox" name="">
+    <br>
+    <button type="submit"> Add to my Bucket</button>
 
-            // Listen for the `geocoder.input` event that is triggered when a user
-            // makes a selection
-            geocoder.on('result', function (ev) {
-                var styleSpec = ev.result;
-
-
+    <div>
+        <div id='map' style='width: 1000px; height: 1000px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [0, 0],
+                zoom: 13
             });
-        });
+
+            var geocoder = new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            });
+
+            map.addControl(geocoder, 'top-left');
 
 
-    </script>
-</div>
+            map.on('load', function () {
+
+                // Listen for the `geocoder.input` event that is triggered when a user
+                // makes a selection
+                geocoder.on('result', function (ev) {
+                    var styleSpec = ev.result;
+
+
+                });
+            });
+
+
+        </script>
+    </div>
+</form>

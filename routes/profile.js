@@ -80,15 +80,12 @@ router.post('/', isAuthenticated, function (req, res, next) {
 
 //POST /location
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, description } = req.body;
-    const newLocation = new Location({ title, description });
+    let { title, description, expireDate } = req.body;
+    const newLocation = new Location({ title, description, expireDate });
     console.log("created new location")
-    // newExperience.create({ name, description }).then(() => { //.create or .save Method? CHANGES from LL to CH
-    //     res.redirect('/rooms')
-    // })
     newLocation.save()
         .then(() =>
-            res.redirect('/profile/index') //where to redirect to?
+            res.redirect('/profile/index')
         )
         .catch((err) =>
             res.render('location/add'))
