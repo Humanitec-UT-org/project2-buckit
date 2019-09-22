@@ -22,11 +22,19 @@ const isAuthenticated = (req, res, next) => {
 //     })
 //   });
 
+
+// GET all the users in one list
 router.get('/', (req, res, next) => {
     User.find().then((allUsers) => { // TODO: Note that this should use 'populate'
         res.render('people/index', { users: allUsers });
     })
 });
+// GET one's profile page. 
+router.get('/:user_id', isAuthenticated, function (req, res, next) {
+    User.findById(req.params.user_id).then((users) => {              // LL 2009
+        res.render('people/show-profile', { users, user: req.user }); // LL 2209
+    });
+})
 
 
 // router.get('/', function (req, res, next) {
