@@ -14,36 +14,14 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-/* GET profile page. */   //doesn't work, takes the first user, not the logged in one
+/* GET profile page. */
 router.get('/', function (req, res, next) {
     Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
         res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
     })
 })
-
 // GET /experiences/
 router.get('/', function (req, res, next) { //ES5 and ES6 in 1 function > best practice?
-});
-
-// GET and Edit one's profile page. --> the browser does not get the connection, but the link and the edit-form works
-router.get('/:user_id/edit', isAuthenticated, function (req, res, next) { // LL 2209
-    User.findById(req.params.user_id).then((users) => {              // LL 2209
-        res.render('profile/edit-user', { users, user: req.user }); // LL 2209
-    });
-})
-
-
-// POST /profile/:user_id/edit   --> see NOTE at line 45
-router.post('/:user_id', isAuthenticated, function (req, res, next) {
-    let { username, email, password, imageUrl } = req.body
-
-    User.findById(req.params.user_id).then((user) => {
-
-
-        User.findByIdAndUpdate(req.params.user_id, { username, email, password, imageUrl }).then(() => {
-            res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!
-        })
-    })
 });
 
 
@@ -52,6 +30,7 @@ router.get('/add-experience', isAuthenticated, function (req, res, next) { //isA
     res.render('profile/add-experience')
 });
 
+// POST /experience/add
 router.post('/', isAuthenticated, function (req, res, next) {
     let { title } = req.body;
     Experience.create({ title, owner: req.user })
@@ -59,22 +38,12 @@ router.post('/', isAuthenticated, function (req, res, next) {
             res.redirect('/profile');
         })
 })
-// //#4 POST celebrities/new
-// router.post('/', (req, res, next) => {
-//     const { name, occupation, catchPhrase } = req.body;
-//     const newCelebrity = new Celebrity({ name, occupation, catchPhrase });
-//     console.log("schritt 4")
-//     newCelebrity.save()
-//       .then(() =>
-//         res.redirect('/celebrities')
-//       )
-//       .catch((err) =>
-//         res.render('celebrities/new'))
-//   })
+// model experience = [imageUrl, title, plan, locations, comments, expireDate, done, owner]
+
 // POST /experience
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { name, description } = req.body;
-    const newExperience = new Experience({ name, description });
+    let { title } = req.body;
+    const newExperience = new Experience({ title });
     console.log("created new exp")
     // newExperience.create({ name, description }).then(() => { //.create or .save Method? CHANGES from LL to CH
     //     res.redirect('/rooms')
@@ -84,7 +53,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
             res.redirect('/profile/index') //where to redirect to?
         )
         .catch((err) =>
-            res.render('experiences/add'))
+            res.render('experience/add'))
 });
 
 // GET /location/add
@@ -102,12 +71,15 @@ router.post('/', isAuthenticated, function (req, res, next) {
 
 //POST /location
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, description, expireDate } = req.body;
-    const newLocation = new Location({ title, description, expireDate });
+    let { title, description } = req.body;
+    const newLocation = new Location({ title, description });
     console.log("created new location")
+    // newExperience.create({ name, description }).then(() => { //.create or .save Method? CHANGES from LL to CH
+    //     res.redirect('/rooms')
+    // })
     newLocation.save()
         .then(() =>
-            res.redirect('/profile/index')
+            res.redirect('/profile/index') //where to redirect to?
         )
         .catch((err) =>
             res.render('location/add'))

@@ -48,9 +48,9 @@
 
 <h4>Your Experiences: {{this.title}}</h4>
 <p>{{this.imageUrl}}</p>
+{{!-- changed /profile/{{this._id}}/add-experience to /profile/add-experience --}}
+<a href="/profile/add-experience"> Add experience</a>
 
-<a href="/profile/{{this._id}}/add-experience"> Add experience</a>
-<a href="/profile/{{this._id}}/add-location"> Add location</a>
 
 {{/each}}
 
@@ -59,7 +59,6 @@
 <h4>Your Locations: {{this.title}}</h4>
 <p>{{this.imageUrl}}</p>
 
-<a href="/profile/{{this._id}}/add-experience"> Add experience</a>
-<a href="/profile/{{this._id}}/add-location"> Add location</a>
+<a href="/profile/add-location"> Add location</a>
 
 {{/each}}

@@ -11,7 +11,7 @@ const experienceSchema = new Schema({
     done: { type: Boolean },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
-    timestamps: true
-});
+        timestamps: true
+    });
 
 module.exports = mongoose.model("Experience", experienceSchema);
