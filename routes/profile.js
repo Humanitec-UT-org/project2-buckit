@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-/* GET profile page. */
+/* GET profile page. */   //doesn't work, takes the first user, not the logged in one
 router.get('/', function (req, res, next) {
     Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
         res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
@@ -24,6 +24,28 @@ router.get('/', function (req, res, next) {
 // GET /experiences/
 router.get('/', function (req, res, next) { //ES5 and ES6 in 1 function > best practice?
 });
+
+// GET and Edit one's profile page. --> the browser does not get the connection, but the link and the edit-form works
+router.get('/:user_id/edit', isAuthenticated, function (req, res, next) { // LL 2209
+    User.findById(req.params.user_id).then((users) => {              // LL 2209
+        res.render('profile/edit-user', { users, user: req.user }); // LL 2209
+    });
+})
+
+
+// POST /profile/:user_id/edit   --> see NOTE at line 45
+router.post('/:user_id', isAuthenticated, function (req, res, next) {
+    let { username, email, password, imageUrl } = req.body
+
+    User.findById(req.params.user_id).then((user) => {
+
+
+        User.findByIdAndUpdate(req.params.user_id, { username, email, password, imageUrl }).then(() => {
+            res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!
+        })
+    })
+});
+
 
 // GET /experiences/add
 router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?

@@ -1,5 +1,5 @@
-<form action="/users/{{user._id}}" method="post">
-    <input type="text" name="name" value={{user.username}}>
+<form action="/profile/{{user._id}}" method="post">
+    <input type="text" name="username" value={{user.username}}>
     <input type="text" name="email" value={{user.email}}>
     <input type="password" name="password" placeholder="password">
     <input type="text" name="imageUrl" value={{user.imageUrl}}>

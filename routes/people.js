@@ -31,8 +31,8 @@ router.get('/', (req, res, next) => {
 });
 // GET one's profile page. 
 router.get('/:user_id', isAuthenticated, function (req, res, next) {
-    User.findById(req.params.user_id).then((users) => {              // LL 2009
-        res.render('people/show-profile', { users, user: req.user }); // LL 2209
+    User.findById(req.params.user_id).then((users) => {
+        res.render('people/show-profile', { users, user: req.user });
     });
 })
 
