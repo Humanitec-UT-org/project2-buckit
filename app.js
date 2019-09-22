@@ -6,7 +6,7 @@ const logger = require('morgan');
 
 const mongoose = require('mongoose');
 const dbName = 'project2-buckit';
-mongoose.connect(`mongodb://localhost/${dbName}`);
+mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true });
 
 
 

@@ -14,8 +14,6 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-
-
 // router.get('/', (req, res, next) => {
 //     Movie.find().populate('actors').then((allMovies) => { // TODO: Note that this should use 'populate'
 //       res.render('movies/index', { movies: allMovies });

@@ -71,6 +71,8 @@ router.post('/', isAuthenticated, function (req, res, next) {
 //       .catch((err) =>
 //         res.render('celebrities/new'))
 //   })
+
+
 // POST /experience
 router.post('/', isAuthenticated, function (req, res, next) {
     let { name, description } = req.body;
@@ -92,26 +94,27 @@ router.get('/add-location', isAuthenticated, function (req, res, next) { //isAut
     res.render('profile/add-location')
 });
 
+//POST /location
 router.post('/', isAuthenticated, function (req, res, next) {
+    let { title, plan, expireDate } = req.body;
+    const newLocation = new Location({ title, plan, expireDate });
+    console.log("created new location")
+    newLocation.save()
+        .then(() =>
+            res.redirect('/profile')
+        )
+        .catch((err) =>
+            res.redirect('/profile/add-location'))
+});
+
+/* router.post('/', isAuthenticated, function (req, res, next) {
     let { title } = req.body;
     Location.create({ title, owner: req.user })
         .then(() => {
             res.redirect('/profile');
         })
-})
+}) */
 
-//POST /location
-router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, description, expireDate } = req.body;
-    const newLocation = new Location({ title, description, expireDate });
-    console.log("created new location")
-    newLocation.save()
-        .then(() =>
-            res.redirect('/profile/index')
-        )
-        .catch((err) =>
-            res.render('location/add'))
-});
 
 // // GET /rooms/:room_id/edit
 // router.get('/:room_id/edit', isAuthenticated, function (req, res, next) {
