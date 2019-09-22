@@ -4,5 +4,26 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+#navbar-primary .navbar-nav {
+  width: 100%;
+  text-align: center;
+}
+#navbar-primary .navbar-nav > li {
+  display: inline-block;
+  float: none;
+}
+#navbar-primary .navbar-nav > li > a {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navbar-collapse {
+  border-bottom: 2px solid rebeccapurple;
+}
+
+.styleLogo {
+  font-family: "Mansalva", cursive;
 }
