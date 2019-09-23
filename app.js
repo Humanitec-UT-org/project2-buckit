@@ -51,7 +51,7 @@ const feedRouter = require('./routes/feed');
 // /feed will bring you to other users lists 
 const profileRouter = require('./routes/profile');
 const peopleRouter = require('./routes/people')
-
+const locationsRouter = require('./routes/locations')
 app.use('/', indexRouter);
 app.use('/', authRouter); // /login instead of /auth/login
 // app.use('/auth', authRouter);  // /auth/login would look like this
@@ -60,6 +60,7 @@ app.use('/feed', feedRouter);
 app.use('/profile', profileRouter);
 //CH: this is a try***END
 app.use('/people', peopleRouter);
+app.use('/locations', locationsRouter);
 
 
 // catch 404 and forward to error handler
