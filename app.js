@@ -9,7 +9,6 @@ const dbName = 'project2-buckit';
 mongoose.connect(`mongodb://localhost/${dbName}`, { useNewUrlParser: true });
 
 
-
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
