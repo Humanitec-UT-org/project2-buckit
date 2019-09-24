@@ -13,10 +13,10 @@ const isAuthenticated = (req, res, next) => {
         res.redirect('/login')
     }
 }
-
+//find function can take params > only experiences of a certain condition req.user.id
 /* GET profile page. */
 router.get('/', function (req, res, next) {
-    Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
+    Promise.all([User.find(), Experience.find({ owner: req.user_id }), Location.find()]).then(([users, experiences, locations]) => {
         res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
     })
 })
@@ -41,7 +41,7 @@ router.post('/:user_id', isAuthenticated, function (req, res, next) {
         })
     })
 });
-
+//query in mongo DB the user > we need a query that looks for the user
 // GET /experiences/add
 router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
     res.render('profile/add-experience')
