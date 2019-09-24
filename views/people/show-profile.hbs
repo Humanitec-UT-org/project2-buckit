@@ -1,4 +1,4 @@
-{{!-- <header role="banner">
+<header role="banner">
     <nav id="navbar-primary" class="navbar" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,21 +39,42 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-</header> --}}
+</header>
+
+<p>{{users.imageUrl}}</p>
+<h1>Welcome to {{users.username}}'s profile!</h1>
+<div class="bg-people-buck">
+    <br>This is what {{users.username}} says about their kind of person:
+    </br> {{users.bio}}.</h4>
+    <h4>Feel free to contact them, if you have further questions: {{users.email}}.</h4>
+    </br>
+    <h4>Now have a look in their buckit und their next great goals.</h4>
+</div>
+<div class="bg-exp">
+    <h2>Upcoming experiences:</h2>
+    {{#each experiences}}
+    <p> -----------------------------------------------</p>
+    <h4>{{this.title}}</h4>
+    <h4>{{this.expireDate}}</h4>
+    <p>The plan:{{this.plan}}</p>
+
+    {{/each}}
+</div>
+</br>
+</br>
+
+<div class="bg-loc">
+    <h2>Upcoming destinations:</h2>
+    {{#each locations}}
+    <p> -----------------------------------------------</p>
+    <h4>{{this.title}}</h4>
+    <h4>{{this.expireDate}}</h4>
+    <p>The plan:{{this.plan}}</p>
+    <p>{{this.imageUrl}}</p>
 
 
-<h1>Welcome to {{users.email}}'s profile!</h1>
-<h4>Have a look in their buckit und their next great goals.</h4>
-
-
-
-
-<p>This is their next experience:</p>
-<h1>{{experience.title}}</h1>
-
-
-<p>This is their next destonation:</p>
-<h1>{{location.title}}</h1>
-{{!-- <img src="{{this.imageUrl}}"> // ? --}}
-
-{{!-- <a href="/people/{{user._id}}"> Go to {{user.email}}'s Buckit!</a> --}}
+    {{/each}}
+</div>
+</br>
+</br>
+<a href="/people"> Go back to all the people !</a>

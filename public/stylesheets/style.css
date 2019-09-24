@@ -27,3 +27,13 @@ a {
 .styleLogo {
   font-family: "Mansalva", cursive;
 }
+
+.bg-people-buck {
+  background-color: greenyellow;
+}
+.bg-exp {
+  background-color: blueviolet;
+}
+.bg-loc {
+  background-color: rgb(0, 140, 255);
+}

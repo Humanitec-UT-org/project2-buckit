@@ -1,8 +1,11 @@
 <form action="/profile/{{user._id}}" method="post">
-    <input type="text" name="username" value={{user.username}}>
+    <input type="text" name="username" placeholder="Type in a username" value={{user.username}}>
     <input type="text" name="email" value={{user.email}}>
-    <input type="password" name="password" placeholder="password">
-    <input type="text" name="imageUrl" value={{user.imageUrl}}>
+    <textarea name="bio" placeholder="Tell us more about what kind of person you are and what you like!"
+        value={{user.bio}} rows="10" cols="30">
+</textarea>
+    {{!-- <input type="text" name="imageUrl" value={{user.imageUrl}}> --}}
+    <input type="password" name="password" placeholder="Type in old or new password">
     <button type="submit"> Update and Upload</button>
 
 </form>

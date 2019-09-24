@@ -29,13 +29,19 @@ router.get('/', (req, res, next) => {
         res.render('people/index', { users: allUsers });
     })
 });
+
+
 // GET one's profile page. 
 router.get('/:user_id', isAuthenticated, function (req, res, next) {
-    User.findById(req.params.user_id).then((users) => {
-        res.render('people/show-profile', { users, user: req.user });
+    Promise.all([User.findById(req.params.user_id), Experience.findById(req.params.exp_id), Location.findById(req.params.loc_id)]).then(([users, experiences, locations]) => {
+        res.render('people/show-profile', { users, user: req.user, exp: req.exp, loc: req.loc, experiences, locations });
     });
 })
-
+// router.get('/', function (req, res, next) {
+//     Promise.all([User.findById(req.params.user_id), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
+//         res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
+//     })
+// })
 
 // router.get('/', function (req, res, next) {
 //     User.find().then((users) => {  // LL 2009
