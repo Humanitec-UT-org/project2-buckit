@@ -21,18 +21,14 @@ router.get('/', function (req, res, next) {
     })
 })
 
-
-
-
-
 // GET /location/add
 router.get('/add-location', isAuthenticated, function (req, res, next) { //isAuthenticated?
     res.render('locations/add-location')
 });
 
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, plan } = req.body;
-    Location.create({ title, plan, owner: req.user })
+    let { title, plan, expireDate } = req.body;
+    Location.create({ title, plan, expireDate, owner: req.user })
         .then(() => {
             res.redirect('/profile');
         })
