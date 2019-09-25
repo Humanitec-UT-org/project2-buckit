@@ -34,4 +34,25 @@ router.post('/', isAuthenticated, function (req, res, next) {
         })
 })
 
+//GET /locations/:id/edit 
+
+router.get('/:location_id/edit-location', (req, res, next) => {
+    Location.findById(req.params.location_id).then((result) => {
+        console.log("result", result)
+        res.render('locations/edit-location', result);
+    })
+});
+
+//POST /locations/:id/ 
+
+router.post('/:location_id', (req, res, next) => {
+    const { title, plan, expireDate } = req.body;
+    Location.update(
+        { _id: req.params.location_id },
+        { title, plan, expireDate }).then(() => {
+            res.redirect('/profile')
+        })
+});
+
+
 module.exports = router;
