@@ -18,7 +18,7 @@ const isAuthenticated = (req, res, next) => {
 //find function can take params > only experiences of a certain condition req.user.id
 /* GET profile page. */
 router.get('/', function (req, res, next) {
-    Promise.all([User.find(), Experience.find({ owner: req.user_id }), Location.find()]).then(([users, experiences, locations]) => {
+    Promise.all([User.find(), Experience.find(/* {owner: req.user_id} */), Location.find()]).then(([users, experiences, locations]) => {
         res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
     })
 })

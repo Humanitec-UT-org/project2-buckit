@@ -49,20 +49,20 @@
 
 <hr>
 {{!-- List experiences here  --}}
-<h4>Your experiences:</h4>
+<h4>YOUR EXPERIENCES:</h4>
 {{#each experiences}}
 <h4>{{this.title}}</h4>
 <br>
 <p>The Plan:{{this.plan}}</p>
 <br>
-<a class="btn btn-primary btn-sm" href="/profile/{{this._id}}/edit-experience" class="edit-button">EDIT ITEM</a>
+<a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience" class="edit-button">EDIT ITEM</a>
 {{/each}}
-
-<a href="/profile/add-experience"> Add an experience</a>
+<br>
+<a href="/experiences/add-experience"> Add an experience</a>
 <br>
 
 {{!-- List locations here  --}}
-<h4>Your locations:</h4>
+<h4>YOUR DESTINATIONS:</h4>
 
 {{#each locations}}
 <h4>{{this.title}}</h4>
