@@ -1,11 +1,12 @@
-<form action="/profile/{{user._id}}" method="post">
+<form action="/profile/{{user._id}}" method="post" enctype="multipart/form-data">
     <input type="text" name="username" placeholder="Type in a username" value="{{user.username}}">
     </br>
     <input type="text" name="email" value="{{user.email}}">
     </br>
     </textarea>
     <textarea name="bio" rows="10" cols="30">{{user.bio}}</textarea>
-
+    <label>Your Photo</label>
+    <input type="file" name="userImage">
 
     </br>
     {{!-- <input type="text" name="imageUrl" value={{user.imageUrl}}> --}}
