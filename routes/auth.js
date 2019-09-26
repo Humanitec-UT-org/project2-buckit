@@ -24,13 +24,21 @@ router.post('/signup', (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     let email = req.body.email
+    let username = req.body.username
 
     User.create({
+        username: username,
         email: email,
         password: hashPass
         // username: username, // L on 20.09.
 
     }).then(() => {
+        if (username === "" || password === "" || email === "") {
+            res.render("auth/signup", {
+                errorMessage: "Indicate a username and an e-mail and a password to sign up"
+            });
+            return;
+        }
         res.redirect('/feed');
     })
 });
