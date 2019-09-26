@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+require('dotenv').config()
+
 const mongoose = require('mongoose');
 const dbName = 'project2-buckit';
 mongoose.connect(`mongodb://localhost/${dbName}`);
