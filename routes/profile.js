@@ -41,6 +41,14 @@ router.post('/:user_id', isAuthenticated, function (req, res, next) {
 
 
         User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio, password: hashPass }).then(() => {
+
+            if (username === "" || password === "") {
+                res.render("profile/edit-user", {
+                    errorMessage: "Please fill in password, username and email!"
+                });
+                return;
+            }
+
             res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!	
         })
     })
