@@ -9,7 +9,9 @@ const passport = require("passport")
 
 // GET /login 
 router.get('/login', function (req, res, next) {
-    res.render('auth/login');
+    let messages = req.flash("messages")
+    console.log("test", messages)
+    res.render('auth/login', { messages: messages });
 });
 
 // GET /signup 
@@ -46,7 +48,7 @@ router.post('/signup', (req, res, next) => {
 //POst/login
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/feed",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
 }));
 
 // GET /logout

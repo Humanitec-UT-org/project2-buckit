@@ -4,4 +4,8 @@ LOG-IN
     <br>
     <input type="password" name="password" placeholder="password">
     <button type="submit">Login</button>
+    {{messages}}
+    {{#each messages}}
+    <h4 style="color: red;">{{this}}</h4>
+    {{/each}}
 </form>

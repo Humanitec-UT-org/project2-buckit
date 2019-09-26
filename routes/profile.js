@@ -17,10 +17,10 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 //find function can take params > only experiences of a certain condition req.user.id
-/* GET profile page. */
-router.get('/', function (req, res, next) {
-    Promise.all([User.find(), Experience.find(/* {owner: req.user_id} */), Location.find()]).then(([users, experiences, locations]) => {
-        res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
+/* GET /profile . */
+router.get('/', isAuthenticated, function (req, res, next) {
+    Promise.all([User.find(), Experience.find({ owner: req.user._id }), Location.find()]).then(([users, experiences, locations]) => {
+        res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
     })
 })
 
@@ -39,21 +39,20 @@ router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, funct
     const password = req.body.password;
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-    User.findById(req.params.user_id).then(() => {
 
 
-        User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio, password: hashPass }).then(() => {
+    User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio, password: hashPass }).then(() => {
 
-            if (username === "" || password === "") {
-                res.render("profile/edit-user", {
-                    errorMessage: "Please fill in password, username and email!"
-                });
-                return;
-            }
+        if (username === "" || password === "") {
+            res.render("profile/edit-user", {
+                errorMessage: "Please fill in password, username and email!"
+            });
+            return;
+        }
 
-            res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!	
-        })
+        res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!	
     })
+
 });
 //query in mongo DB the user > we need a query that looks for the user
 // GET /experiences/add

@@ -16,13 +16,14 @@ passport.deserializeUser((id, cb) => {
     });
 });
 
-passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, next) => {
+passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, next) => {
     User.findOne({ email }, (err, user) => {
         if (err) {
             return next(err);
         }
         if (!user || !bcrypt.compareSync(password, user.password)) {
-            return next(null, false, { message: "Incorrect email or password" });
+            req.flash("messages", "incorrect username or password")
+            return next(null, false);
         }
 
         return next(null, user);
