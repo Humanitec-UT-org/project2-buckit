@@ -33,6 +33,12 @@ router.post('/signup', (req, res, next) => {
         // username: username, // L on 20.09.
 
     }).then(() => {
+        if (username === "" || password === "" || email === "") {
+            res.render("auth/signup", {
+                errorMessage: "Indicate a username and an e-mail and a password to sign up"
+            });
+            return;
+        }
         res.redirect('/feed');
     })
 });
