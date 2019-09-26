@@ -16,12 +16,6 @@ const isAuthenticated = (req, res, next) => {
 
 
 
-// router.get('/', (req, res, next) => {
-//     Movie.find().populate('actors').then((allMovies) => { // TODO: Note that this should use 'populate'
-//       res.render('movies/index', { movies: allMovies });
-//     })
-//   });
-
 
 // GET all the users in one list
 router.get('/', (req, res, next) => {
@@ -29,12 +23,16 @@ router.get('/', (req, res, next) => {
         res.render('people/index', { users: allUsers });
     })
 });
+
+
 // GET one's profile page. 
 router.get('/:user_id', isAuthenticated, function (req, res, next) {
-    User.findById(req.params.user_id).then((users) => {
-        res.render('people/show-profile', { users, user: req.user });
+    Promise.all([User.findById(req.params.user_id), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
+        res.render('people/show-profile', { users, user: req.user, experiences, locations });
     });
 })
+
+
 
 
 // router.get('/', function (req, res, next) {
