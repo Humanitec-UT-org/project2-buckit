@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-
+var db
 
 
 // GET all the users in one list

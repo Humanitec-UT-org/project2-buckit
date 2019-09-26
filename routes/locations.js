@@ -44,7 +44,6 @@ router.get('/:location_id/edit-location', (req, res, next) => {
 });
 
 //POST /locations/:id/ 
-
 router.post('/:location_id', (req, res, next) => {
     const { title, plan, expireDate } = req.body;
     Location.update(
@@ -54,5 +53,12 @@ router.post('/:location_id', (req, res, next) => {
         })
 });
 
-
+//DELETE :location_id/delete
+router.post('/:location_id/delete', (req, res, next) => {
+    Location.findByIdAndRemove({ _id: req.params.location_id })
+        .then(() =>
+            res.redirect('/profile')
+        )
+        .catch(err => next(err))
+})
 module.exports = router;
