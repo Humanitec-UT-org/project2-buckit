@@ -60,13 +60,30 @@ router.get('/add-experience', isAuthenticated, function (req, res, next) { //isA
 });
 
 // POST /experience/add
+// Data Validation with errorMessage > If we want to implement this 
+// router.post('/', isAuthenticated, function (req, res, next) {
+//     let { title, plan, comments, locations } = req.body;
+//     Experience.create({ title, plan, comments, locations, owner: req.user })
+//         .then(() => {
+//             if (title === "") {
+//                 res.render('/experiences/add-experience', {
+//                     errorMessage: "Please fill in a title!"
+//                 });
+//                 return
+//             }
+//             res.redirect('/profile')
+//         })
+
+// })
 router.post('/', isAuthenticated, function (req, res, next) {
     let { title, plan, comments, locations } = req.body;
     Experience.create({ title, plan, comments, locations, owner: req.user })
         .then(() => {
             res.redirect('/profile');
         })
+
 })
+
 
 
 module.exports = router;
