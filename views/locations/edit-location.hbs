@@ -1,9 +1,16 @@
 <h4>Edit your Buckit Item (Location)</h4>
 
 <h1>{{this.title}}</h1>
+
 <form action="/locations/{{this._id}}" method="post">
   <input type="text" name="title" value="{{this.title}}">
   <input type="text" name="plan" value="{{this.plan}}">
   <input type="date" name="expireDate" value="{{this.expireDate}}">
   <button type="submit">SUBMIT</button>
+</form>
+
+<form action="/locations/{{this._id}}/delete" method="POST">
+  <button type="submit" class="btn btn-outline-secondary btn-dark">
+    DELETE
+  </button>
 </form>
