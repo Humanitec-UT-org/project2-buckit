@@ -52,6 +52,8 @@ const feedRouter = require('./routes/feed');
 const profileRouter = require('./routes/profile');
 const peopleRouter = require('./routes/people')
 const locationsRouter = require('./routes/locations')
+const experiencesRouter = require('./routes/experiences')
+
 app.use('/', indexRouter);
 app.use('/', authRouter); // /login instead of /auth/login
 // app.use('/auth', authRouter);  // /auth/login would look like this
@@ -61,7 +63,7 @@ app.use('/profile', profileRouter);
 //CH: this is a try***END
 app.use('/people', peopleRouter);
 app.use('/locations', locationsRouter);
-
+app.use('/experiences', experiencesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
