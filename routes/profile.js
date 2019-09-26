@@ -6,7 +6,7 @@ const bcryptSalt = 10;
 const User = require('../models/user') // LL 20.09.
 const Experience = require('../models/experience') // LL 20.09.
 const Location = require('../models/location') // LL 20.09.
-
+//FAIROUZ THIS IS CORRECT 
 //middleware
 const isAuthenticated = (req, res, next) => {
     if (req.user) {
