@@ -4,7 +4,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+
+require('dotenv').config()
+
 const flash = require("connect-flash")
+
 
 const mongoose = require('mongoose');
 const dbName = 'project2-buckit';
