@@ -40,7 +40,31 @@
         <!-- /.container-fluid -->
     </nav>
 </header>
-Buckit Feed
+{{!-- 
+WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
+<h1>Hi {{user.username}}!</h1>
+<h4>Check out the community's latest experiences:</h4>
+<br>
+
+{{#each experiences}}
+<h4>{{this.title}}</h4>
+<p>The Plan:{{this.plan}}</p>
+<br>
+
+{{/each}}
+<br>
+<br>
+
+
+<h3>Latest LOCATIONS TO GO TO:</h3>
+
+{{#each locations}}
+<h4>{{this.title}}</h4>
+
+<p>The Plan: {{this.plan}}</p>
+<br>
+<p>Due Date: {{this.expireDate}}</p>
+{{/each}}
 
 
 <a href="/logout">Log-Out</a>
