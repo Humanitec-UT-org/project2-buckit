@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const flash = require("connect-flash")
+
 const mongoose = require('mongoose');
 const dbName = 'project2-buckit';
 mongoose.connect(`mongodb://localhost/${dbName}`);
@@ -26,6 +28,8 @@ app.use(session({
     ttl: 24 * 60 * 60 // 1 day
   })
 }));
+
+app.use(flash())
 
 require('./config/passport.js')
 app.use(passport.initialize());
