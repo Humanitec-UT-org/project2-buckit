@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-/* GET profile page. */
+/* GET /locations */
 router.get('/', function (req, res, next) {
     Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
         res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
