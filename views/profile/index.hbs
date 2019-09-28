@@ -46,10 +46,16 @@
 <p>{{this.user.bio}}</p>
 <h1>{{this.user.username}}</h1>
 
-<img width="300px" src="{{this.user.imageUrl}}">
-</br>
 
-<a href="/profile/{{this.user._id}}/edit"> Edit your Data</a>
+<a href="/locations/add-location" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">add
+    location</a>
+<a href="/experiences/add-experience" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">add
+    experience</a>
+<a href="/profile/{{this.user._id}}/edit" class="btn btn-secondary btn-lg active" role="button"
+    aria-disabled="true">Edit your Data</a>
+
+<img width="300px" src="{{this.user.imageUrl}}">
+
 
 <hr>
 {{!-- List experiences here  --}}
@@ -64,7 +70,7 @@
                 <p class="card-text">The Plan:{{this.plan}}</p>
                 <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
                     class="edit-button">EDIT</a>
-                <a href="/experiences/add-experience"> ADD</a>
+
 
             </div>
             {{/each}}
@@ -84,7 +90,6 @@
                     <p>Due Date: {{this.expireDate}}</p>
                     <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
                         class="edit-button">EDIT</a>
-                    <a href="/locations/add-location"> ADD</a>
 
                 </div>
                 {{/each}}
