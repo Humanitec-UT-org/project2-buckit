@@ -4,7 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-
 require('dotenv').config()
 
 const flash = require("connect-flash")
@@ -61,7 +60,8 @@ const profileRouter = require('./routes/profile');
 const peopleRouter = require('./routes/people')
 const locationsRouter = require('./routes/locations')
 const experiencesRouter = require('./routes/experiences')
-
+var moment = require('moment');
+moment().format();
 app.use('/', indexRouter);
 app.use('/', authRouter); // /login instead of /auth/login
 // app.use('/auth', authRouter);  // /auth/login would look like this
