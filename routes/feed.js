@@ -12,6 +12,7 @@ const Location = require('../models/location') // LL 20.09.
 
 router.get('/', function (req, res, next) {
   Promise.all([User.find(), Experience.find(), Location.find()]).then(([experiences, locations]) => {
+    console.log("experiences", experiences)
     res.render('feed', { user: req.user, experiences, locations }); // LL 2009
   })
 })
