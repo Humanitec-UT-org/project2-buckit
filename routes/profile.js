@@ -18,10 +18,17 @@ const isAuthenticated = (req, res, next) => {
 }
 //find function can take params > only experiences of a certain condition req.user.id
 /* GET /profile . */
+//   Promise.all([User.find(), Experience.find().sort({ expireDate: -1 }), Location.find().sort({ expireDate: 1})])
 router.get('/', isAuthenticated, function (req, res, next) {
-    Promise.all([User.find(), Experience.find({ owner: req.user._id }), Location.find({ owner: req.user._id })]).then(([users, experiences, locations]) => {
-        res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
-    })
+    Promise.all([User.find(), Experience.find({ owner: req.user._id }), Location.find({ owner: req.user._id })])
+        .then(([users, experiences, locations]) => {
+            //Sort experience from latest to oldest
+            experiences.sort((a, b) => new Date(b.expireDate) - new Date(a.expireDate))
+            //Sort location from latest to oldest
+            locations.sort((a, b) => new Date(b.expireDate) - new Date(a.expireDate))
+            console.log(experiences)
+            res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
+        })
 })
 
 // GET and Edit one's profile page. --> the browser does not get the connection, but the link and the edit-form works	

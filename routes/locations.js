@@ -32,6 +32,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
         .then(() => {
             res.redirect('/profile');
         })
+    console.log("Location", locations)
 })
 
 //GET /locations/:id/edit 
