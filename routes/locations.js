@@ -27,8 +27,8 @@ router.get('/add-location', isAuthenticated, function (req, res, next) { //isAut
 });
 
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, plan, expireDate } = req.body;
-    Location.create({ title, plan, expireDate, owner: req.user })
+    let { title, expireDate, plan, comments } = req.body;
+    Location.create({ title, expireDate, plan, comments, owner: req.user })
         .then(() => {
             res.redirect('/profile');
         })
@@ -45,10 +45,10 @@ router.get('/:location_id/edit-location', (req, res, next) => {
 
 //POST /locations/:id/ 
 router.post('/:location_id', (req, res, next) => {
-    const { title, plan, expireDate } = req.body;
+    const { title, expireDate, plan, comments } = req.body;
     Location.update(
         { _id: req.params.location_id },
-        { title, plan, expireDate }).then(() => {
+        { title, expireDate, plan, comments }).then(() => {
             res.redirect('/profile')
         })
 });

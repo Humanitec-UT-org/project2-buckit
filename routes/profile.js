@@ -42,20 +42,21 @@ router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, funct
     })
 
 });
+// Uncommented because there is same code in experience.js
 //query in mongo DB the user > we need a query that looks for the user
-// GET /experiences/add
-router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
-    res.render('profile/add-experience')
-});
+// // GET /experiences/add
+// router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
+//     res.render('profile/add-experience')
+// });
 
-router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, plan, comments, locations } = req.body;
-    Experience.create({ title, plan, comments, locations, owner: req.user })
-        .then(() => {
-            res.redirect('/profile');
-        })
+// router.post('/', isAuthenticated, function (req, res, next) {
+//     let { title, plan, comments, locations } = req.body;
+//     Experience.create({ title, plan, locations, comments, owner: req.user })
+//         .then(() => {
+//             res.redirect('/profile');
+//         })
 
-})
+// })
 
 
 

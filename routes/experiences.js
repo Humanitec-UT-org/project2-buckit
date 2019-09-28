@@ -25,14 +25,14 @@ router.get('/', function (req, res, next) {
 router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
   res.render('experiences/add-experience')
 });
-
 // POST /experiences/add
 router.post('/', isAuthenticated, function (req, res, next) {
-  let { title, plan, comments, locations } = req.body;
-  Experience.create({ title, plan, comments, locations, owner: req.user })
+  let { title, plan, comments, locations, expireDate } = req.body;
+  Experience.create({ title, plan, comments, locations, expireDate, owner: req.user })
     .then(() => {
       res.redirect('/profile');
     })
+
 })
 
 //GET /:id/edit 
@@ -47,10 +47,10 @@ router.get('/:experience_id/edit-experience', (req, res, next) => {
 //POST /:id/ 
 
 router.post('/:experience_id', (req, res, next) => {
-  const { title, plan, comments, locations } = req.body;
+  const { title, plan, comments, locations, expireDate } = req.body;
   Experience.update(
     { _id: req.params.experience_id },
-    { title, plan, comments, locations }).then(() => {
+    { title, plan, comments, locations, expireDate, owner: req.user }).then(() => {
       res.redirect('/profile')
     })
 });
