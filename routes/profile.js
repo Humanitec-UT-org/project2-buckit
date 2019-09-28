@@ -7,7 +7,7 @@ const uploadCloud = require('../config/cloudinary.js');
 const User = require('../models/user') // LL 20.09.
 const Experience = require('../models/experience') // LL 20.09.
 const Location = require('../models/location') // LL 20.09.
-//FAIROUZ THIS IS CORRECT 
+
 //middleware
 const isAuthenticated = (req, res, next) => {
     if (req.user) {
@@ -36,21 +36,9 @@ router.get('/:user_id/edit', isAuthenticated, function (req, res, next) { // LL 
 router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, function (req, res, next) {
     let { username, email, bio } = req.body
     const imageUrl = req.file.url;
-    const password = req.body.password;
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-
-    User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio, password: hashPass }).then(() => {
-
-        if (username === "" || password === "") {
-            res.render("profile/edit-user", {
-                errorMessage: "Please fill in password, username and email!"
-            });
-            return;
-        }
-
-        res.redirect('/profile') // LL 2209 PASSWORD still has to be hashed!	
+    User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio }).then(() => {
+        //I removed the password requirment
+        res.redirect('/profile')
     })
 
 });
@@ -60,22 +48,6 @@ router.get('/add-experience', isAuthenticated, function (req, res, next) { //isA
     res.render('profile/add-experience')
 });
 
-// POST /experience/add
-// Data Validation with errorMessage > If we want to implement this 
-// router.post('/', isAuthenticated, function (req, res, next) {
-//     let { title, plan, comments, locations } = req.body;
-//     Experience.create({ title, plan, comments, locations, owner: req.user })
-//         .then(() => {
-//             if (title === "") {
-//                 res.render('/experiences/add-experience', {
-//                     errorMessage: "Please fill in a title!"
-//                 });
-//                 return
-//             }
-//             res.redirect('/profile')
-//         })
-
-// })
 router.post('/', isAuthenticated, function (req, res, next) {
     let { title, plan, comments, locations } = req.body;
     Experience.create({ title, plan, comments, locations, owner: req.user })
