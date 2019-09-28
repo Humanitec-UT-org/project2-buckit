@@ -35,11 +35,23 @@ router.get('/:user_id/edit', isAuthenticated, function (req, res, next) { // LL 
 // POST /profile/:user_id/edit   --> see NOTE at line 45	
 router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, function (req, res, next) {
     let { username, email, bio } = req.body
-    const imageUrl = req.file.url;
-    User.findByIdAndUpdate(req.params.user_id, { username, email, imageUrl, bio }).then(() => {
-        //I removed the password requirment
+    const imageUrl = req.file.url
+
+    User.findByIdAndUpdate(req.params.user_id, { username, email, bio, imageUrl }).then(() => {
         res.redirect('/profile')
     })
+
+    /* if (imageUrl === null) {
+        User.findByIdAndUpdate(req.params.user_id, { username, email, bio }).then(() => {
+            res.redirect('/profile')
+        })
+
+    } else {
+        User.findByIdAndUpdate(req.params.user_id, { username, email, bio, imageUrl }).then(() => {
+            res.redirect('/profile')
+        })
+    } */
+
 
 });
 // Uncommented because there is same code in experience.js
