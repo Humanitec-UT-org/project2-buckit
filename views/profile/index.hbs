@@ -54,28 +54,39 @@
 <hr>
 {{!-- List experiences here  --}}
 <h3>UPCOMING EXPERIENCES:</h3>
-{{#each experiences}}
-<h4>{{this.title}}</h4>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+            {{#each experiences}}
+            <div class="card-body">
+                <div class="card-header">Experience</div>
+                <h5 class="card-title">Title: {{this.title}}</h5>
+                <p class="card-text">The Plan:{{this.plan}}</p>
+                <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
+                    class="edit-button">EDIT</a>
+                <a href="/experiences/add-experience"> ADD</a>
 
-<p>The Plan:{{this.plan}}</p>
-<br>
-<a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience" class="edit-button">EDIT ITEM</a>
-{{/each}}
-<br>
-<a href="/experiences/add-experience"> Add an experience</a>
-<br>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{!-- List locations here  --}}
+    <h3>UPCOMING LOCATIONS TO GO TO:</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                {{#each locations}}
+                <div class="card-body">
+                    <div class="card-header">Location</div>
+                    <h5 class="card-title">Title: {{this.title}}</h5>
+                    <p class="card-text">The Plan:{{this.plan}}</p>
+                    <br>
+                    <p>Due Date: {{this.expireDate}}</p>
+                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
+                        class="edit-button">EDIT</a>
+                    <a href="/locations/add-location"> ADD</a>
 
-{{!-- List locations here  --}}
-<h3>UPCOMING LOCATIONS TO GO TO:</h3>
-
-{{#each locations}}
-<h4>{{this.title}}</h4>
-
-<p>The Plan: {{this.plan}}</p>
-<br>
-<p>Due Date: {{this.expireDate}}</p>
-<a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location" class="edit-button">EDIT ITEM</a>
-{{/each}}
-
-</br>
-<a href="/locations/add-location"> Add a location</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
