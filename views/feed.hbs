@@ -45,26 +45,46 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
 <h1>Hi {{user.username}}!</h1>
 <h4>Check out the community's latest experiences:</h4>
 <br>
+{{!-- Experience List --}}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+            {{#each experiences}}
+            <div class="card-body">
+                <div class="card-header">Experience</div>
 
-{{#each experiences}}
-<h4>{{this.title}}</h4>
-<p>The Plan:{{this.plan}}</p>
-<br>
+                <h5 class="card-title">Title: {{this.title}}</h5>
+                <p class="card-text">The Plan:{{this.plan}}</p>
+                <a href="#" class="btn btn-primary">Maybe Comment Button?</a>
 
-{{/each}}
-<br>
-<br>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{!-- Location List  --}}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">Location</div>
+                <div class="card-body text-dark">
 
+                    {{#each locations}}
+                    <h5 class="card-title">Title: {{this.title}}</h5>
+                    <p class="card-text">The Plan:{{this.plan}} <br>
+                        <p>Due Date: {{this.expireDate}}</p>
+                    </p>
+                    <a href="#" class="btn btn-primary">Maybe Comment Button?</a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
 
-<h3>Latest LOCATIONS TO GO TO:</h3>
+        {{!-- <h3>Latest LOCATIONS TO GO TO:</h3>
 
-{{#each locations}}
-<h4>{{this.title}}</h4>
+    {{#each locations}}
+    <h4>{{this.title}}</h4>
 
-<p>The Plan: {{this.plan}}</p>
-<br>
-<p>Due Date: {{this.expireDate}}</p>
-{{/each}}
-
-
-<a href="/logout">Log-Out</a>
+    <p>The Plan: {{this.plan}}</p>
+    <br>
+    <p>Due Date: {{this.expireDate}}</p>
+    {{/each}} --}}
