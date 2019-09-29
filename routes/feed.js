@@ -14,8 +14,8 @@ router.get('/', function (req, res, next) {
   Promise.all([User.find(), Experience.find(), Location.find()])
     .then(([users, experiences, locations]) => {
       //Sort experiences from oldest to latest
-      experiences.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-      locations.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+      experiences.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      locations.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       console.log(experiences)
       // console.log(experiences)
       //Sort locations from oldest to latest
