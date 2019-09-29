@@ -23,9 +23,9 @@ router.get('/', isAuthenticated, function (req, res, next) {
     Promise.all([User.find(), Experience.find({ owner: req.user._id }), Location.find({ owner: req.user._id })])
         .then(([users, experiences, locations]) => {
             //Sort experience from latest to oldest
-            experiences.sort((a, b) => new Date(b.expireDate) - new Date(a.expireDate))
+            experiences.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
             //Sort location from latest to oldest
-            locations.sort((a, b) => new Date(b.expireDate) - new Date(a.expireDate))
+            locations.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
             console.log(experiences)
             res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
         })
