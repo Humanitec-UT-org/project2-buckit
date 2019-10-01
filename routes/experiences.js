@@ -57,4 +57,12 @@ router.post('/:experience_id', (req, res, next) => {
     })
 });
 
+router.post('/:experience_id/delete', (req, res, next) => {
+  Experience.findByIdAndRemove({ _id: req.params.experience_id })
+    .then(() =>
+      res.redirect('/profile')
+    )
+    .catch(err => next(err))
+})
+
 module.exports = router;
