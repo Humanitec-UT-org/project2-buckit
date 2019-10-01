@@ -15,7 +15,7 @@ const locationSchema = new Schema({
     done: { type: Boolean },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
-        timestamps: true
-    }
+    timestamps: true
+}
 )
 module.exports = mongoose.model("Location", locationSchema)

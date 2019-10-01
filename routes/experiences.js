@@ -17,7 +17,7 @@ const isAuthenticated = (req, res, next) => {
 /* GET profile page. */
 router.get('/', function (req, res, next) {
   Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
-    console.log("Experience", experiences);
+    //  console.log("Experience", experiences);
     res.render('profile/index', { user: users[0], experiences, locations });
   })
 })
@@ -32,7 +32,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
   Experience.create({ title, plan, comments, locations, expireDate, owner: req.user })
     .then(() => {
       res.redirect('/profile');
-      console.log("Experience", experiences)
+      //console.log("Experience", experiences)
     })
 
 })
@@ -41,7 +41,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
 
 router.get('/:experience_id/edit-experience', (req, res, next) => {
   Experience.findById(req.params.experience_id).then((result) => {
-    console.log("result", result)
+    //console.log("result", result)
     res.render('experiences/edit-experience', result);
   })
 });
