@@ -27,19 +27,19 @@ router.get('/add-location', isAuthenticated, function (req, res, next) { //isAut
 });
 
 router.post('/', isAuthenticated, function (req, res, next) {
-    let { title, expireDate, plan, comments } = req.body;
-    Location.create({ title, expireDate, plan, comments, owner: req.user })
+    let { title, expireDate, plan, comments, location } = req.body;
+    Location.create({ title, expireDate, plan, comments, owner: req.user, location })
         .then(() => {
             res.redirect('/profile');
         })
-    console.log("Location", locations)
+
 })
 
 //GET /locations/:id/edit 
 
 router.get('/:location_id/edit-location', (req, res, next) => {
     Location.findById(req.params.location_id).then((result) => {
-        console.log("result", result)
+        //  console.log("result", result)
         res.render('locations/edit-location', result);
     })
 });
