@@ -68,8 +68,16 @@
                 <div class="card-header">Experience</div>
                 <h5 class="card-title">Title: {{this.title}}</h5>
                 <p class="card-text">The Plan:{{this.plan}}</p>
+
+                {{#each comments}}
+                <h5 class="card-title">Comment: {{this.comment}}</h5>
+                <p class="card-text">User:{{this.owner.username}}</p>
+                {{/each}}
+
                 <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
                     class="edit-button">EDIT</a>
+                <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
+                    class="edit-button">COMMENT</a>
 
 
             </div>
