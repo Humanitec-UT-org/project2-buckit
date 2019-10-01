@@ -1,0 +1,75 @@
+<header role="banner">
+    <nav id="navbar-primary" class="navbar" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#navbar-primary-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/" title="Go Back"><img src="/images/buttonBack.svg" /></a>
+                    </li>
+                    <li>
+                        <a href="/feed" title="BuckIt Feed"><img src="/images/feed.svg" /></a>
+                    </li>
+                    <li>
+                        <a href="/people" title="Friends"><img src="/images/friends.svg" /></a>
+                    </li>
+                    <li>
+                        <a href="#" class="styleLogo">BUCK<img id="logo-navbar-middle" src="/images/bucket.svg"
+                                width="50" alt="Logo Thing main logo" />IT</a>
+                    </li>
+
+                    <li>
+                        <a href="/profile" title="Go to your Profile"><img src="/images/profile.svg" /></a>
+                    </li>
+                    <li>
+                        <a href="/logout" title="Logout"><img src="/images/logout.svg" /></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</header>
+{{!-- start of the card --}}
+
+<div class="row justify-content-center">
+    <div class="card text-center add-card" style=" width: 25rem;">
+        <div class="card-body">
+            <form action="/experiences/{{this._id}}/comments" method="POST" data-toggle="validator">
+
+                {{!-- Name --}}
+
+        </div>
+        {{!--  --}}
+
+        {{!--  --}}
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Your Comment:</label>
+
+                <input type="text" name="comment" class="form-control" placeholder="Enter comment here">
+            </div>
+        </div>
+        {{!--  --}}
+
+
+        <div class="form-button">
+
+            <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
+
+        </div>
+
+        </form>
+    </div>
+</div>
+</div>

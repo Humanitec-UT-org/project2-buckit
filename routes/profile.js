@@ -7,6 +7,7 @@ const uploadCloud = require('../config/cloudinary.js');
 const User = require('../models/user') // LL 20.09.
 const Experience = require('../models/experience') // LL 20.09.
 const Location = require('../models/location') // LL 20.09.
+const Comment = require('../models/comment')
 
 //middleware
 const isAuthenticated = (req, res, next) => {
@@ -20,13 +21,27 @@ const isAuthenticated = (req, res, next) => {
 /* GET /profile . */
 //   Promise.all([User.find(), Experience.find().sort({ expireDate: -1 }), Location.find().sort({ expireDate: 1})])
 router.get('/', isAuthenticated, function (req, res, next) {
-    Promise.all([User.find(), Experience.find({ owner: req.user._id }), Location.find({ owner: req.user._id })])
-        .then(([users, experiences, locations]) => {
+    Promise.all([
+        Experience.find({ owner: req.user._id }).then(experiences => {
+            let experienceIDs = experiences.map(experience => experience._id);
+            return Comment.find({ experience: { $in: experienceIDs } }).populate('owner').then(comments => {
+                console.log(comments);
+                for (let experience of experiences) {
+                    experience.comments = comments
+                        .filter(comment => comment.experience.equals(experience._id));
+                }
+                return experiences;
+            })
+        }),
+
+        Location.find({ owner: req.user._id })
+    ])
+        .then(([experiences, locations]) => {
+
             //Sort experience from latest to oldest
             experiences.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
             //Sort location from latest to oldest
             locations.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
-            console.log(experiences)
             res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
         })
 })
