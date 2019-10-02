@@ -1,11 +1,81 @@
-LOG-IN
+{{!-- OLD VERSION
 <form action="/login" method="post">
     <input type="text" name="email" placeholder="email">
     <br>
     <input type="password" name="password" placeholder="password">
     <button type="submit">Login</button>
-    {{messages}}
+    {{ messages }}
     {{#each messages}}
-    <h4 style="color: red;">{{this}}</h4>
-    {{/each}}
+    <h4 style="color: red;">{{ this}}</h4>
+    {{/ each}}
 </form>
+ --}}
+
+<!-- LOGIN Start -->
+{{!-- <script src="frontendJavascript.js"></script> --}}
+<script>
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+<div class="loginBox">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="wrap-login100-pic">
+                    <img src="./images/Screen Shot 2019-10-02 at 14.55.23.png" class="" />
+                </div>
+                <div class="login100-form">
+                    <form action="/login" method="post">
+                        <span class="login100-form-title p-b-26">
+                            Welcome to your <img src="./images/bucket.svg" /> List
+                        </span>
+                        <span class="login100-form-title p-b-48"> </span>
+                        <!-- email -->
+                        <div class="wrap-input100">
+                            <input type="text" name="email" placeholder="email" class="input100" required />
+                            <span class="focus-input100" data-placeholder="Email"></span>
+                        </div>
+                        <!-- password -->
+                        <div class="wrap-input100">
+                            <input type="text" name="password" placeholder="password" class="input100" id="myInput"
+                                required />
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+                        <div>
+                            <input type="checkbox" onclick="myFunction()" /> Show Password
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+
+                                <button class="login100-form-btn" type="submit" />
+                                Login
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-center p-t-115">
+                        <span class="txt1">
+                            Don’t have an account?
+                        </span>
+
+                        <a class="txt2" href="/signup">
+                            Sign Up
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+</div>
+<!-- LOGIN End -->
