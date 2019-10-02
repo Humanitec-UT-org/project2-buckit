@@ -55,7 +55,13 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
 
                 <h5 class="card-title">Title: {{this.title}}</h5>
                 <p class="card-text">The Plan:{{this.plan}}</p>
-                <a href="#" class="btn btn-primary">Maybe Comment Button?</a>
+
+                {{#each comments}}
+                <h5 class="card-title">Comment: {{this.comment}}</h5>
+                <p class="card-text">User:{{this.owner.username}}</p>
+                {{/each}}
+                <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
+                    class="edit-button">COMMENT</a>
 
             </div>
             {{/each}}
@@ -73,7 +79,12 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                     <p class="card-text">The Plan:{{this.plan}} <br>
                         <p>Due Date: {{this.expireDate}}</p>
                     </p>
-                    <a href="#" class="btn btn-primary">Maybe Comment Button?</a>
+                    {{#each comments}}
+                    <h5 class="card-title">Comment: {{this.comment}}</h5>
+                    <p class="card-text">User:{{this.owner.username}}</p>
+                    {{/each}}
+                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
+                        class="edit-button">COMMENT</a>
                     {{/each}}
                 </div>
             </div>

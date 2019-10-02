@@ -96,8 +96,15 @@
                     <p class="card-text">The Plan:{{this.plan}}</p>
                     <br>
                     <p>Due Date: {{this.expireDate}}</p>
+                    <br>
+                    {{#each comments}}
+                    <h5 class="card-title">Comment: {{this.comment}}</h5>
+                    <p class="card-text">User:{{this.owner.username}}</p>
+                    {{/each}}
                     <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
                         class="edit-button">EDIT</a>
+                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
+                        class="edit-button">COMMENT</a>
 
                 </div>
                 {{/each}}

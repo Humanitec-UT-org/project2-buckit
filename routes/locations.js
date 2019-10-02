@@ -4,6 +4,7 @@ var router = express.Router();
 const User = require('../models/user') // LL 20.09.
 const Experience = require('../models/experience') // LL 20.09.
 const Location = require('../models/location') // LL 20.09.
+const Comment = require('../models/comment')
 
 //middleware
 const isAuthenticated = (req, res, next) => {
@@ -53,6 +54,29 @@ router.post('/:location_id', (req, res, next) => {
             res.redirect('/profile')
         })
 });
+
+//GET /:id/add-comment
+
+router.get('/:location_id/add-comment', (req, res, next) => {
+    Location.findById(req.params.location_id).then((result) => {
+        console.log("result", result)
+        res.render('locations/add-comment', result);
+    })
+});
+
+
+
+
+// POST /locations/add-comment
+router.post('/:location_id/comments', function (req, res, next) {
+    let { comment, owner } = req.body;
+    Comment.create({ comment, owner, owner: req.user, location: req.params.location_id })
+        .then(() => {
+            res.redirect('/feed');
+            console.log("Comment", comment, owner)
+        })
+
+})
 
 //DELETE :location_id/delete
 router.post('/:location_id/delete', (req, res, next) => {
