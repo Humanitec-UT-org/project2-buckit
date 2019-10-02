@@ -58,7 +58,7 @@ router.post('/:experience_id', (req, res, next) => {
     })
 });
 
-//GET /:id/edit 
+//GET /:id/add-comment
 
 router.get('/:experience_id/add-comment', (req, res, next) => {
   Experience.findById(req.params.experience_id).then((result) => {
@@ -75,7 +75,7 @@ router.post('/:experience_id/comments', function (req, res, next) {
   let { comment, owner } = req.body;
   Comment.create({ comment, owner, owner: req.user, experience: req.params.experience_id })
     .then(() => {
-      res.redirect('/profile');
+      res.redirect('/feed');
       console.log("Comment", comment, owner)
     })
 
