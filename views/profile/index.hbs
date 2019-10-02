@@ -65,9 +65,9 @@
         <div class="card border-dark mb-3" style="max-width: 18rem;">
             {{#each experiences}}
             <div class="card-body">
-                <div class="card-header">Experience</div>
                 <h5 class="card-title">Title: {{this.title}}</h5>
-                <p class="card-text">The Plan:{{this.plan}}</p>
+                <p class="card-text">The Plan: {{this.plan}}</p>
+                <p>Due Date: {{this.expireDate}}</p>
 
                 {{#each comments}}
                 <h5 class="card-title">Comment: {{this.comment}}</h5>
@@ -91,10 +91,9 @@
             <div class="card border-dark mb-3" style="max-width: 18rem;">
                 {{#each locations}}
                 <div class="card-body">
-                    <div class="card-header">Location</div>
                     <h5 class="card-title">Title: {{this.title}}</h5>
-                    <p class="card-text">The Plan:{{this.plan}}</p>
-                    <br>
+                    <div class="card-header">Location: {{this.location}}</div>
+                    <p class="card-text">The Plan: {{this.plan}}</p>
                     <p>Due Date: {{this.expireDate}}</p>
                     <br>
                     {{#each comments}}

@@ -47,10 +47,10 @@ router.get('/:location_id/edit-location', (req, res, next) => {
 
 //POST /locations/:id/ 
 router.post('/:location_id', (req, res, next) => {
-    const { title, expireDate, plan, comments } = req.body;
+    const { title, expireDate, plan, comments, location } = req.body;
     Location.update(
         { _id: req.params.location_id },
-        { title, expireDate, plan, comments }).then(() => {
+        { title, expireDate, plan, comments, location }).then(() => {
             res.redirect('/profile')
         })
 });
