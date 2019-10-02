@@ -5,6 +5,7 @@ const User = require('../models/user')
 const Experience = require('../models/experience')
 const Location = require('../models/location')
 const Comment = require('../models/comment')
+const http = require('http');
 
 //middleware
 const isAuthenticated = (req, res, next) => {
@@ -15,13 +16,34 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
-/* GET profile page. */
-router.get('/', function (req, res, next) {
-  Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
-    //  console.log("Experience", experiences);
-    res.render('profile/index', { user: users[0], experiences, locations });
-  })
-})
+router.get('/', (req, res) => {
+  let queryString = req.query.term;
+  // ENCODE THE QUERY STRING TO REMOVE WHITE SPACES AND RESTRICTED CHARACTERS
+  let term = encodeURIComponent(queryString);
+  // PUT THE SEARCH TERM INTO THE GIPHY API SEARCH URL
+  let url = 'http://api.giphy.com/v1/gifs/search?q=' + term + '&api_key=dc6zaTOxFJmzC';
+  http.get(url, (response) => {
+    // SET ENCODING OF RESPONSE TO UTF8
+    response.setEncoding('utf8');
+    let body = '';
+    // listens for the event of the data buffer and stream
+    response.on('data', (d) => {
+      // CONTINUOUSLY UPDATE STREAM WITH DATA FROM GIPHY
+      body += d;
+    });
+    // once it gets data it parses it into json 
+    response.on('end', () => {
+      // WHEN DATA IS FULLY RECEIVED PARSE INTO JSON
+      let parsed = JSON.parse(body);
+      // RENDER THE HOME TEMPLATE AND PASS THE GIF DATA IN TO THE TEMPLATE
+      res.render('search-giphy', { gifs: parsed.data })
+    });
+  });
+});
+
+
+/* https://api.giphy.com/v1/gifs/random?api_key=zIwQPWrbNtodP1xQXb01UpG5FDu2eQqm&tag=&rating=G 
+https://api.giphy.com/v1/gifs/search?api_key=zIwQPWrbNtodP1xQXb01UpG5FDu2eQqm&q=&limit=25&offset=0&rating=G&lang=en*/
 
 // GET /experiences/add
 router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
@@ -80,11 +102,6 @@ router.post('/:experience_id/comments', function (req, res, next) {
     })
 
 })
-// Experience.update(
-//   { _id: req.params.experience_id },
-//   { title, plan, comments, locations, expireDate, owner: req.user }).then(() => {
-//     res.redirect('/profile')
-//   })
 
 router.post('/:experience_id/delete', (req, res, next) => {
   Experience.findByIdAndRemove({ _id: req.params.experience_id })
@@ -93,5 +110,6 @@ router.post('/:experience_id/delete', (req, res, next) => {
     )
     .catch(err => next(err))
 })
+
 
 module.exports = router;

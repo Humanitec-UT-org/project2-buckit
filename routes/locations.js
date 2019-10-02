@@ -15,13 +15,6 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
-/* GET /locations */
-router.get('/', function (req, res, next) {
-    Promise.all([User.find(), Experience.find(), Location.find()]).then(([users, experiences, locations]) => {
-        res.render('profile/index', { user: users[0], experiences, locations }); // LL 2009
-    })
-})
-
 // GET /location/add
 router.get('/add-location', isAuthenticated, function (req, res, next) { //isAuthenticated?
     res.render('locations/add-location')
