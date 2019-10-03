@@ -1,9 +1,11 @@
-<h1>Search for GIFS</h1>
-<form action="/experiences">
-  <input type="text" name="term">
-  <button type="submit">Search</button>
+SEARCH FOR A GIF
+
+<form action="/experiences/search-gif" method="POST">
+  <input type="text" name="giphy-query" placeholder="Search Giphy..." />
+  <input type="submit" value="Search" />
 </form>
-{{!-- we use a fixed_height version so all the gifs are the same height --}}
-{{#each gifs}}
-<img src="{{this.images.fixed_height.url}}" alt="">
-{{/each}}
+
+<!-- Add the following three lines: -->
+{{#if searchResultUrl}}
+<img src="{{searchResultUrl}}" />
+{{/if}}
