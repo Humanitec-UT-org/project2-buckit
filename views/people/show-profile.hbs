@@ -48,13 +48,13 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="profile-image">
-                <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
+                <div class="profile-image-avatar" style="background-image: url({{users.imageUrl}})"></div>
                 {{!-- <img src="{{this.user.imageUrl}}" /> --}}
             </div>
             <div class="col-sm-8 profile-bio">
-                <p class="profile-user-name"><b> Hi, my name is: </b> {{this.user.username}}</p>
+                <p class="profile-user-name"><b> Hi, my name is: </b> {{users.username}}</p>
                 <div class="profile-bio">
-                    <p><b> What you need to know about me: </b> {{this.user.bio}}</p>
+                    <p><b> What you need to know about me: </b> {{users.bio}}</p>
                 </div>
 
                 <a class="btn btn-outline-info" href="/" role="button"><b>Contact me </b></a>
@@ -75,15 +75,7 @@
             {{#each experiences}}
             <div class="card mb-3 border-exp" style="max-width: 20rem;">
                 <div class="card-body">
-                    <div class="card-header" id="color-exp"><b>I will... </b><i>{{this.title}}</i></div>
-                    <p class="card-text"> <b>My plan is:</b> {{this.plan}}</p>
-                    <p><b>Until:</b> {{this.expireDate}}</p>
-
-
-                    {{#each comments}}
-                    <p class="card-title"><b>Comment: </b> {{this.comment}}</p>
-                    <p class="card-text"><b>From: </b>{{this.owner.username}}</p>
-                    {{/each}}
+                    {{> eachExperience this}}
                     <div class="col text-center">
 
                         <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"

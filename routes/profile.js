@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt')
 const bcryptSalt = 10;
 const uploadCloud = require('../config/cloudinary.js');
 
-const User = require('../models/user') // LL 20.09.
-const Experience = require('../models/experience') // LL 20.09.
-const Location = require('../models/location') // LL 20.09.
+const User = require('../models/user')
+const Experience = require('../models/experience')
+const Location = require('../models/location')
 const Comment = require('../models/comment')
 
 //middleware
@@ -17,9 +17,8 @@ const isAuthenticated = (req, res, next) => {
         res.redirect('/login')
     }
 }
-//find function can take params > only experiences of a certain condition req.user.id
+
 /* GET /profile . */
-//   Promise.all([User.find(), Experience.find().sort({ expireDate: -1 }), Location.find().sort({ expireDate: 1})])
 router.get('/', isAuthenticated, function (req, res, next) {
     Promise.all([
         Experience.find({ owner: req.user._id }).then(experiences => {
@@ -34,7 +33,17 @@ router.get('/', isAuthenticated, function (req, res, next) {
             })
         }),
 
-        Location.find({ owner: req.user._id })
+        Location.find({ owner: req.user._id }).populate('owner').then(locations => {
+            let locationIDs = locations.map(location => location._id);
+            return Comment.find({ location: { $in: locationIDs } }).populate('owner').then(comments => {
+                console.log(comments);
+                for (let location of locations) {
+                    location.comments = comments
+                        .filter(comment => comment.location.equals(location._id));
+                }
+                return locations;
+            })
+        })
     ])
         .then(([experiences, locations]) => {
 
@@ -42,19 +51,19 @@ router.get('/', isAuthenticated, function (req, res, next) {
             experiences.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
             //Sort location from latest to oldest
             locations.sort((a, b) => new Date(a.expireDate) - new Date(b.expireDate))
-            res.render('profile/index', { user: req.user, experiences, locations }); // LL 2009
+            res.render('profile/index', { user: req.user, experiences, locations });
         })
 })
 
-// GET and Edit one's profile page. --> the browser does not get the connection, but the link and the edit-form works	
-router.get('/:user_id/edit', isAuthenticated, function (req, res, next) { // LL 2209	
-    User.findById(req.params.user_id).then((users) => {              // LL 2209	
-        res.render('profile/edit-user', { users, user: req.user }); // LL 2209	
+// GET and Edit one's profile page. 	
+router.get('/:user_id/edit', isAuthenticated, function (req, res, next) {
+    User.findById(req.params.user_id).then((users) => {
+        res.render('profile/edit-user', { users, user: req.user });
     });
 })
 
 
-// POST /profile/:user_id/edit   --> see NOTE at line 45	
+// POST /profile/:user_id/edit   
 router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, function (req, res, next) {
     let { username, email, bio } = req.body
 
@@ -69,27 +78,8 @@ router.post('/:user_id', uploadCloud.single('userImage'), isAuthenticated, funct
 
             res.redirect('/profile')
         }).catch(err => console.log("something went wrong", error))
-
     }
-
-
 });
-// Uncommented because there is same code in experience.js
-//query in mongo DB the user > we need a query that looks for the user
-// // GET /experiences/add
-// router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
-//     res.render('profile/add-experience')
-// });
-
-// router.post('/', isAuthenticated, function (req, res, next) {
-//     let { title, plan, comments, locations } = req.body;
-//     Experience.create({ title, plan, locations, comments, owner: req.user })
-//         .then(() => {
-//             res.redirect('/profile');
-//         })
-
-// })
-
 
 
 module.exports = router;
