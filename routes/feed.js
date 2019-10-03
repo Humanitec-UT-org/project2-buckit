@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const User = require('../models/user') // LL 20.09.
-const Experience = require('../models/experience') // LL 20.09.
-const Location = require('../models/location') // LL 20.09.
+const User = require('../models/user')
+const Experience = require('../models/experience')
+const Location = require('../models/location')
 const Comment = require('../models/comment')
 
 //middleware
@@ -15,8 +15,6 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
-// router.get('/', function (req, res, next) {
-//   Promise.all([User.find(), Experience.find(), Location.find()])
 
 router.get('/', isAuthenticated, function (req, res, next) {
   Promise.all([
@@ -43,16 +41,14 @@ router.get('/', isAuthenticated, function (req, res, next) {
         return locations;
       })
     })
-    // how to get the owner of an expeerience and location to display it in the /feed
   ])
     .then(([experiences, locations]) => {
       //Sort experiences from oldest to latest
       experiences.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
         locations.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       console.log(experiences)
-      // console.log(experiences)
-      //Sort locations from oldest to latest
-      res.render('feed', { user: req.user, experiences, locations }); // LL 2009
+
+      res.render('feed', { user: req.user, experiences, locations });
     })
 })
 
