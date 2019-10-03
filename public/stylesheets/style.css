@@ -522,3 +522,47 @@ textarea:-ms-input-placeholder {
 }
 
 /* loginBox end */
+
+/* profile start */
+
+.profile-image {
+  float: left;
+  width: calc(33.333% - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+  width: auto;
+  padding: 10px 0px 0px 10px;
+}
+.profile-info {
+  flex-basis: calc(100% - 10.7rem);
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.profile-image img {
+  border-radius: 50%;
+  width: 7.7rem;
+}
+.container-profile {
+  justify-content: space-between;
+}
+.profile-settings-btn {
+  padding: 0;
+  text-align: center;
+  margin-left: 0;
+}
+.profile-bio {
+  flex-basis: 100%;
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  width: auto;
+  margin: 0;
+}
+
+/* profile end */
+
+/* /index items start */
+
+/* /index items end */
