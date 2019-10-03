@@ -1,92 +1,103 @@
 <header role="banner">
-    <nav id="navbar-primary" class="navbar" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navbar-primary-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-primary-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/" title="Go Back"><img src="./images/buttonBack.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/feed" title="BuckIt Feed"><img src="./images/feed.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/people" title="Friends"><img src="./images/friends.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="#" class="styleLogo">BUCK<img id="logo-navbar-middle" src="./images/bucket.svg"
-                                width="50" alt="Logo Thing main logo" />IT</a>
+    {{!-- already new navbar --}}
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">
+                            <b> GoBack</b>
+                            <img src="./images/buttonBack.svg" />
+                            <!-- IMG  class="d-inline-block align-top" -->
+                        </a>
                     </li>
 
-                    <li>
-                        <a href="/profile" title="Go to your Profile"><img src="./images/profile.svg" /></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/feed" title="BuckIt Feed">
+                            <b> Feed</b><img src="./images/feed.svg" /></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/people" title="Friends">
+                            <b> Friends</b><img src="./images/friends.svg" /></a>
                     </li>
                     <li>
-                        <a href="/logout" title="Logout"><img src="./images/logout.svg" /></a>
+                        <a class="styleLogo" href="#"><span class="styleLogo">BUCK
+                                <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+                                    alt="Logo Thing main logo" />IT</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
+                                src="./images/profile.svg" /></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" title="Logout">
+                            <b>Logout</b> <img src="./images/logout.svg" />
+                        </a>
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
-</header>
-{{!-- 
+
+    {{!-- end navbar --}}
+    {{!-- 
 WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
-<h1>Hi {{user.username}}!</h1>
-<h4>Check out the community's latest experiences:</h4>
-<br>
-{{!-- Experience List --}}
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
-            {{#each experiences}}
-            <div class="card-body">
-                <div class="card-header">Experience</div>
+    <h1>Hi {{user.username}}!</h1>
+    <h4>Check out the community's latest experiences:</h4>
+    <br>
+    {{!-- Experience List --}}
+    <div class="container container-feed">
+        <div class="row">
+            <div class="col-sm-6">
+                {{#each experiences}}
+                <div class="card mb-3 border-exp" style="max-width: 20rem;">
 
-                <h5 class="card-title">Title: {{this.title}}</h5>
-                <p class="card-text">The Plan:{{this.plan}}</p>
+                    <div class="card-body">
+                        <div class="card-header" id="color-exp">{{this.username}} {username`s} Experience</div>
 
-                {{#each comments}}
-                <h5 class="card-title">Comment: {{this.comment}}</h5>
-                <p class="card-text">User:{{this.owner.username}}</p>
-                {{/each}}
-                <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
-                    class="edit-button">COMMENT</a>
+                        <p class="card-text"><b>Title: </b>{{this.title}}</p>
+                        <p class="card-text"><b>The Plan:</b> {{this.plan}}</p>
 
-            </div>
-            {{/each}}
-        </div>
-    </div>
-    {{!-- Location List  --}}
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <div class="card-header">Location</div>
-                <div class="card-body text-dark">
+                        {{#each comments}}
+                        <p class="card-text"><b>Comment:</b> {{this.comment}}</p>
+                        <p class="card-text"><b>User:</b>{{this.owner.username}}</p>
+                        {{/each}}
+                        <div class="col text-center">
+                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
 
-                    {{#each locations}}
-                    <h5 class="card-title">Title: {{this.title}}</h5>
-                    <p class="card-text">The Plan:{{this.plan}} <br>
-                        <p>Due Date: {{this.expireDate}}</p>
-                    </p>
-                    {{#each comments}}
-                    <h5 class="card-title">Comment: {{this.comment}}</h5>
-                    <p class="card-text">User:{{this.owner.username}}</p>
-                    {{/each}}
-                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
-                        class="edit-button">COMMENT</a>
-                    {{/each}}
+                    </div>
+
                 </div>
+                {{/each}}
+            </div>
+            {{!-- Location List  --}}
+
+            <div class="col-sm-6">
+                {{#each locations}}
+                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="card-header" id="color-loc"><b>{{this.username}} {username`s}Location</b></div>
+                        <p class="card-text"><b>Title:</b> {{this.title}}</p>
+                        <p class="card-text"><b>The Plan:</b>{{this.plan}} <p>
+                                <p><b>Until</b> {{this.expireDate}}</p>
+
+                                {{#each comments}}
+                                <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
+                                <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
+                                {{/each}}
+                                <div class="col text-center">
+                                    <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                        role="button">comment</a>
+                                </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
 

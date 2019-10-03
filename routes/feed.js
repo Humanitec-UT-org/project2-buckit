@@ -43,6 +43,7 @@ router.get('/', isAuthenticated, function (req, res, next) {
         return locations;
       })
     })
+    // how to get the owner of an expeerience and location to display it in the /feed
   ])
     .then(([experiences, locations]) => {
       //Sort experiences from oldest to latest

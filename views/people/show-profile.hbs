@@ -1,45 +1,126 @@
-<header role="banner">
-    <nav id="navbar-primary" class="navbar" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navbar-primary-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-primary-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/" title="Go Back"><img src="/images/buttonBack.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/feed" title="BuckIt Feed"><img src="/images/feed.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/people" title="Friends"><img src="/images/friends.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="#" class="styleLogo">BUCK<img id="logo-navbar-middle" src="/images/bucket.svg"
-                                width="50" alt="Logo Thing main logo" />IT</a>
-                    </li>
+{{!-- already new navbar --}}
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <b> GoBack</b>
+                        <img src="../images/buttonBack.svg" />
+                        <!-- IMG  class="d-inline-block align-top" -->
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="/profile" title="Go to your Profile"><img src="/images/profile.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/logout" title="Logout"><img src="/images/logout.svg" /></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/feed" title="BuckIt Feed">
+                        <b> Feed</b><img src="../images/feed.svg" /></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/people" title="Friends">
+                        <b> Friends</b><img src="../images/friends.svg" /></a>
+                </li>
+                <li>
+                    <a class="styleLogo" href="#"><span class="styleLogo">BUCK
+                            <img id="logo-navbar-middle" src="../images/bucket.svg" width="50"
+                                alt="Logo Thing main logo" />IT</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
+                            src="../images/profile.svg" /></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" title="Logout">
+                        <b>Logout</b> <img src="../images/logout.svg" />
+                    </a>
+                </li>
+            </ul>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-</header>
+    </div>
+</nav>
+{{!-- end navbar --}}
+
+{{!-- profile start --}}
+<div class="container container-people-profile">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="profile-image">
+                <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
+                {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+            </div>
+            <div class="col-sm-8 profile-bio">
+                <p class="profile-user-name"><b> Hi, my name is: </b> {{this.user.username}}</p>
+                <div class="profile-bio">
+                    <p><b> What you need to know about me: </b> {{this.user.bio}}</p>
+                </div>
+
+                <a class="btn btn-outline-info" href="/" role="button"><b>Contact me </b></a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+</div>
+{{!-- profile end --}}
+<div class="container container-items-profile">
+    <div class="row">
+        <div class="col-md-6">
+
+            {{#each experiences}}
+            <div class="card mb-3 border-exp" style="max-width: 20rem;">
+                <div class="card-body">
+                    <div class="card-header" id="color-exp"><b>I will... </b><i>{{this.title}}</i></div>
+                    <p class="card-text"> <b>My plan is:</b> {{this.plan}}</p>
+                    <p><b>Until:</b> {{this.expireDate}}</p>
+
+
+                    {{#each comments}}
+                    <p class="card-title"><b>Comment: </b> {{this.comment}}</p>
+                    <p class="card-text"><b>From: </b>{{this.owner.username}}</p>
+                    {{/each}}
+                    <div class="col text-center">
+
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
+                            role="button">comment</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+        <div class="col-md-6">
+
+            {{#each locations}}
+            <div class="card border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+                    <div class="card-header" id="color-loc"><b>I will go to... </b><i>{{this.location}}</i></div>
+                    <p class="card-text"><b>This journey's title is: </b>{{this.title}}</h5>
+                        <p class="card-text"><b>My plan is:</b> {{this.plan}}</p>
+                        <p><b>Until:</b> {{this.expireDate}}</p>
+                        <br>
+                        {{#each comments}}
+                        <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
+                        <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
+                        {{/each}}
+                        <div class="col text-center">
+
+                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>
+
 
 <p>{{users.bio}}</p>
 <h1>Welcome to {{users.username}}'s profile!</h1>

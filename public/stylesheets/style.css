@@ -67,6 +67,7 @@ a {
 
 .styleLogo {
   font-family: "Mansalva", cursive;
+  font-size: 13pt;
   color: black;
 }
 .error-message {
@@ -89,12 +90,13 @@ a {
 .login100-pic {
   width: 316px;
 }
+
 /*---------------------------------------------*/
 .loginBox a {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 1.7;
-  color: #666666;
+  color: grey;
   margin: 0px;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
@@ -524,6 +526,34 @@ textarea:-ms-input-placeholder {
 /* loginBox end */
 
 /* profile start */
+/* try BUTTONS in Profile */
+.btn-outline-info {
+  color: #f7b71d;
+  background-color: transparent;
+  background-image: none;
+  border-color: #c95501;
+  text-decoration: none;
+}
+.profile-bgbtn {
+  background: #afa939;
+  background: -webkit-linear-gradient(
+    right,
+    #f7b71d,
+    #c95501,
+    #f7b71d,
+    #c95501
+  );
+  background: -o-linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  background: -moz-linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  background: linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  top: 0;
+  left: -100%;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
 
 /* .profile-image {
   float: left;
@@ -548,6 +578,8 @@ textarea:-ms-input-placeholder {
   float: left;
   background-size: cover;
   background-position: center center;
+  border: 3px solid #c95501;
+  padding: 0;
 }
 .profile-info {
   flex-basis: calc(100% - 10.7rem);
@@ -576,7 +608,57 @@ textarea:-ms-input-placeholder {
 }
 
 /* profile end */
-
+/* login start */
+.container-landingpage {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f7b71d;
+  background: url("../images/bg-pattern.png"), #f7b71d;
+  background: url("../images/bg-pattern.png"),
+    linear-gradient(to left, #c95501, #2b580c);
+}
+.container-items-profile {
+  background: url("../images/bg-pattern.png");
+}
+/* a href still changing  */
+.landing {
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+/* login end */
 /* /index items start */
 
 /* /index items end */
+/* color location experience start */
+#color-loc {
+  background-color: #f7b71d;
+}
+
+#color-exp {
+  background-color: #c95501;
+}
+
+/* color location experience end */
+/* feed  */
+.container-feed {
+  background: url("../images/bg-pattern.png");
+}
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}

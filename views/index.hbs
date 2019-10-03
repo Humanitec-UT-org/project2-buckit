@@ -1,29 +1,4 @@
-<header role="banner">
-    <nav id="navbar-primary" class="navbar" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navbar-primary-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-primary-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/feed" class="styleLogo">BUCK<img id="logo-navbar-middle" src="./images/bucket.svg"
-                                width="50" alt="Logo Thing main logo" />IT</a>
-                    </li>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-</header>
-<h1>Welcome {{#if user}} {{user.email}} {{else}} Stranger {{/if}} !</h1>
+{{!-- <h1>Welcome {{#if user}} {{user.email}} {{else}} Stranger {{/if}} !</h1>
 
 {{#if user}}
 <a href="/logout">Log out</a>
@@ -31,6 +6,60 @@
 <a href="/login">Log in</a>
 <br>
 <a href="/signup">Sign up</a>
-{{/if}}
+{{/if}} --}}
 
 {{!-- // fill in the feed here // --}}
+
+<div class="loginBox landingpage">
+    <div class="limiter landingpage">
+        <div class="container-landingpage">
+            <div class="wrap-login100">
+                <div class="wrap-login100-pic">
+                    <img src="./images/Screen Shot 2019-10-02 at 14.55.23.png" class="" />
+                </div>
+                <div class="login100-form">
+                    <form action="/login" method="post">
+                        <span class="login100-form-title p-b-26">
+                            Welcome to <br>
+                            <span class="styleLogo">BUCK <img src="./images/bucket.svg" /> IT</span>
+                            <br>List
+                        </span>
+
+                        <div class="welcome-text">
+                            <p> Your community in which you can list your adventures and share them with
+                                others </p>
+                        </div>
+                        <div class="container footer">
+                            <div class="row justify-content-center">
+                                <div class="">
+                                    <div class="container-login100-form-btn">
+                                        <div class="wrap-login100-form-btn">
+                                            <div class="login100-form-bgbtn"></div>
+
+                                            <button class="login100-form-btn" type="submit" />
+                                            <a class="landing" href="/login"> Login</a>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="container-login100-form-btn">
+                                            <div class="wrap-login100-form-btn">
+                                                <div class="login100-form-bgbtn"></div>
+                                                <button class="login100-form-btn" type="submit" />
+                                                <a class="landing" href="/signup"> Sign Up</a>
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div id="dropDownSelect1"></div>
+        </div>
