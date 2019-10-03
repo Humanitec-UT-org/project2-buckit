@@ -1,4 +1,4 @@
-SIGN-UP
+{{!-- OLD VERSION SIGN-UP
 <form action="/signup" method="post">
     <input type="text" name="username" placeholder="username">
 
@@ -11,4 +11,58 @@ SIGN-UP
     {{#if errorMessage}}
     <div class="error-message">{{ errorMessage }}</div>
     {{/if}}
-</form>
+</form> --}}
+
+<div class="loginBox">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="wrap-login100-pic">
+                    <img src="./images/Screen Shot 2019-10-02 at 14.55.23.png" class="" />
+                </div>
+                <div class="login100-form">
+                    <form action="/signup" method="post">
+                        <span class="login100-form-title p-b-26">
+                            Welcome to your <img src="./images/bucket.svg" /> List
+                        </span>
+                        <span class="login100-form-title p-b-48"> </span>
+                        <!-- username -->
+                        <div class="wrap-input100">
+                            <input type="text" name="username" placeholder="username" class="input100" required />
+                            <span class="focus-input100" data-placeholder="username"></span>
+                        </div>
+                        <!-- email -->
+                        <div class="wrap-input100">
+                            <input type="text" name="email" placeholder="email" class="input100" required />
+                            <span class="focus-input100" data-placeholder="Email"></span>
+                        </div>
+                        <!-- password -->
+                        <div class="wrap-input100">
+                            <input type="text" name="password" placeholder="password" class="input100" id="myInput"
+                                required />
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+
+                                <button class="login100-form-btn" type="submit" />
+                                signup
+                                </button>
+                                {{#if errorMessage}}
+                                <div class="error-message">{{ errorMessage }}</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dropDownSelect1"></div>
+</div>

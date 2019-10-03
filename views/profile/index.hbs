@@ -42,159 +42,96 @@
             </div>
         </div>
     </nav>
-    {{!-- oldnav --}}
-    {{!-- <nav id="navbar-primary" class="navbar" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navbar-primary-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-primary-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/" title="Go Back"><img src="./images/buttonBack.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/feed" title="BuckIt Feed"><img src="./images/feed.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/people" title="Friends"><img src="./images/friends.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="#" class="styleLogo">BUCK<img id="logo-navbar-middle" src="./images/bucket.svg"
-                                width="50" alt="Logo Thing main logo" />IT</a>
-                    </li>
-
-                    <li>
-                        <a href="/profile" title="Go to your Profile"><img src="./images/profile.svg" /></a>
-                    </li>
-                    <li>
-                        <a href="/logout" title="Logout"><img src="./images/logout.svg" /></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav> --}}
-</header>
-
-{{!-- <h4 style="text-align: center">My Buckit!</h4> --}}
-
-{{!-- <div class="container">
+    <div class="container container-profile">
         <div class="row">
-            <div class="col-5 col-sm-8 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img class="avatar rounded-circle" src="{{this.user.imageUrl}}" alt="Bologna">
+            <div class="col-sm-12">
+                <div class="profile-image">
+                    <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
+                    {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+                </div>
+                <div class="col-sm-8 profile-info">
+                    <h1 class="profile-user-name">{{this.user.username}}</h1>
+                    <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
+                        aria-disabled="true"><img src="./images/settings.svg"></a>
+                    <div class="profile-bio">
+                        <p>{{this.user.bio}}</p>
                     </div>
-                    <p>{{this.user.bio}}</p>
-                    <h1>{{this.user.username}}</h1>
+                    <div class="add">
+                        <a href="/locations/add-location" class="btn btn-primary btn-lg active" role="button"
+                            aria-pressed="true">add
+                            location</a>
+                        <a href="/experiences/add-experience" class="btn btn-secondary btn-lg active" role="button"
+                            aria-pressed="true">add
+                            experience</a>
+                    </div>
                 </div>
-                <a href="/locations/add-location" class="btn btn-primary btn-lg active" role="button"
-                    aria-pressed="true">add
-                    location</a>
-                <a href="/experiences/add-experience" class="btn btn-secondary btn-lg active" role="button"
-                    aria-pressed="true">add
-                    experience</a>
-                <a href="/profile/{{this.user._id}}/edit" class="btn btn-secondary btn-lg active" role="button"
-                    aria-disabled="true">Edit your Data</a>
+
             </div>
-        </div> --}}
-<div class="container container-profile">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="profile-image">
-                <img src="{{this.user.imageUrl}}" />
-            </div>
-
-            <div class="col-sm-8 profile-info">
-                <h1 class="profile-user-name">{{this.user.username}}</h1>
-                <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
-                    aria-disabled="true"><img src="./images/settings.svg"></a>
-                <div class="profile-bio">
-                    <p>{{this.user.bio}}</p>
-                </div>
-                <div class="add">
-                    <a href="/locations/add-location" class="btn btn-primary btn-lg active" role="button"
-                        aria-pressed="true">add
-                        location</a>
-                    <a href="/experiences/add-experience" class="btn btn-secondary btn-lg active" role="button"
-                        aria-pressed="true">add
-                        experience</a>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-</div>
-<hr>
-<div class="container container-items-profile">
-    <div class="row">
-        <div class="col-md-4">.col-md-4
-
-            {{#each experiences}}
-            <div class="card mb-3 border-exp" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Title: {{this.title}}</h5>
-                    <p class="card-text">The Plan: {{this.plan}}</p>
-                    <p>Due Date: {{this.expireDate}}</p>
-
-                    {{#each comments}}
-                    <h5 class="card-title">Comment: {{this.comment}}</h5>
-                    <p class="card-text">User:{{this.owner.username}}</p>
-                    {{/each}}
-
-                    <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
-                        class="edit-button">EDIT</a>
-                    <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
-                        class="edit-button">COMMENT</a>
-                </div>
-            </div>
-            {{/each}}
-
-        </div>
-        <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4
-
-            {{#each locations}}
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Title: {{this.title}}</h5>
-                    <div class="card-header">Location: {{this.location}}</div>
-                    <p class="card-text">The Plan: {{this.plan}}</p>
-                    <p>Due Date: {{this.expireDate}}</p>
-                    <br>
-                    {{#each comments}}
-                    <h5 class="card-title">Comment: {{this.comment}}</h5>
-                    <p class="card-text">User:{{this.owner.username}}</p>
-                    {{/each}}
-                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
-                        class="edit-button">EDIT</a>
-                    <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
-                        class="edit-button">COMMENT</a>
-                </div>
-            </div>
-            {{/each}}
 
         </div>
     </div>
-</div>
-{{!-- List experiences here  --}}
-{{!-- <h3>UPCOMING EXPERIENCES:</h3>
+
+    </div>
+
+    <hr>
+    <div class="container container-items-profile">
+        <div class="row">
+            <div class="col-md-4">.col-md-4
+
+                {{#each experiences}}
+                <div class="card mb-3 border-exp" style="max-width: 18rem;">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Title: {{this.title}}</h5>
+                        <p class="card-text">The Plan: {{this.plan}}</p>
+                        <p>Due Date: {{this.expireDate}}</p>
+
+                        {{#each comments}}
+                        <h5 class="card-title">Comment: {{this.comment}}</h5>
+                        <p class="card-text">User:{{this.owner.username}}</p>
+                        {{/each}}
+
+                        <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
+                            class="edit-button">EDIT</a>
+                        <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
+                            class="edit-button">COMMENT</a>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+            <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4
+
+                {{#each locations}}
+                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Title: {{this.title}}</h5>
+                        <div class="card-header">Location: {{this.location}}</div>
+                        <p class="card-text">The Plan: {{this.plan}}</p>
+                        <p>Due Date: {{this.expireDate}}</p>
+                        <br>
+                        {{#each comments}}
+                        <h5 class="card-title">Comment: {{this.comment}}</h5>
+                        <p class="card-text">User:{{this.owner.username}}</p>
+                        {{/each}}
+                        <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
+                            class="edit-button">EDIT</a>
+                        <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
+                            class="edit-button">COMMENT</a>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+    </div>
+    {{!-- List experiences here  --}}
+    {{!-- <h3>UPCOMING EXPERIENCES:</h3>
     <div class="row">
         <div class="col-sm-6">
             
         {{!-- List locations here  --}}
-{{!-- <h3>UPCOMING LOCATIONS TO GO TO:</h3>
+    {{!-- <h3>UPCOMING LOCATIONS TO GO TO:</h3>
 
 <div class="col-sm-6">
     <div class="card border-dark mb-3" style="max-width: 18rem;">
@@ -215,5 +152,5 @@
         </div>
         {{/each}}
     </div> --}} --}}
-</div>
-</div>
+    </div>
+    </div>
