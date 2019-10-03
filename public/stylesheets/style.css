@@ -525,7 +525,7 @@ textarea:-ms-input-placeholder {
 
 /* profile start */
 
-.profile-image {
+/* .profile-image {
   float: left;
   width: calc(33.333% - 1rem);
   display: flex;
@@ -534,6 +534,20 @@ textarea:-ms-input-placeholder {
   margin-right: 3rem;
   width: auto;
   padding: 10px 0px 0px 10px;
+} */
+.profile-image-avatar {
+  width: 120px;
+  height: 120px;
+  -webkit-border-radius: 60px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 60px;
+  -moz-background-clip: padding;
+  border-radius: 60px;
+  background-clip: padding-box;
+  margin: 20px 0 0 5px;
+  float: left;
+  background-size: cover;
+  background-position: center center;
 }
 .profile-info {
   flex-basis: calc(100% - 10.7rem);
