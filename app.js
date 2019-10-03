@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const hbs = require('hbs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -40,7 +41,9 @@ app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
+
 
 app.use(logger('dev'));
 app.use(express.json());

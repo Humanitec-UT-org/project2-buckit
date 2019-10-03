@@ -20,7 +20,7 @@ const isAuthenticated = (req, res, next) => {
 
 router.get('/', isAuthenticated, function (req, res, next) {
   Promise.all([
-    Experience.find().then(experiences => {
+    Experience.find().populate('owner').then(experiences => {
       let experienceIDs = experiences.map(experience => experience._id);
       return Comment.find({ experience: { $in: experienceIDs } }).populate('owner').then(comments => {
         console.log(comments);
@@ -32,7 +32,7 @@ router.get('/', isAuthenticated, function (req, res, next) {
       })
     }),
 
-    Location.find().then(locations => {
+    Location.find().populate('owner').then(locations => {
       let locationIDs = locations.map(location => location._id);
       return Comment.find({ location: { $in: locationIDs } }).populate('owner').then(comments => {
         console.log(comments);
