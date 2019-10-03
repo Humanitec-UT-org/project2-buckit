@@ -42,6 +42,8 @@
             </div>
         </div>
     </nav>
+    {{!-- end navbar --}}
+    {{!-- profile start --}}
     <div class="container container-profile">
         <div class="row">
             <div class="col-sm-12">
@@ -56,68 +58,71 @@
                     <div class="profile-bio">
                         <p>{{this.user.bio}}</p>
                     </div>
-                    <div class="add">
-                        <a href="/locations/add-location" class="btn btn-primary btn-lg active" role="button"
-                            aria-pressed="true">add
-                            location</a>
-                        <a href="/experiences/add-experience" class="btn btn-secondary btn-lg active" role="button"
-                            aria-pressed="true">add
-                            experience</a>
-                    </div>
-                </div>
 
+                    <a class="btn btn-outline-info" href="/locations/add-location" role="button">Add
+                        Location</a>
+                    <a class="btn btn-outline-info" href="/experiences/add-experience" role="button">
+                        Add
+                        Experience</a>
+
+                </div>
             </div>
 
         </div>
+
+    </div>
     </div>
 
     </div>
-
+    {{!-- profile end --}}
     <hr>
     <div class="container container-items-profile">
         <div class="row">
-            <div class="col-md-4">.col-md-4
+            <div class="col-md-6">
 
                 {{#each experiences}}
-                <div class="card mb-3 border-exp" style="max-width: 18rem;">
+                <div class="card mb-3 border-exp" style="max-width: 20rem;">
                     <div class="card-body">
+                        <div class="card-header" id="color-exp"><b>I will... </b><i>{{this.title}}</i></div>
+                        <p class="card-text"> <b>My plan is:</b> {{this.plan}}</p>
+                        <p><b>Until:</b> {{this.expireDate}}</p>
 
-                        <h5 class="card-title">Title: {{this.title}}</h5>
-                        <p class="card-text">The Plan: {{this.plan}}</p>
-                        <p>Due Date: {{this.expireDate}}</p>
 
                         {{#each comments}}
-                        <h5 class="card-title">Comment: {{this.comment}}</h5>
-                        <p class="card-text">User:{{this.owner.username}}</p>
+                        <p class="card-title"><b>Comment: </b> {{this.comment}}</p>
+                        <p class="card-text"><b>From: </b>{{this.owner.username}}</p>
                         {{/each}}
-
-                        <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/edit-experience"
-                            class="edit-button">EDIT</a>
-                        <a class="btn btn-primary btn-sm" href="/experiences/{{this._id}}/add-comment"
-                            class="edit-button">COMMENT</a>
+                        <div class="col text-center">
+                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
+                                role="button">edit</a>
+                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
 
             </div>
-            <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4
+            <div class="col-md-6">
 
                 {{#each locations}}
-                <div class="card border-dark mb-3" style="max-width: 18rem;">
+                <div class="card border-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Title: {{this.title}}</h5>
-                        <div class="card-header">Location: {{this.location}}</div>
-                        <p class="card-text">The Plan: {{this.plan}}</p>
-                        <p>Due Date: {{this.expireDate}}</p>
-                        <br>
-                        {{#each comments}}
-                        <h5 class="card-title">Comment: {{this.comment}}</h5>
-                        <p class="card-text">User:{{this.owner.username}}</p>
-                        {{/each}}
-                        <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location"
-                            class="edit-button">EDIT</a>
-                        <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
-                            class="edit-button">COMMENT</a>
+                        <div class="card-header" id="color-loc"><b>I will go to... </b><i>{{this.location}}</i></div>
+                        <p class="card-text"><b>This journey's title is: </b>{{this.title}}</h5>
+                            <p class="card-text"><b>My plan is:</b> {{this.plan}}</p>
+                            <p><b>Until:</b> {{this.expireDate}}</p>
+                            <br>
+                            {{#each comments}}
+                            <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
+                            <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
+                            {{/each}}
+                            <div class="col text-center">
+                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
+                                    role="button">edit</a>
+                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                    role="button">comment</a>
+                            </div>
                     </div>
                 </div>
                 {{/each}}
@@ -151,6 +156,6 @@
 
         </div>
         {{/each}}
-    </div> --}} --}}
+    </div> --}}
     </div>
     </div>
