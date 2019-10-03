@@ -83,15 +83,7 @@
                 {{#each experiences}}
                 <div class="card mb-3 border-exp" style="max-width: 20rem;">
                     <div class="card-body">
-                        <div class="card-header" id="color-exp"><b>I will... </b><i>{{this.title}}</i></div>
-                        <p class="card-text"> <b>My plan is:</b> {{this.plan}}</p>
-                        <p><b>Until:</b> {{this.expireDate}}</p>
-
-
-                        {{#each comments}}
-                        <p class="card-title"><b>Comment: </b> {{this.comment}}</p>
-                        <p class="card-text"><b>From: </b>{{this.owner.username}}</p>
-                        {{/each}}
+                        {{> eachExperience this }}
                         <div class="col text-center">
                             <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
                                 role="button">edit</a>
@@ -108,21 +100,14 @@
                 {{#each locations}}
                 <div class="card border-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
-                        <div class="card-header" id="color-loc"><b>I will go to... </b><i>{{this.location}}</i></div>
-                        <p class="card-text"><b>This journey's title is: </b>{{this.title}}</h5>
-                            <p class="card-text"><b>My plan is:</b> {{this.plan}}</p>
-                            <p><b>Until:</b> {{this.expireDate}}</p>
-                            <br>
-                            {{#each comments}}
-                            <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
-                            <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
-                            {{/each}}
-                            <div class="col text-center">
-                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
-                                    role="button">edit</a>
-                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
-                                    role="button">comment</a>
-                            </div>
+
+                        {{> eachLocation this }}
+                        <div class="col text-center">
+                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
+                                role="button">edit</a>
+                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}

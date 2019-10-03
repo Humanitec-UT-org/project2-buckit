@@ -57,15 +57,9 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                 <div class="card mb-3 border-exp" style="max-width: 20rem;">
 
                     <div class="card-body">
-                        <div class="card-header" id="color-exp">{{this.username}} {username`s} Experience</div>
+                        <div class="card-header" id="color-exp">{{this.owner.username}}'s Experience</div>
 
-                        <p class="card-text"><b>Title: </b>{{this.title}}</p>
-                        <p class="card-text"><b>The Plan:</b> {{this.plan}}</p>
-
-                        {{#each comments}}
-                        <p class="card-text"><b>Comment:</b> {{this.comment}}</p>
-                        <p class="card-text"><b>User:</b>{{this.owner.username}}</p>
-                        {{/each}}
+                        {{> eachExperience this }}
                         <div class="col text-center">
                             <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
                                 role="button">comment</a>
@@ -82,19 +76,12 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                 {{#each locations}}
                 <div class="card border-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
-                        <div class="card-header" id="color-loc"><b>{{this.username}} {username`s}Location</b></div>
-                        <p class="card-text"><b>Title:</b> {{this.title}}</p>
-                        <p class="card-text"><b>The Plan:</b>{{this.plan}} <p>
-                                <p><b>Until</b> {{this.expireDate}}</p>
-
-                                {{#each comments}}
-                                <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
-                                <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
-                                {{/each}}
-                                <div class="col text-center">
-                                    <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
-                                        role="button">comment</a>
-                                </div>
+                        <div class="card-header" id="color-exp">{{this.owner.username}}'s Location</div>
+                        {{> eachLocation this }}
+                        <div class="col text-center">
+                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}

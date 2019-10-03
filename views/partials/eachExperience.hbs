@@ -1,0 +1,8 @@
+<div class="card-header" id="color-exp"><b>I will... </b><i>{{this.title}}</i></div>
+<p class="card-text"> <b>My plan is:</b> {{this.plan}}</p>
+<p><b>Until:</b> {{this.expireDate}}</p>
+
+
+{{#each comments}}
+{{> comment this }}
+{{/each}}
