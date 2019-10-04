@@ -85,6 +85,10 @@ a {
   box-sizing: border-box;
   height: 100%;
   font-family: "Poppins", sans-serif;
+  background: #f7b71d;
+  background: url("../images/bg-pattern.png"), #f7b71d;
+  background: url("../images/bg-pattern.png"),
+    linear-gradient(to left, #c95501, #2b580c);
 }
 .login100-pic {
   width: 316px;
@@ -243,6 +247,9 @@ textarea:-ms-input-placeholder {
   background: -o-linear-gradient(-135deg, #c95501, #2b580c);
   background: -moz-linear-gradient(-135deg, #c95501, #2b580c);
   background: linear-gradient(-135deg, #c95501, #2b580c);
+  background: #f7b71d;
+  background: url("../images/bg-pattern.png"), #f7b71d;
+  background: url("../images/bg-pattern.png");
 }
 
 .wrap-login100 {
@@ -524,6 +531,34 @@ textarea:-ms-input-placeholder {
 /* loginBox end */
 
 /* profile start */
+<<<<<<< Updated upstream
+=======
+/* try BUTTONS in Profile */
+.btn-profile {
+  margin-left: 20px !important;
+}
+.btn-outline-info {
+  color: #f7b71d;
+  background-color: transparent;
+  background-image: none;
+  border-color: #c95501;
+  text-decoration: none;
+}
+.profile-bgbtn {
+  background: #afa939;
+  background: -webkit-linear-gradient(
+    right,
+    #f7b71d,
+    #c95501,
+    #f7b71d,
+    #c95501
+  );
+  background: -o-linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  background: -moz-linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  background: linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
+  top: 0;
+  left: -100%;
+>>>>>>> Stashed changes
 
 .profile-image {
   float: left;

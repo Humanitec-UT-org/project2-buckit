@@ -74,6 +74,7 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                 <div class="card-header">Location</div>
                 <div class="card-body text-dark">
 
+<<<<<<< Updated upstream
                     {{#each locations}}
                     <h5 class="card-title">Title: {{this.title}}</h5>
                     <p class="card-text">The Plan:{{this.plan}} <br>
@@ -86,6 +87,19 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                     <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment"
                         class="edit-button">COMMENT</a>
                     {{/each}}
+=======
+            <div class="col-sm-6">
+                {{#each locations}}
+                <div class="card border-dark mb-3" style="max-width: 20rem;">
+                    <div class="card-body">
+                        <div class="card-header" id="color-loc">{{this.owner.username}}'s Location</div>
+                        {{> eachLocation this }}
+                        <div class="col text-center">
+                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                                role="button">comment</a>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>

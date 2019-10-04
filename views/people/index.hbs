@@ -37,6 +37,7 @@
             </div>
             <!-- /.navbar-collapse -->
         </div>
+<<<<<<< Updated upstream
         <!-- /.container-fluid -->
     </nav>
 </header>
@@ -67,6 +68,32 @@
 
 </table>
 </br>
+=======
+    </div>
+</nav>
+{{!-- end navbar --}}
+<div class="container container-feed">
+    <div class="row">
+        {{#each users}}
+        <div class="col-sm-6">
+
+            <div class="profile-image-avatar" style="background-image: url({{this.imageUrl}})"></div>
+
+
+            <div class="col-sm-8 profile-info">
+                <h1 class="profile-user-name">{{this.username}}</h1>
+            </div>
+            <div class="col-sm-8 profile-info">
+                {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+                <a class="btn btn-outline-info" href="/people/{{this._id}}" role="button">Go to
+                    {{this.username}}'s
+                    Buckit!</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+>>>>>>> Stashed changes
 
 <a href="/profile"> Back to my Buckit </a></br>
 <a href="/feed"> Back to Feed </a>
