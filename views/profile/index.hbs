@@ -46,34 +46,35 @@
     {{!-- profile start --}}
     <div class="container container-profile">
         <div class="row">
-            <div class="col-sm-12">
+
+     <div class="col-sm-12">
                 <div class="profile-image">
                     <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
                     {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+
                 </div>
-                <div class="col-sm-8 profile-info">
-                    <h1 class="profile-user-name">{{this.user.username}}</h1>
-                    <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
-                        aria-disabled="true"><img src="./images/settings.svg"></a>
-                    <div class="profile-bio">
-                        <p>{{this.user.bio}}</p>
+                
+           <div class="col-sm-8 profile-info">
+                <h1 class="profile-user-name">{{this.user.username}}</h1>
+                <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
+                    aria-disabled="true"><img src="./images/settings.svg"></a>
+                <div class="profile-bio">
+                    <p>{{this.user.bio}}</p>
+                </div>
+  
+
+                                 <div class="btn-toolbar">
+                        <a class="btn btn-outline-info btn-profile" href="/experiences/add-experience" role="button">
+                            Add
+                            Experience</a>
+                        <a class="btn btn-outline-info btn-profile" href="/locations/add-location" role="button">Add
+                            Location</a>
                     </div>
 
-                    <a class="btn btn-outline-info" href="/locations/add-location" role="button">Add
-                        Location</a>
-                    <a class="btn btn-outline-info" href="/experiences/add-experience" role="button">
-                        Add
-                        Experience</a>
 
                 </div>
             </div>
-
-        </div>
-
-    </div>
-    </div>
-
-    </div>
+ </div>
     {{!-- profile end --}}
     <hr>
     <div class="container container-items-profile">

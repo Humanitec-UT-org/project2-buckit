@@ -86,6 +86,10 @@ a {
   box-sizing: border-box;
   height: 100%;
   font-family: "Poppins", sans-serif;
+  background: #f7b71d;
+  background: url("../images/bg-pattern.png"), #f7b71d;
+  background: url("../images/bg-pattern.png"),
+    linear-gradient(to left, #c95501, #2b580c);
 }
 .login100-pic {
   width: 316px;
@@ -245,6 +249,9 @@ textarea:-ms-input-placeholder {
   background: -o-linear-gradient(-135deg, #c95501, #2b580c);
   background: -moz-linear-gradient(-135deg, #c95501, #2b580c);
   background: linear-gradient(-135deg, #c95501, #2b580c);
+  background: #f7b71d;
+  background: url("../images/bg-pattern.png"), #f7b71d;
+  background: url("../images/bg-pattern.png");
 }
 
 .wrap-login100 {
@@ -526,7 +533,7 @@ textarea:-ms-input-placeholder {
 /* loginBox end */
 
 /* profile start */
-/* try BUTTONS in Profile */
+
 .btn-outline-info {
   color: #f7b71d;
   background-color: transparent;
@@ -548,7 +555,6 @@ textarea:-ms-input-placeholder {
   background: linear-gradient(right, #f7b71d, #c95501, #f7b71d, #c95501);
   top: 0;
   left: -100%;
-
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;

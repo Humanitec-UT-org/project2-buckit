@@ -71,18 +71,26 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                 {{/each}}
             </div>
             {{!-- Location List  --}}
-
+            
+            
             <div class="col-sm-6">
                 {{#each locations}}
                 <div class="card border-dark mb-3" style="max-width: 20rem;">
                     <div class="card-body">
-                        <div class="card-header" id="color-exp">{{this.owner.username}}'s Location</div>
+
+
+                        <div class="card-header" id="color-loc">{{this.owner.username}}'s Location</div>
+
+
+
+
                         {{> eachLocation this }}
                         <div class="col text-center">
                             <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
                                 role="button">comment</a>
                         </div>
                     </div>
+
                 </div>
                 {{/each}}
             </div>

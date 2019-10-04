@@ -39,35 +39,37 @@
                 </li>
             </ul>
         </div>
+
+        <!-- /.container-fluid -->
+    </nav>
+</header>
+
+        <h1>Welcome to our awesome community!</h1>
+        <h4>Just sniff a little bit in others people's buckits by clicking on their usernames
+            and get ideas by thousands of inspiring users!</h4>
+
     </div>
 </nav>
 {{!-- end navbar --}}
+
 <div class="container container-feed">
     <div class="row">
         {{#each users}}
+        <div class="col-sm-6">
 
-        <div class="col-sm-10 text-center">
-
-            <div class="card mb-3 border-exp">
-                <div class="profile-image">
-                    <div class="profile-image-avatar" style="background-image: url({{this.imageUrl}})"></div>
-                    {{!-- <img src="{{this.user.imageUrl}}" /> --}}
-                </div>
-                <div class="col-sm-8 profile-info">
-                    <h1 class="profile-user-name">{{this.username}}</h1>
+            <div class="profile-image-avatar" style="background-image: url({{this.imageUrl}})"></div>
 
 
-                    <a class="btn btn-outline-info" href="/people/{{this._id}}" role="button">Go to
-                        {{this.username}}'s
-                        Buckit!</a>
-                </div>
+            <div class="col-sm-8 profile-info">
+                <h1 class="profile-user-name">{{this.username}}</h1>
+            </div>
+            <div class="col-sm-8 profile-info">
+                {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+                <a class="btn btn-outline-info" href="/people/{{this._id}}" role="button">Go to
+                    {{this.username}}'s
+                    Buckit!</a>
             </div>
         </div>
-
         {{/each}}
     </div>
 
-</div>
-</div>
-
-</div>
