@@ -1,0 +1,9 @@
+<h5 class="card-title">{{this.title}}</h5>
+<div class="card-header" id="color-loc"><b>I will go to... </b><i>{{this.location}}</i></div>
+<p class="card-text"><b>This journey's title is: </b>{{this.title}}</h5>
+    <p class="card-text"><b>My plan is:</b> {{this.plan}}</p>
+    <p><b>Until:</b> {{this.expireDate}}</p>
+    <br>
+    {{#each comments}}
+    {{> comment this }}
+    {{/each}}

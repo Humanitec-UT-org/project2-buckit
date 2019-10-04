@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-const User = require('../models/user') // LL 20.09.
-const Experience = require('../models/experience') // LL 20.09.
-const Location = require('../models/location') // LL 20.09.
+const User = require('../models/user')
+const Experience = require('../models/experience')
+const Location = require('../models/location')
 const Comment = require('../models/comment')
 
 //middleware
@@ -15,12 +15,10 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 
-// router.get('/', function (req, res, next) {
-//   Promise.all([User.find(), Experience.find(), Location.find()])
 
 router.get('/', isAuthenticated, function (req, res, next) {
   Promise.all([
-    Experience.find().then(experiences => {
+    Experience.find().populate('owner').then(experiences => {
       let experienceIDs = experiences.map(experience => experience._id);
       return Comment.find({ experience: { $in: experienceIDs } }).populate('owner').then(comments => {
         console.log(comments);
@@ -32,7 +30,7 @@ router.get('/', isAuthenticated, function (req, res, next) {
       })
     }),
 
-    Location.find().then(locations => {
+    Location.find().populate('owner').then(locations => {
       let locationIDs = locations.map(location => location._id);
       return Comment.find({ location: { $in: locationIDs } }).populate('owner').then(comments => {
         console.log(comments);
@@ -49,9 +47,8 @@ router.get('/', isAuthenticated, function (req, res, next) {
       experiences.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
         locations.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       console.log(experiences)
-      // console.log(experiences)
-      //Sort locations from oldest to latest
-      res.render('feed', { user: req.user, experiences, locations }); // LL 2009
+
+      res.render('feed', { user: req.user, experiences, locations });
     })
 })
 

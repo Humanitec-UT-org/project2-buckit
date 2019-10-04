@@ -1,13 +1,9 @@
 {{!-- OLD VERSION
 <form action="/login" method="post">
-    <input type="text" name="email" placeholder="email">
+    <input type="text" name="email" placeholder="email"> //THIS IS EMAIL
     <br>
-    <input type="password" name="password" placeholder="password">
+    <input type="password" name="password" placeholder="password"> //THIS IS PASSWORD
     <button type="submit">Login</button>
-    {{ messages }}
-    {{#each messages}}
-    <h4 style="color: red;">{{ this}}</h4>
-    {{/ each}}
 </form>
  --}}
 
@@ -33,8 +29,11 @@
                 <div class="login100-form">
                     <form action="/login" method="post">
                         <span class="login100-form-title p-b-26">
-                            Welcome to your <img src="./images/bucket.svg" /> List
+                            Welcome to <br>
+                            <span class="styleLogo">BUCK <img src="./images/bucket.svg" /> IT</span>
+                            <br>List
                         </span>
+                        <p class="text-center"> Member Login</p>
                         <span class="login100-form-title p-b-48"> </span>
                         <!-- email -->
                         <div class="wrap-input100">
@@ -43,7 +42,7 @@
                         </div>
                         <!-- password -->
                         <div class="wrap-input100">
-                            <input type="text" name="password" placeholder="password" class="input100" id="myInput"
+                            <input type="password" name="password" placeholder="password" class="input100" id="myInput"
                                 required />
                             <span class="focus-input100" data-placeholder="Password"></span>
                         </div>
@@ -57,9 +56,11 @@
                                 <button class="login100-form-btn" type="submit" />
                                 Login
                                 </button>
-
                             </div>
                         </div>
+                        {{#each messages}}
+                        <p style="color: red;">{{this}}</p>
+                        {{/each}}
                     </form>
                     <div class="text-center p-t-115">
                         <span class="txt1">
