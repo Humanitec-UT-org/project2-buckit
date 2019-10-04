@@ -1,13 +1,9 @@
 {{!-- OLD VERSION
 <form action="/login" method="post">
-    <input type="text" name="email" placeholder="email">
+    <input type="text" name="email" placeholder="email"> //THIS IS EMAIL
     <br>
-    <input type="password" name="password" placeholder="password">
+    <input type="password" name="password" placeholder="password"> //THIS IS PASSWORD
     <button type="submit">Login</button>
-    {{ messages }}
-    {{#each messages}}
-    <h4 style="color: red;">{{ this}}</h4>
-    {{/ each}}
 </form>
  --}}
 
@@ -60,9 +56,11 @@
                                 <button class="login100-form-btn" type="submit" />
                                 Login
                                 </button>
-
                             </div>
                         </div>
+                        {{#each messages}}
+                        <p style="color: red;">{{this}}</p>
+                        {{/each}}
                     </form>
                     <div class="text-center p-t-115">
                         <span class="txt1">
