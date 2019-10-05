@@ -10,31 +10,33 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">
             <b> GoBack</b>
-            <img src="./images/buttonBack.svg" />
+            {{!-- http://localhost:3000/public/images/buttonBack.svg
+                        http://localhost:3000/images/friends.svg --}}
+            <img src="../images/buttonBack.svg">
             <!-- IMG  class="d-inline-block align-top" -->
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/feed" title="BuckIt Feed">
-            <b> Feed</b><img src="./images/feed.svg" /></a>
+            <b> Feed</b><img src="../images/feed.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/people" title="Friends">
-            <b> Friends</b><img src="./images/friends.svg" /></a>
+            <b> Friends</b><img src="../images/friends.svg" /></a>
         </li>
         <li>
           <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-              <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+              <img id="logo-navbar-middle" src="../images/bucket.svg" width="50"
                 alt="Logo Thing main logo" />IT</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-              src="./images/profile.svg" /></a>
+              src="../images/profile.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout" title="Logout">
-            <b>Logout</b> <img src="./images/logout.svg" />
+            <b>Logout</b> <img src="../images/logout.svg" />
           </a>
         </li>
       </ul>
@@ -42,9 +44,8 @@
   </div>
 </nav>
 {{!-- end navbar --}}
-{{!-- start of the card --}}
-<h4>Edit your Buckit Item - {{this.title}} (Experience) </h4>
 
+<h4>Edit your Buckit Item - {{this.title}} (Experience) </h4>
 
 <div class="row justify-content-center">
   <div class="card text-center add-card" style=" width: 25rem;">
@@ -116,5 +117,4 @@
     </form>
 
   </div>
-</div>
 </div>

@@ -10,31 +10,33 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">
             <b> GoBack</b>
-            <img src="./images/buttonBack.svg" />
+            {{!-- http://localhost:3000/public/images/buttonBack.svg
+                        http://localhost:3000/images/friends.svg --}}
+            <img src="../images/buttonBack.svg">
             <!-- IMG  class="d-inline-block align-top" -->
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/feed" title="BuckIt Feed">
-            <b> Feed</b><img src="./images/feed.svg" /></a>
+            <b> Feed</b><img src="../images/feed.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/people" title="Friends">
-            <b> Friends</b><img src="./images/friends.svg" /></a>
+            <b> Friends</b><img src="../images/friends.svg" /></a>
         </li>
         <li>
           <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-              <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+              <img id="logo-navbar-middle" src="../images/bucket.svg" width="50"
                 alt="Logo Thing main logo" />IT</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-              src="./images/profile.svg" /></a>
+              src="../images/profile.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout" title="Logout">
-            <b>Logout</b> <img src="./images/logout.svg" />
+            <b>Logout</b> <img src="../images/logout.svg" />
           </a>
         </li>
       </ul>
@@ -42,10 +44,9 @@
   </div>
 </nav>
 {{!-- end navbar --}}
-<h4>Edit your Buckit Item - {{this.title}}</h4>
+<h3>Edit your Buckit Item - {{this.title}}</h3>
 <div class="row justify-content-center">
   <div class="card text-center add-card" style=" width: 25rem;">
-
     <form action="/locations/{{this._id}}" method="post" data-toggle="validator">
 
       {{!-- TITLE FIELD --}}
@@ -99,7 +100,6 @@
       <input id="location-name" name="location" type="hidden" value="{{this.location}}">
 
       {{!-- PLAN FIELD --}}
-
       <div class="card-body">
         <div class="form-group">
           <div class="input-group-prepend">
@@ -111,7 +111,6 @@
       </div>
 
       {{!-- DEADLINE FIELD --}}
-
       <div class="card-body">
         <div class="form-group">
           <div class="input-group-prepend">
@@ -123,22 +122,19 @@
       </div>
 
       {{!-- CHECKBOX --}}
-
       <div class="card-body">
         <div class="form-group">
           Check off my Bucket List: <input type="checkbox" name="">
         </div>
       </div>
-      <div class="form-button">
-        <button type="submit" class="btn btn-dark mt-auto">SAVE</button>
-      </div>
+      {{!-- SUBMIT BUTTON --}}
+
+      <button type="submit" class="btn btn-dark mt-auto">SAVE</button>
     </form>
 
+    {{!-- DELETE BUTTON --}}
     <form action="/locations/{{this._id}}/delete" method="POST">
-      <button type="submit" class="btn btn-outline-secondary btn-dark">
-        DELETE
-      </button>
+      <button type="submit" class="btn btn-outline-secondary btn-dark">DELETE</button>
     </form>
-
   </div>
 </div>

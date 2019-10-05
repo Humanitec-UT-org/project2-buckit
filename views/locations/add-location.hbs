@@ -45,7 +45,9 @@
 </nav>
 {{!-- end navbar --}}
 
-<i>There is a navbar</i>
+<br>
+
+{{!-- <i>There is a navbar</i> --}}
 
 <div class="row justify-content-center">
     <div class="card text-center add-card" style=" width: 25rem;">
@@ -114,7 +116,8 @@
                 <div class="form-group">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
-                        <textarea name="plan" placeholder="What's the plan?" rows="10" cols="30"></textarea>
+                        <textarea class="form-control" name="plan" placeholder="What's the plan?" rows="10"
+                            cols="30"></textarea>
                     </div>
                 </div>
             </div>
@@ -127,19 +130,16 @@
 </textarea>
                     </div>
                 </div>
-                <div class="card-body">
-
-                    {{!-- CHECKBOX --}}
-                    <div class="card-body">
-                        <div class="form-group">
-
-                            <br>
-                            Check off my Bucket List: <input type="checkbox" name="">
-                            <br>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-dark mt-auto"> Add to my Bucket</button>
+            </div>
+            {{!-- CHECKBOX --}}
+            <div class="card-body">
+                <div class="form-group">
+                    Check off my Buckit List: <input type="checkbox" name="">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark mt-auto"> Add to My Buckit</button>
         </form>
-
+        <br>
     </div>
+</div>
 </div>
