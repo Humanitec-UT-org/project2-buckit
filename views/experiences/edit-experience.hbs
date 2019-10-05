@@ -43,90 +43,78 @@
 </nav>
 {{!-- end navbar --}}
 {{!-- start of the card --}}
-<h4>Edit your Buckit Item (Experience)
+<h4>Edit your Buckit Item - {{this.title}} (Experience) </h4>
 
 
-  <h3>{{this.title}}</h3>
+<div class="row justify-content-center">
+  <div class="card text-center add-card" style=" width: 25rem;">
+    <form action="/experiences/{{this._id}}" method="POST" data-toggle="validator">
 
-
-  <div class="row justify-content-center">
-    <div class="card text-center add-card" style=" width: 25rem;">
+      {{!-- TITLE FIELD --}}
       <div class="card-body">
-        <form action="/experiences/{{this._id}}" method="POST" data-toggle="validator">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Title:</label>
 
-          {{!-- Name --}}
-          <div class="form-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Title</label>
+            <input type="text" name="title" class="form-control" value="{{this.title}}">
 
-              <input type="text" name="title" class="form-control" value="{{this.title}}"> {{!-- TITLE FIELD --}}
-
-              {{!-- <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required> --}}
-            </div>
-
+            {{!-- <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required> --}}
           </div>
-      </div>
-      {{!--  --}}
-      <div class="form-group">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Plan</label>
-
-          {{!-- <input type="text" name="plan" class="form-control" value="{{this.plan}}">  --}}
-
-          <textarea class="form-control" name="plan" id="" cols="30" rows="10">{{this.plan}}</textarea>
-          {{!-- PLAN FIELD   --}}
-
-          {{!-- I added this text area type box so that user can enter multiple line input --}}
 
         </div>
       </div>
-      {{!--  --}}
-      <div class=" form-group">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01" value="{{this.comment}}">Comments</label>
-
-
-          {{!--  <input type="text" name="comments" class="form-control" value="{{this.comments}}">  --}}
-
-          <textarea name="comments" id="" cols="30" rows="10">{{this.comments}}</textarea> {{!-- COMMENTS FIELD --}}
-
-          {{!-- I added this text area type box so that user can enter multiple line input --}}
-
+      {{!-- PLAN FIELD   --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
+            {{!-- <input type="text" name="plan" class="form-control" value="{{this.plan}}">  --}}
+            <textarea class="form-control" name="plan" id="" cols="30" rows="10">{{this.plan}}</textarea>
+            {{!-- I added this text area type box so that user can enter multiple line input --}}
+          </div>
         </div>
       </div>
-      {{!--  --}}
-      <div class="form-group">
-
-      </div>
-      <div class="form-group">
-        <div class="input-group-prepend">
-
-          <label {{!-- for="example-date-input" --}} for="inputGroupSelect01" class="input-group-text">Expire
-            Date</label>
-          {{!-- EXPIRE DATA FIELD --}}
-          <input class="form-control" type="date" name="expireDate" value="{{this.expireDate}}" id="example-date-input">
-
+      {{!-- COMMENTS FIELD --}}
+      <div class="card-body">
+        <div class=" form-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01" value="{{this.comment}}">Comments:</label>
+            {{!--  <input type="text" name="comments" class="form-control" value="{{this.comments}}">  --}}
+            <textarea name="comments" id="" cols="30" rows="10">{{this.comments}}</textarea>
+            {{!-- I added this text area type box so that user can enter multiple line input --}}
+          </div>
         </div>
       </div>
 
-      <br>
-      Check off my Bucket List: <input type="checkbox" name="">
-      <br>
+      {{!-- DEADLINE FIELD --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label for="inputGroupSelect01" class="input-group-text">Deadline:</label>
+            <input class="form-control" type="date" name="expireDate" value="{{this.expireDate}}"
+              id="example-date-input">
+          </div>
+        </div>
+      </div>
+      {{!-- CHECKBOX --}}
+      <div class="card-body">
+        <div class="form-group">
+          Check off my Bucket List: <input type="checkbox" name="">
+        </div>
+      </div>
 
       <div class="form-button">
-
-        <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
-
+        <button type="submit" class="btn btn-dark mt-auto">SAVE</button>
       </div>
 
-      </form>
+    </form>
 
-      <form action="/experiences/{{this._id}}/delete" method="POST">
-        <button type="submit" class="btn btn-outline-secondary btn-dark">
-          DELETE
-        </button>
-      </form>
+    <form action="/experiences/{{this._id}}/delete" method="POST">
+      <button type="submit" class="btn btn-outline-secondary btn-dark">
+        DELETE
+      </button>
+    </form>
 
-    </div>
   </div>
-  </div>
+</div>
+</div>
