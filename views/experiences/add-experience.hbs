@@ -10,31 +10,33 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">
                         <b> GoBack</b>
-                        <img src="./images/buttonBack.svg" />
+                        {{!-- http://localhost:3000/public/images/buttonBack.svg
+                        http://localhost:3000/images/friends.svg --}}
+                        <img src="../images/buttonBack.svg">
                         <!-- IMG  class="d-inline-block align-top" -->
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/feed" title="BuckIt Feed">
-                        <b> Feed</b><img src="./images/feed.svg" /></a>
+                        <b> Feed</b><img src="../images/feed.svg" /></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/people" title="Friends">
-                        <b> Friends</b><img src="./images/friends.svg" /></a>
+                        <b> Friends</b><img src="../images/friends.svg" /></a>
                 </li>
                 <li>
                     <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-                            <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+                            <img id="logo-navbar-middle" src="../images/bucket.svg" width="50"
                                 alt="Logo Thing main logo" />IT</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-                            src="./images/profile.svg" /></a>
+                            src="../images/profile.svg" /></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" title="Logout">
-                        <b>Logout</b> <img src="./images/logout.svg" />
+                        <b>Logout</b> <img src="../images/logout.svg" />
                     </a>
                 </li>
             </ul>
@@ -43,77 +45,67 @@
 </nav>
 {{!-- end navbar --}}
 {{!-- start of the card --}}
-
+<br>
 <div class="row justify-content-center">
     <div class="card text-center add-card" style=" width: 25rem;">
-        <div class="card-body">
-            <form action="/experiences" method="POST" data-toggle="validator">
-
-                {{!-- TITLE FIELD --}}
+        <form action="/experiences" method="POST" data-toggle="validator">
+            {{!-- TITLE FIELD --}}
+            <div class="card-body">
                 <div class="form-group">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Title:</label>
-
                         <input type="text" name="title" class="form-control" placeholder="e.g. Learn how to code..."
                             required>
-
                         {{!-- <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required> --}}
                     </div>
-
                 </div>
-        </div>
-        {{!-- PLAN FIELD--}}
-        <div class="form-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
-
-                {{!--  <input type="text" name="" placeholder="Enter here"> --}}
-
-                <textarea class="form-control" name="plan" id="" cols="30" rows="10"
-                    placeholder="What's the plan?"></textarea>
-
             </div>
-        </div>
-        {{!--  COMMENT FIELD --}}
-        <div class="form-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Comments:</label>
-
-                {{!--  <input type="text" name="comments" class="form-control" placeholder="Enter here"> --}}
-
-                <textarea class="form-control" placeholder="User's comment?" name="comments" id="" cols="30"
-                    rows="10"></textarea>
-
+            {{!-- PLAN FIELD--}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
+                        {{!--  <input type="text" name="" placeholder="Enter here"> --}}
+                        <textarea class="form-control" name="plan" id="" cols="30" rows="10"
+                            placeholder="What's the plan?"></textarea>
+                    </div>
+                </div>
             </div>
-        </div>
-        {{!-- DEADLINE FIELD   --}}
-        <div class="form-group">
 
-        </div>
-        <div class="form-group">
-            <div class="input-group-prepend">
+            {{!--  COMMENT FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Comments:</label>
 
-                <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
-                <input class="form-control" type="date" name="expireDate" value="todays-date" id="example-date-input">
+                        {{!--  <input type="text" name="comments" class="form-control" placeholder="Enter here"> --}}
 
+                        <textarea class="form-control" placeholder="User's comment?" name="comments" id="" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                </div>
             </div>
-        </div>
+            {{!-- DEADLINE FIELD   --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
+                        <input class="form-control" type="date" name="expireDate" value="todays-date"
+                            id="example-date-input" required>
+                    </div>
+                </div>
+            </div>
 
-
-        <div class="form-button">
             <a href="/experiences/search-gif">Select a random gif</a>
-            <br>
 
-            Check off my Bucket List: <input type="checkbox" name="">
-            <br>
-            {{!--      <img src="{{imgUrl}}" /> --}}
 
-            <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
-
-        </div>
-
+            <div class="card-body">
+                <div class="form-group">
+                    Check off my Bucket List: <input type="checkbox" name="">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark mt-auto">Add to My Buckit</button>
         </form>
-
+        <br>
     </div>
-</div>
 </div>

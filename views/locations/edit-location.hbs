@@ -10,31 +10,33 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">
             <b> GoBack</b>
-            <img src="./images/buttonBack.svg" />
+            {{!-- http://localhost:3000/public/images/buttonBack.svg
+                        http://localhost:3000/images/friends.svg --}}
+            <img src="../images/buttonBack.svg">
             <!-- IMG  class="d-inline-block align-top" -->
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/feed" title="BuckIt Feed">
-            <b> Feed</b><img src="./images/feed.svg" /></a>
+            <b> Feed</b><img src="../images/feed.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/people" title="Friends">
-            <b> Friends</b><img src="./images/friends.svg" /></a>
+            <b> Friends</b><img src="../images/friends.svg" /></a>
         </li>
         <li>
           <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-              <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+              <img id="logo-navbar-middle" src="../images/bucket.svg" width="50"
                 alt="Logo Thing main logo" />IT</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-              src="./images/profile.svg" /></a>
+              src="../images/profile.svg" /></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout" title="Logout">
-            <b>Logout</b> <img src="./images/logout.svg" />
+            <b>Logout</b> <img src="../images/logout.svg" />
           </a>
         </li>
       </ul>
@@ -42,65 +44,97 @@
   </div>
 </nav>
 {{!-- end navbar --}}
-<h4>Edit your Buckit Item (Location)</h4>
+<h3>Edit your Buckit Item - {{this.title}}</h3>
+<div class="row justify-content-center">
+  <div class="card text-center add-card" style=" width: 25rem;">
+    <form action="/locations/{{this._id}}" method="post" data-toggle="validator">
 
-<h1>{{this.title}}</h1>
+      {{!-- TITLE FIELD --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Title:</label>
+            <input class="form-control" type="text" name="title" value="{{this.title}}">
+          </div>
+        </div>
+      </div>
 
-<form action="/locations/{{this._id}}" method="post">
-  <input type="text" name="title" value="{{this.title}}">
-  <br>
+      {{!-- GEOCODER FIELD --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <div id='map' style='width: 400px; height: 400px;'>
+              <script>
+                mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
+                var map = new mapboxgl.Map({
+                  container: 'map',
+                  style: 'mapbox://styles/mapbox/streets-v11',
+                  center: [-77.06, 38.0],
+                  zoom: 13
+                });
 
+                var geocoder = new MapboxGeocoder({
+                  accessToken: mapboxgl.accessToken,
+                  mapboxgl: mapboxgl
+                });
 
-  <div>
-    <div id='map' style='width: 400px; height: 400px;'></div>
-    <script>
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-77.06, 38.0],
-        zoom: 13
-      });
-
-      var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-      });
-
-      map.addControl(geocoder, 'top-left');
-
-
-      map.on('load', function () {
-
-        // Listen for the `geocoder.input` event that is triggered when a user
-        // makes a selection
-        geocoder.on('result', function (ev) {
-
-          document.getElementById("location-name").value = ev.result.place_name;
-
-        });
-      });
+                map.addControl(geocoder, 'top-left');
 
 
-    </script>
+                map.on('load', function () {
+
+                  // Listen for the `geocoder.input` event that is triggered when a user
+                  // makes a selection
+                  geocoder.on('result', function (ev) {
+
+                    document.getElementById("location-name").value = ev.result.place_name;
+
+                  });
+                });
+
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input id="location-name" name="location" type="hidden" value="{{this.location}}">
+
+      {{!-- PLAN FIELD --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
+
+            <input class="form-control" type="text" name="plan" value="{{this.plan}}">
+          </div>
+        </div>
+      </div>
+
+      {{!-- DEADLINE FIELD --}}
+      <div class="card-body">
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
+            <input class="form-control" type="date" name="expireDate" value="{{this.expireDate}}"
+              id="example-date-input">
+          </div>
+        </div>
+      </div>
+
+      {{!-- CHECKBOX --}}
+      <div class="card-body">
+        <div class="form-group">
+          Check off my Bucket List: <input type="checkbox" name="">
+        </div>
+      </div>
+      {{!-- SUBMIT BUTTON --}}
+
+      <button type="submit" class="btn btn-dark mt-auto">SAVE</button>
+    </form>
+
+    {{!-- DELETE BUTTON --}}
+    <form action="/locations/{{this._id}}/delete" method="POST">
+      <button type="submit" class="btn btn-outline-secondary btn-dark">DELETE</button>
+    </form>
   </div>
-  {{!--  <input type="text" name="location" value="{{this.location}}"> --}}
-  <input id="location-name" name="location" type="hidden" value="{{this.location}}">
-  <br>
-  <input type="text" name="plan" value="{{this.plan}}">
-  <br>
-  <input type="date" name="expireDate" value="{{this.expireDate}}">
-
-  <br>
-  Check off my Bucket List: <input type="checkbox" name="">
-
-  <br>
-  <button type="submit">SUBMIT</button>
-  <br>
-</form>
-
-<form action="/locations/{{this._id}}/delete" method="POST">
-  <button type="submit" class="btn btn-outline-secondary btn-dark">
-    DELETE
-  </button>
-</form>
+</div>
