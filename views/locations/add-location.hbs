@@ -46,80 +46,100 @@
 {{!-- end navbar --}}
 
 <i>There is a navbar</i>
-<h1>Add Destination</h1>
-<form action="/locations" method="POST">
-    <label class="input-group-text" for="inputGroupSelect01">Title</label>
-    <input type="text" name="title" placeholder="Title" required>
-    <br>
-    <div>
-        <div id='map' style='width: 400px; height: 400px;'></div>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [-77.06, 38.0],
-                zoom: 13
-            });
 
-            var geocoder = new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl
-            });
+<div class="row justify-content-center">
+    <div class="card text-center add-card" style=" width: 25rem;">
 
-            map.addControl(geocoder, 'top-left');
+        <form action="/locations" method="POST" data-toggle="validator">
+            {{!-- TITLE FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
 
+                        <label class="input-group-text" for="inputGroupSelect01">Title:</label>
+                        <input class="form-control" type="text" name="title" placeholder="e.g. Go to the Grandcanyon"
+                            required>
+                    </div>
+                </div>
+            </div>
+            {{!-- GEOLOCATOR FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <div id='map' style='width: 400px; height: 400px;'>
+                            <script>
+                                mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2p0MG01MXRqMW45cjQzb2R6b2ptc3J4MSJ9.zA2W0IkI0c6KaAhJfk9bWg';
+                                var map = new mapboxgl.Map({
+                                    container: 'map',
+                                    style: 'mapbox://styles/mapbox/streets-v11',
+                                    center: [-77.06, 38.0],
+                                    zoom: 13
+                                });
 
-            map.on('load', function () {
+                                var geocoder = new MapboxGeocoder({
+                                    accessToken: mapboxgl.accessToken,
+                                    mapboxgl: mapboxgl
+                                });
 
-                // Listen for the `geocoder.input` event that is triggered when a user
-                // makes a selection
-                geocoder.on('result', function (ev) {
+                                map.addControl(geocoder, 'top-left');
 
-                    document.getElementById("location-name").value = ev.result.place_name;
+                                map.on('load', function () {
 
-                });
-            });
+                                    // Listen for the `geocoder.input` event that is triggered when a user
+                                    // makes a selection
+                                    geocoder.on('result', function (ev) {
 
+                                        document.getElementById("location-name").value = ev.result.place_name;
 
-        </script>
-    </div>
-    <input id="location-name" name="location" type="hidden" value="">
-    <br>
-    <div class="form-group">
-        <div class="input-group-prepend">
-            <label for="example-date-input" class="col-2 col-form-label">Expire Date</label>
-            <input type="date" name="expireDate" value="todays-date" id="example-date-input" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Plan</label>
-            <br>
-            <textarea name="plan" placeholder="Write your plan here" rows="10" cols="30">
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input id="location-name" name="location" type="hidden" value="">
+            {{!-- DEADLINE FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
+                        <input class="form-control" type="date" name="expireDate" value="todays-date"
+                            id="example-date-input" required>
+                    </div>
+                </div>
+            </div>
+            {{!-- PLAN FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
+                        <textarea name="plan" placeholder="What's the plan?" rows="10" cols="30"></textarea>
+                    </div>
+                </div>
+            </div>
+            {{!-- COMMENTS FIELD --}}
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Comments:</label>
+                        <textarea name="comments" placeholder="Users' comments" rows="10" cols="30">
 </textarea>
-            <br>
+                    </div>
+                </div>
+                <div class="card-body">
 
-        </div>
+                    {{!-- CHECKBOX --}}
+                    <div class="card-body">
+                        <div class="form-group">
+
+                            <br>
+                            Check off my Bucket List: <input type="checkbox" name="">
+                            <br>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-auto"> Add to my Bucket</button>
+        </form>
+
     </div>
-
-
-    <div class="form-group">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Comments</label>
-            <br>
-            <textarea name="comments" placeholder="Users' comments" rows="10" cols="30">
-</textarea>
-
-        </div>
-    </div>
-
-
-
-    <br>
-    Check off my Bucket List: <input type="checkbox" name="">
-    <br>
-
-    <button type="submit"> Add to my Bucket</button>
-
-</form>
+</div>

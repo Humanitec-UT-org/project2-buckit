@@ -46,8 +46,8 @@
 
 <div class="row justify-content-center">
     <div class="card text-center add-card" style=" width: 25rem;">
-        <div class="card-body">
-            <form action="/experiences" method="POST" data-toggle="validator">
+        <form action="/experiences" method="POST" data-toggle="validator">
+            <div class="card-body">
 
                 {{!-- TITLE FIELD --}}
                 <div class="form-group">
@@ -61,56 +61,55 @@
                     </div>
 
                 </div>
-        </div>
-        {{!-- PLAN FIELD--}}
-        <div class="form-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
+            </div>
+            {{!-- PLAN FIELD--}}
+            <div class="form-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Plan:</label>
 
-                {{!--  <input type="text" name="" placeholder="Enter here"> --}}
+                    {{!--  <input type="text" name="" placeholder="Enter here"> --}}
 
-                <textarea class="form-control" name="plan" id="" cols="30" rows="10"
-                    placeholder="What's the plan?"></textarea>
+                    <textarea class="form-control" name="plan" id="" cols="30" rows="10"
+                        placeholder="What's the plan?"></textarea>
+
+                </div>
+            </div>
+            {{!--  COMMENT FIELD --}}
+            <div class="form-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Comments:</label>
+
+                    {{!--  <input type="text" name="comments" class="form-control" placeholder="Enter here"> --}}
+
+                    <textarea class="form-control" placeholder="User's comment?" name="comments" id="" cols="30"
+                        rows="10"></textarea>
+
+                </div>
+            </div>
+            {{!-- DEADLINE FIELD   --}}
+
+            <div class="form-group">
+                <div class="input-group-prepend">
+
+                    <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
+                    <input class="form-control" type="date" name="expireDate" value="todays-date"
+                        id="example-date-input" required>
+
+                </div>
+            </div>
+
+
+            <div class="form-button">
+                <a href="/experiences/search-gif">Select a random gif</a>
+                <br>
+
+                Check off my Bucket List: <input type="checkbox" name="">
+                <br>
+                {{!--      <img src="{{imgUrl}}" /> --}}
+
+                <button type="submit" class="btn btn-dark mt-auto">Add to my Buckit-List</button>
 
             </div>
-        </div>
-        {{!--  COMMENT FIELD --}}
-        <div class="form-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Comments:</label>
-
-                {{!--  <input type="text" name="comments" class="form-control" placeholder="Enter here"> --}}
-
-                <textarea class="form-control" placeholder="User's comment?" name="comments" id="" cols="30"
-                    rows="10"></textarea>
-
-            </div>
-        </div>
-        {{!-- DEADLINE FIELD   --}}
-        <div class="form-group">
-
-        </div>
-        <div class="form-group">
-            <div class="input-group-prepend">
-
-                <label for="inputGroupSelect01" class="input-group-text" required>Deadline:</label>
-                <input class="form-control" type="date" name="expireDate" value="todays-date" id="example-date-input">
-
-            </div>
-        </div>
-
-
-        <div class="form-button">
-            <a href="/experiences/search-gif">Select a random gif</a>
-            <br>
-
-            Check off my Bucket List: <input type="checkbox" name="">
-            <br>
-            {{!--      <img src="{{imgUrl}}" /> --}}
-
-            <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
-
-        </div>
 
         </form>
 
