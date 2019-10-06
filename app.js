@@ -63,6 +63,7 @@ const profileRouter = require('./routes/profile');
 const peopleRouter = require('./routes/people')
 const locationsRouter = require('./routes/locations')
 const experiencesRouter = require('./routes/experiences')
+const inspirationRouter = require('./routes/inspiration')
 var moment = require('moment');
 moment().format();
 app.use('/', indexRouter);
@@ -75,6 +76,7 @@ app.use('/profile', profileRouter);
 app.use('/people', peopleRouter);
 app.use('/locations', locationsRouter);
 app.use('/experiences', experiencesRouter);
+app.use('/inspiration', inspirationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
