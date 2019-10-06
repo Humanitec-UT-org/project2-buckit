@@ -27,6 +27,7 @@
     "multer-storage-cloudinary": "^2.2.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pinterest-node-api": "0.0.3",
     "request": "^2.88.0"
   }
 }
