@@ -29,7 +29,8 @@ router.get('/', (req, res, next) => {
 // GET one's profile page. 
 router.get('/:user_id', isAuthenticated, function (req, res, next) {
     Promise.all([User.findById(req.params.user_id),
-    Experience.find({ owner: req.user._id }).then(experiences => {
+
+    Experience.find({ owner: req.params.user_id }).then(experiences => {
         let experienceIDs = experiences.map(experience => experience._id);
         return Comment.find({ experience: { $in: experienceIDs } }).populate('owner').then(comments => {
             console.log(comments);
@@ -40,7 +41,7 @@ router.get('/:user_id', isAuthenticated, function (req, res, next) {
             return experiences;
         })
     }),
-    Location.find({ owner: req.user._id }).then(locations => {
+    Location.find({ owner: req.params.user_id }).then(locations => {
         let locationIDs = locations.map(location => location._id);
         return Comment.find({ location: { $in: locationIDs } }).populate('owner').then(comments => {
             console.log(comments);
