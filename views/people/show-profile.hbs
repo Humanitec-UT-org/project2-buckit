@@ -67,7 +67,7 @@
 </div>
 
 </div>
-{{!-- profile end --}}
+
 <div class="container container-items-profile">
     <div class="row">
         <div class="col-md-6">
@@ -91,69 +91,24 @@
             {{#each locations}}
             <div class="card border-dark mb-3" style="max-width: 20rem;">
                 <div class="card-body">
-                    <div class="card-header" id="color-loc"><b>I will go to... </b><i>{{this.location}}</i></div>
-                    <p class="card-text"><b>This journey's title is: </b>{{this.title}}</h5>
-                        <p class="card-text"><b>My plan is:</b> {{this.plan}}</p>
-                        <p><b>Until:</b> {{this.expireDate}}</p>
-                        <br>
-                        {{#each comments}}
-                        <p class="card-title"><b>Comment: </b>{{this.comment}}</p>
-                        <p class="card-text"><b>From:</b>{{this.owner.username}}</p>
-                        {{/each}}
-                        <div class="col text-center">
 
-                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
-                                role="button">comment</a>
-                        </div>
+                    {{> eachLocation this}}
+                    <div class="col text-center">
+
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                            role="button">comment</a>
+                    </div>
                 </div>
             </div>
             {{/each}}
 
         </div>
-
+        {{!-- profile end --}}
         <!-- /.container-fluid -->
-    </nav>
-</header>
 
-
-<p>{{users.bio}}</p>
-<h1>Welcome to {{users.username}}'s profile!</h1>
-<div class="bg-people-buck">
-    <p>{{users.imageUrl}}</p>
-    </br>
-    <h4>Feel free to contact them, if you have further questions: {{users.email}}!</h4>
-    </br>
-    <h4>Now have a look in their buckit und their next great goals.</h4>
-</div>
-<div class="bg-exp">
-    <h2>Upcoming experiences:</h2>
-    {{#each experiences}}
-    <p> -----------------------------------------------</p>
-    <h4>{{this.title}}</h4>
-    <h4>{{this.expireDate}}</h4>
-    <p>The plan:{{this.plan}}</p>
-
-    {{/each}}
-</div>
-</br>
-</br>
-
-<div class="bg-loc">
-    <h2>Upcoming destinations:</h2>
-    {{#each locations}}
-    <p> -----------------------------------------------</p>
-    <h4>{{this.title}}</h4>
-    <h4>{{this.expireDate}}</h4>
-    <p>The plan:{{this.plan}}</p>
-    <p>{{this.imageUrl}}</p>
-
-
-    {{/each}}
-</div>
-</br>
-</br>
-<a href="/people"> Go back to all the people !</a>
+        </br>
+        </br>
+        <a href="/people"> Go back to all the people !</a>
 
     </div>
 </div>
-
