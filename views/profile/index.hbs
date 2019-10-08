@@ -73,116 +73,43 @@
 
             </div>
         </div>
-<<<<<<< Updated upstream
     </div>
-    {{!-- profile end --}}
-    <hr>
-    <div class="container container-items-profile">
-        <div class="row">
-            <div class="col-md-6">
-
-                {{#each experiences}}
-                <div class="card mb-3 border-exp" style="max-width: 20rem;">
-                    <div class="card-body">
-                        {{> eachExperience this }}
-                        <div class="col text-center">
-                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
-                                role="button">edit</a>
-                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
-                                role="button">comment</a>
-=======
-        {{!-- profile end --}}
-        {{!-- <style>
-            .panel-clr {
-                background-color: white;
-            }
-
-            .panel-clr.on {
-                background-color: #D8D8D8;
-            }
-        </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>
-
-            $(function () {
-                $('.checkBox').click(function () {
-                    $('.panel-clr').toggleClass('on');
-                })
-            }); 
-        </script> --}}
-
-        <hr>
-        <div class="container container-items-profile">
-            <div class="row">
-                <div class="col-md-6">
-
-                    {{#each experiences}}
-                    <div class="card mb-3 border-exp" style="max-width: 20rem;">
-
-                        <div class="card-body panel-clr {{#if this.done}}on{{/if}}">
-
-                            {{> eachExperience this }}
-                            <div class="col text-center">
-                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
-                                    role="button">edit</a>
-                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
-                                    role="button"> <i class="fa fa-comment"> </i></a>
-
-                            </div>
-
->>>>>>> Stashed changes
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-
-            </div>
-            <div class="col-md-6">
-
-                {{#each locations}}
-                <div class="card border-dark mb-3" style="max-width: 20rem;">
-                    <div class="card-body">
-
-                        {{> eachLocation this }}
-                        <div class="col text-center">
-                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
-                                role="button">edit</a>
-                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
-                                role="button">comment</a>
-                        </div>
-                    </div>
-                </div>
-                {{/each}}
-
-            </div>
-        </div>
-    </div>
-    {{!-- List experiences here  --}}
-    {{!-- <h3>UPCOMING EXPERIENCES:</h3>
-    <div class="row">
-        <div class="col-sm-6">
-            
-        {{!-- List locations here  --}}
-    {{!-- <h3>UPCOMING LOCATIONS TO GO TO:</h3>
-
-<div class="col-sm-6">
-    <div class="card border-dark mb-3" style="max-width: 18rem;">
-        {{#each locations}}
-        <div class="card-body">
-            <h5 class="card-title">Title: {{this.title}}</h5>
-            <div class="card-header">Location: {{this.location}}</div>
-            <p class="card-text">The Plan: {{this.plan}}</p>
-            <p>Due Date: {{this.expireDate}}</p>
-            <br>
-            {{#each comments}}
-            <h5 class="card-title">Comment: {{this.comment}}</h5>
-            <p class="card-text">User:{{this.owner.username}}</p>
-            {{/each}}
-            <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/edit-location" class="edit-button">EDIT</a>
-            <a class="btn btn-primary btn-sm" href="/locations/{{this._id}}/add-comment" class="edit-button">COMMENT</a>
-
-        </div>
-        {{/each}}
-    </div> --}}
 </div>
+{{!-- profile end --}}
+<hr>
+<div class="container container-items-profile">
+    <div class="row">
+        <div class="col-md-6">
+            {{#each experiences}}
+            <div class="card mb-3 border-exp" style="max-width: 20rem;">
+                <div class="card-body panel-clr {{#if this.done}}on{{/if}}">
+                    {{> eachExperience this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
+                            role="button">edit</a>
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment" role="button"> <i
+                                class="fa fa-comment"> </i></a>
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="col-md-6">
+            {{#each locations}}
+            <div class="card border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+
+                    {{> eachLocation this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
+                            role="button">edit</a>
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                            role="button">comment</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </div>
