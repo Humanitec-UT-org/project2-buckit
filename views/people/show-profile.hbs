@@ -51,13 +51,12 @@
                 <div class="profile-image-avatar" style="background-image: url({{users.imageUrl}})"></div>
                 {{!-- <img src="{{this.user.imageUrl}}" /> --}}
             </div>
-            <div class="col-sm-8 profile-bio">
-                <p class="profile-user-name"><b> Hi, my name is: </b> {{users.username}}</p>
+            <div class="col-sm-8 profile-info">
+                <h1 class="profile-user-name"> {{users.username}}</h1>
                 <div class="profile-bio">
-                    <p><b> What you need to know about me: </b> {{users.bio}}</p>
+                    <p>{{users.bio}}</p>
                 </div>
 
-                <a class="btn btn-outline-info" href="/" role="button"><b>Contact me </b></a>
             </div>
         </div>
 
