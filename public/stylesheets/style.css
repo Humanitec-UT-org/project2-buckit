@@ -287,8 +287,8 @@ textarea:-ms-input-placeholder {
   max-height: 80%;
   vertical-align: middle;
   border-style: none;
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
+  /* -webkit-filter: grayscale(1);
+  filter: grayscale(1); */
 }
 /*------------------------------------------------------------------
 [ Form ]*/
