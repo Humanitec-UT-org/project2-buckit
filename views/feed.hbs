@@ -46,9 +46,17 @@
     {{!-- end navbar --}}
     {{!-- 
 WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
-    <h1>Hi {{user.username}}!</h1>
-    <h4>Check out the community's latest experiences:</h4>
-    <br>
+    <div class="container container-profile">
+        <div class="row">
+
+            <div class="col-sm-12" style="text-align:center;">
+                <br>
+                <h1>Hi {{user.username}}!</h1>
+                <h4>Check out the community's latest ideas:</h4>
+                <br>
+            </div>
+        </div>
+    </div>
     {{!-- Experience List --}}
     <div class="container container-feed">
         <div class="row">
@@ -57,7 +65,8 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                 <div class="card mb-3 border-exp" style="max-width: 20rem;">
 
                     <div class="card-body">
-                        <div class="card-header" id="color-exp">{{this.owner.username}}'s Experience</div>
+                        <div class="card-header" id="color-exp">One of {{this.owner.username}}'s next experiences:
+                        </div>
 
                         {{> eachExperience this }}
                         <div class="col text-center">
@@ -79,7 +88,7 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
                     <div class="card-body">
 
 
-                        <div class="card-header" id="color-loc">{{this.owner.username}}'s Location</div>
+                        <div class="card-header" id="color-loc">One of {{this.owner.username}}'s next locations:</div>
 
 
 
