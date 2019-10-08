@@ -17,7 +17,6 @@ const isAuthenticated = (req, res, next) => {
 }
 
 //get gif search
-
 router.get('/:experience_id/search-gif', (req, res, next) => {
   const experience_id = req.params.experience_id
   res.render('search-giphy', { experience_id });
@@ -39,19 +38,14 @@ router.post('/:experience_id/search-gif', (req, res) => {
 
     res.render('search-giphy', { experience_id, searchResultUrl: searchResultUrl })
 
-  })/* .then(() => {
-    let imageUrl = searchResultUrl;
-    Experience.findByIdAndUpdate(experience_id, { imageUrl })
-    res.redirect('/profile')
-  }) */
-
+  })
 });
 
 
 router.post('/:experience_id/store-gif', (req, res) => {
-  const { title, plan, comments, locations, expireDate } = req.body;
+  const { title, plan, comments, locations, expireDate, imageUrl } = req.body;
   const experience_id = req.params.experience_id
-  let imageUrl = searchResultUrl;
+  /* let imageUrl = searchResultUrl; */
   Experience.findByIdAndUpdate(experience_id, { imageUrl }).then(() => {
     res.redirect('/profile')
   })
@@ -72,12 +66,6 @@ router.post('/', isAuthenticated, function (req, res, next) {
     .then((doc) => {
       res.redirect(`experiences/${doc._id}/search-gif`);
     })
-  // .then(() => {
-  //   let imageUrl;
-  //   Experience.findByIdAndUpdate(req.params.experience_id, { imageUrl }).then(() => {
-  //     res.redirect('/profile')
-  //   })
-  // })
 })
 
 //GET /:id/edit 
@@ -106,9 +94,6 @@ router.get('/:experience_id/add-comment', (req, res, next) => {
     res.render('experiences/add-comment', result);
   })
 });
-
-
-
 
 // POST /experiences/add-comment
 router.post('/:experience_id/comments', function (req, res, next) {
