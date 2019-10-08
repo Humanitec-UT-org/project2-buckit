@@ -41,15 +41,23 @@
         </div>
 
         <!-- /.container-fluid -->
-    </nav>
+</nav>
 </header>
 
-        <h1>Welcome to our awesome community!</h1>
-        <h4>Just sniff a little bit in others people's buckits by clicking on their usernames
-            and get ideas by thousands of inspiring users!</h4>
+<h1>Welcome to our awesome community!</h1>
+<h4>Just sniff a little bit in others people's buckits by clicking on their usernames
+    and get ideas by thousands of inspiring users!</h4>
 
+
+
+<form action="/people" method="GET" class="">
+
+    <div class="form-group">
+        <input id="nomatch" type="text" name="search" placeholder="search by username" class="form-control">
+        <input type="submit" value="Search" class="btn btn-outline-info">
     </div>
-</nav>
+</form>
+
 {{!-- end navbar --}}
 
 <div class="container container-feed">
@@ -72,4 +80,3 @@
         </div>
         {{/each}}
     </div>
-

@@ -20,10 +20,27 @@ var db
 
 // GET all the users in one list
 router.get('/', (req, res, next) => {
-    User.find().then((allUsers) => { // TODO: Note that this should use 'populate'
-        res.render('people/index', { users: allUsers });
-    })
-});
+
+
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all campgrounds from DB
+        User.find({ username: regex }, function (err, allUsers) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (allUsers.length < 1) {
+                    // document.body.input.innerHTML = "No users match that query, please try again.";
+                }
+                res.render("people/index", { users: allUsers });
+            }
+        });
+    } else {
+        User.find().then((allUsers) => { // TODO: Note that this should use 'populate'
+            res.render('people/index', { users: allUsers });
+        })
+    }
+})
 
 
 // GET one's profile page. 
@@ -67,25 +84,11 @@ router.get('/:user_id', isAuthenticated, function (req, res, next) {
         })
 })
 
-// router.get('/', function (req, res, next) {
-//     User.find().then((users) => {  // LL 2009
-//         res.render('people/index', { users, user: req.user }) // LL 2009
-//     })
 
-// });
 
-// // GET /experiences/add
-// router.get('/add', isAuthenticated, function (req, res, next) {
-//     res.render('rooms/add')
-// });
 
-// // POST /rooms
-// router.post('/', isAuthenticated, function (req, res, next) {
-//     let { name, description } = req.body
-//     Room.create({ name, description }).then(() => {
-//         res.redirect('/rooms')
-//     })
-// });
+
+
 
 // // GET /rooms/:room_id/edit
 // router.get('/:room_id/edit', isAuthenticated, function (req, res, next) {
@@ -118,10 +121,7 @@ router.get('/:user_id', isAuthenticated, function (req, res, next) {
 //     })
 // });
 
-// // GET /locations/
-// router.get('/', function (req, res, next) {
-//     Location.find().then((locations) => {  // LL 2009
-//         res.render('profile/index', { locations, user: req.user }) // LL 2009
-//     })
-// })
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 module.exports = router;
