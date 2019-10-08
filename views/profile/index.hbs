@@ -1,145 +1,115 @@
-<header role="banner">
-    {{!-- already new navbar --}}
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">
-                            <b> GoBack</b>
-                            <img src="./images/buttonBack.svg" />
-                            <!-- IMG  class="d-inline-block align-top" -->
-                        </a>
-                    </li>
+{{!-- already new navbar --}}
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <b> GoBack</b>
+                        <img src="./images/buttonBack.svg" />
+                        <!-- IMG  class="d-inline-block align-top" -->
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/feed" title="BuckIt Feed">
-                            <b> Feed</b><img src="./images/feed.svg" /></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/people" title="Friends">
-                            <b> Friends</b><img src="./images/friends.svg" /></a>
-                    </li>
-                    <li>
-                        <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-                                <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
-                                    alt="Logo Thing main logo" />IT</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-                                src="./images/profile.svg" /></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout" title="Logout">
-                            <b>Logout</b> <img src="./images/logout.svg" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/feed" title="BuckIt Feed">
+                        <b> Feed</b><img src="./images/feed.svg" /></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/people" title="Friends">
+                        <b> Friends</b><img src="./images/friends.svg" /></a>
+                </li>
+                <li>
+                    <a class="styleLogo" href="#"><span class="styleLogo">BUCK
+                            <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
+                                alt="Logo Thing main logo" />IT</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
+                            src="./images/profile.svg" /></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" title="Logout">
+                        <b>Logout</b> <img src="./images/logout.svg" />
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    {{!-- end navbar --}}
-    {{!-- profile start --}}
-    <div class="container container-profile">
-        <div class="row">
-
-            <div class="col-sm-12">
-                <div class="profile-image">
-                    <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
-                    {{!-- <img src="{{this.user.imageUrl}}" /> --}}
-
-                </div>
-
-                <div class="col-sm-8 profile-info">
-                    <h1 class="profile-user-name">{{this.user.username}}</h1>
-                    <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
-                        aria-disabled="true"><img src="./images/settings.svg"></a>
-                    <div class="profile-bio">
-                        <p>{{this.user.bio}}</p>
-                    </div>
-
-
-                    <div class="btn-toolbar">
-                        <a class="btn btn-outline-info btn-profile" href="/experiences/add-experience" role="button">
-                            Add
-                            Experience</a>
-                        <a class="btn btn-outline-info btn-profile" href="/locations/add-location" role="button">Add
-                            Location</a>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-        {{!-- profile end --}}
-        <style>
-            .panel-clr {
-                background-color: white;
-            }
-
-            .panel-clr.on {
-                background-color: #D8D8D8;
-            }
-        </style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>
-
-            $(function () {
-                $('.checkBox').click(function () {
-                    $('.panel-clr').toggleClass('on');
-                })
-            }); 
-        </script>
-        <hr>
-        <div class="container container-items-profile">
-            <div class="row">
-                <div class="col-md-6">
-
-                    {{#each experiences}}
-                    <div class="card mb-3 border-exp" style="max-width: 20rem;">
-
-                        <div class="card-body panel-clr">
-
-                            {{> eachExperience this }}
-                            <div class="col text-center">
-                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
-                                    role="button">edit</a>
-                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
-                                    role="button"> <i class="fa fa-comment"> </i></a>
-
-                            </div>
-                            <div class="d-flex flex-row-reverse checkBox">
-                                <img src="./images/checklist.svg" width="50" height="50">
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-
-                </div>
-                <div class="col-md-6">
-
-                    {{#each locations}}
-                    <div class="card border-dark mb-3" style="max-width: 20rem;">
-                        <div class="card-body">
-
-                            {{> eachLocation this }}
-                            <div class="col text-center">
-                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
-                                    role="button">edit</a>
-                                <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
-                                    role="button"><i class="fa fa-comment"> </i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-
-                </div>
-            </div>
-        </div>
-
     </div>
+</nav>
+{{!-- end navbar --}}
+{{!-- profile start --}}
+<div class="container container-profile">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="profile-image">
+                <div class="profile-image-avatar" style="background-image: url({{this.user.imageUrl}})"></div>
+                {{!-- <img src="{{this.user.imageUrl}}" /> --}}
+
+            </div>
+
+            <div class="col-sm-8 profile-info">
+                <h1 class="profile-user-name">{{this.user.username}}</h1>
+                <a href="/profile/{{this.user._id}}/edit" class="btn profile-settings-btn" role="button"
+                    aria-disabled="true"><img src="./images/settings.svg"></a>
+                <div class="profile-bio">
+                    <p>{{this.user.bio}}</p>
+                </div>
+
+
+                <div class="btn-toolbar">
+                    <a class="btn btn-outline-info btn-profile" href="/experiences/add-experience" role="button">
+                        Add
+                        Experience</a>
+                    <a class="btn btn-outline-info btn-profile" href="/locations/add-location" role="button">Add
+                        Location</a>
+                </div>
+
+
+            </div>
+        </div>
     </div>
+</div>
+{{!-- profile end --}}
+<hr>
+<div class="container container-items-profile">
+    <div class="row">
+        <div class="col-md-6">
+            {{#each experiences}}
+            <div class="card mb-3 border-exp" style="max-width: 20rem;">
+                <div class="card-body panel-clr {{#if this.done}}on{{/if}}">
+                    {{> eachExperience this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
+                            role="button">edit</a>
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment" role="button"> <i
+                                class="fa fa-comment"> </i></a>
+
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="col-md-6">
+            {{#each locations}}
+            <div class="card border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+
+                    {{> eachLocation this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/edit-location"
+                            role="button">edit</a>
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                            role="button">comment</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

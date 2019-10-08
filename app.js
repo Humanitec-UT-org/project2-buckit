@@ -11,8 +11,7 @@ const flash = require("connect-flash")
 
 
 const mongoose = require('mongoose');
-const dbName = 'project2-buckit';
-mongoose.connect(`mongodb://localhost/${dbName}`);
+mongoose.connect(process.env.MONGODB_URI);
 
 
 const session = require("express-session");
@@ -60,6 +59,7 @@ const authRouter = require('./routes/auth');
 const feedRouter = require('./routes/feed');
 // /feed will bring you to other users lists 
 const profileRouter = require('./routes/profile');
+const aboutRouter = require('./routes/about');
 const peopleRouter = require('./routes/people')
 const locationsRouter = require('./routes/locations')
 const experiencesRouter = require('./routes/experiences')
@@ -77,6 +77,7 @@ app.use('/people', peopleRouter);
 app.use('/locations', locationsRouter);
 app.use('/experiences', experiencesRouter);
 app.use('/inspiration', inspirationRouter);
+app.use('/about', aboutRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

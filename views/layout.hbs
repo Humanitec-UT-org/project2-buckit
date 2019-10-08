@@ -33,6 +33,24 @@
 <body>
   {{{body}}}
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <style>
+    .panel-clr {
+      background-color: white;
+    }
+
+    .panel-clr.on {
+      background-color: #D8D8D8;
+    }
+  </style>
+  <script>
+
+    $(function () {
+      $('.checkBox').click(function () {
+        $(this).closest('.panel-clr').toggleClass('on');
+      })
+    }); 
+  </script>
 </body>
 
 </html>

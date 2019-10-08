@@ -79,7 +79,9 @@ router.get('/:experience_id/edit-experience', (req, res, next) => {
 
 //POST (edits) /:id/ 
 router.post('/:experience_id', (req, res, next) => {
-  const { title, plan, comments, locations, expireDate, imageUrl } = req.body;
+  const { title, plan, comments, locations, expireDate, imageUrl, done } = req.body;
+  console.log(done);
+  // done: done === 'on'
   Experience.update(
     { _id: req.params.experience_id },
     { title, plan, comments, locations, expireDate, owner: req.user, imageUrl }).then(() => {
