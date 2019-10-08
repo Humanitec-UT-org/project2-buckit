@@ -73,6 +73,7 @@
 
             </div>
         </div>
+<<<<<<< Updated upstream
     </div>
     {{!-- profile end --}}
     <hr>
@@ -89,6 +90,47 @@
                                 role="button">edit</a>
                             <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
                                 role="button">comment</a>
+=======
+        {{!-- profile end --}}
+        {{!-- <style>
+            .panel-clr {
+                background-color: white;
+            }
+
+            .panel-clr.on {
+                background-color: #D8D8D8;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+
+            $(function () {
+                $('.checkBox').click(function () {
+                    $('.panel-clr').toggleClass('on');
+                })
+            }); 
+        </script> --}}
+
+        <hr>
+        <div class="container container-items-profile">
+            <div class="row">
+                <div class="col-md-6">
+
+                    {{#each experiences}}
+                    <div class="card mb-3 border-exp" style="max-width: 20rem;">
+
+                        <div class="card-body panel-clr {{#if this.done}}on{{/if}}">
+
+                            {{> eachExperience this }}
+                            <div class="col text-center">
+                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/edit-experience"
+                                    role="button">edit</a>
+                                <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
+                                    role="button"> <i class="fa fa-comment"> </i></a>
+
+                            </div>
+
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>
