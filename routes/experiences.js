@@ -18,56 +18,69 @@ const isAuthenticated = (req, res, next) => {
 
 //get gif search
 
-router.get('/search-gif', (req, res, next) => {
-  res.render('search-giphy');
+router.get('/:experience_id/search-gif', (req, res, next) => {
+  const experience_id = req.params.experience_id
+  res.render('search-giphy', { experience_id });
 })
 
-router.post('/search-gif', (req, res) => {
+//post gif result
+router.post('/:experience_id/search-gif', (req, res) => {
 
+  const experience_id = req.params.experience_id
   const query = req.body['giphy-query']
   const url = `http://api.giphy.com/v1/gifs/search?api_key=zIwQPWrbNtodP1xQXb01UpG5FDu2eQqm&q=${query}`;
 
   request.get(url, (err, response, body) => {
     if (err) { console.error(err) }
-
     body = JSON.parse(body);
-
-    // First, we select a random .gif from the Giphy results and get the URL
+    // select a random .gif from the Giphy results and get the URL
     const randomResult = body.data[Math.floor(Math.random() * body.data.length)];
-    const searchResultUrl = randomResult.images.fixed_height.url;
+    const searchResultUrl = randomResult ? randomResult.images.fixed_height.url : null;
 
-    // Then we pass the URL to search.hbs
-    res.render('search-giphy', { searchResultUrl: searchResultUrl });
-  });
+    res.render('search-giphy', { experience_id, searchResultUrl: searchResultUrl })
+
+  })/* .then(() => {
+    let imageUrl = searchResultUrl;
+    Experience.findByIdAndUpdate(experience_id, { imageUrl })
+    res.redirect('/profile')
+  }) */
+
 });
 
+
+router.post('/:experience_id/store-gif', (req, res) => {
+  const { title, plan, comments, locations, expireDate } = req.body;
+  const experience_id = req.params.experience_id
+  let imageUrl = searchResultUrl;
+  Experience.findByIdAndUpdate(experience_id, { imageUrl }).then(() => {
+    res.redirect('/profile')
+  })
+})
 
 /* https://api.giphy.com/v1/gifs/random?api_key=zIwQPWrbNtodP1xQXb01UpG5FDu2eQqm&tag=&rating=G 
 https://api.giphy.com/v1/gifs/search?api_key=zIwQPWrbNtodP1xQXb01UpG5FDu2eQqm&q=&limit=25&offset=0&rating=G&lang=en */
 
 // GET /experiences/add
 router.get('/add-experience', isAuthenticated, function (req, res, next) { //isAuthenticated?
-
   res.render('experiences/add-experience');
-
-
 });
 
-
-// POST /experiences/add
+// POST /experiences
 router.post('/', isAuthenticated, function (req, res, next) {
-
-  let { title, plan, comments, locations, expireDate, imageUrl } = req.body;
-  Experience.create({ title, plan, comments, locations, expireDate, owner: req.user, imageUrl })
-    .then(() => {
-      res.redirect('/profile');
-      //console.log("Experience", experiences)
+  let { title, plan, comments, locations, expireDate } = req.body;
+  Experience.create({ title, plan, comments, locations, expireDate, owner: req.user })
+    .then((doc) => {
+      res.redirect(`experiences/${doc._id}/search-gif`);
     })
-
+  // .then(() => {
+  //   let imageUrl;
+  //   Experience.findByIdAndUpdate(req.params.experience_id, { imageUrl }).then(() => {
+  //     res.redirect('/profile')
+  //   })
+  // })
 })
 
 //GET /:id/edit 
-
 router.get('/:experience_id/edit-experience', (req, res, next) => {
 
   Experience.findById(req.params.experience_id).then((result) => {
@@ -77,7 +90,6 @@ router.get('/:experience_id/edit-experience', (req, res, next) => {
 });
 
 //POST (edits) /:id/ 
-
 router.post('/:experience_id', (req, res, next) => {
   const { title, plan, comments, locations, expireDate, imageUrl } = req.body;
   Experience.update(
@@ -88,7 +100,6 @@ router.post('/:experience_id', (req, res, next) => {
 });
 
 //GET /:id/add-comment
-
 router.get('/:experience_id/add-comment', (req, res, next) => {
   Experience.findById(req.params.experience_id).then((result) => {
     console.log("result", result)

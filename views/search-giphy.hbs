@@ -52,21 +52,39 @@
       <div class="form-group">
         <div class="input-group-prepend">
 
-          <form action="/experiences/search-gif" method="POST">
+          <form action="/experiences/{{experience_id}}/search-gif" method="POST">
             <input type="text" name="giphy-query" placeholder="Search Giphy..." />
             <input type="submit" value="Search" />
           </form>
 
-          <button>SHUFFLE</button>
+          <button value="Refresh Page" onClick="window.location.reload();">SHUFFLE</button>
           <br>
-          <button>SEND GIPHY</button>
+
+
+
         </div>
       </div>
     </div>
 
-    <!-- Add the following three lines: -->
-    {{#if searchResultUrl}}
-    <img src="{{searchResultUrl}}" />
-    {{/if}}
+
+
+    <div class="card-body">
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <form action="/experiences/{{experience_id}}/store-gif" method="POST">
+            <input type="hidden" name="searchResultUrl" value={{searchResultUrl}}>
+            {{#if searchResultUrl}}
+            <img src="{{searchResultUrl}}" />
+            {{/if}}
+
+            <button type="submit">SEND GIPHY</button>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
