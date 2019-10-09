@@ -49,42 +49,42 @@
   <div class="card text-center add-card" style=" width: 25rem;">
 
     <div class="card-body">
+      <h5>Choose a gif for your Buckit Item</h5>
       <div class="form-group">
         <div class="input-group-prepend">
-
           <form action="/experiences/{{experience_id}}/search-gif" method="POST">
-            <input type="text" name="giphy-query" placeholder="Search Giphy..." />
-            <input type="submit" value="Search" />
+            <div class="card-body">
+              <input class="form-control" type="text" name="giphy-query" placeholder="Search Random Gif..." />
+            </div>
+            <div class="card-body">
+              <input class="form-control btn btn-outline-info btn-profile" type="submit" value="Search" />
+            </div>
           </form>
-
-          <button value="Refresh Page" onClick="window.location.reload();">SHUFFLE</button>
-          <br>
-
-
-
         </div>
       </div>
     </div>
-
-
-
+    <div class="card-body">
+      <button class="btn btn-outline-info btn-profile" value="Refresh Page"
+        onClick="window.location.reload();">SHUFFLE</button>
+    </div>
     <div class="card-body">
       <div class="form-group">
         <div class="input-group-prepend">
+
           <form action="/experiences/{{experience_id}}/store-gif" method="POST">
-            <input type="hidden" name="imageUrl" value={{searchResultUrl}}>
-            {{#if searchResultUrl}}
-            <img src="{{searchResultUrl}}" />
-            {{/if}}
-
-            <button type="submit">SEND GIPHY</button>
-
+            <div class="card-body">
+              <input type="hidden" name="imageUrl" value={{searchResultUrl}}>
+              {{#if searchResultUrl}}
+              <img style=" width: 20rem;" src="{{searchResultUrl}}" />
+              {{/if}}
+            </div>
+            <div class="card-body">
+              <button class="btn btn-dark mt-auto" type="submit">SAVE GIF</button>
+            </div>
 
           </form>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
