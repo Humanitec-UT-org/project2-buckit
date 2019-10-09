@@ -46,6 +46,7 @@ a {
 /* make bold bold again */
 b {
   font-weight: 700;
+  color: black;
 }
 .navbar-nav li a {
   font-family: "Poppins", sans-serif;
@@ -642,7 +643,15 @@ textarea:-ms-input-placeholder {
 }
 .container-items-profile {
   background: url("../images/bg-pattern.png");
+  min-height: 600px;
 }
+.add-comment {
+  margin-top: 50px;
+}
+.add-loc {
+  margin-left: 15px;
+}
+
 /* a href still changing  */
 .landing {
   text-decoration: none;
@@ -685,4 +694,10 @@ textarea:-ms-input-placeholder {
 }
 .container-about {
   padding-top: 15px;
+}
+
+/* search Bar */
+.search-bar {
+  width: 250px;
+  justify-content: center;
 }
