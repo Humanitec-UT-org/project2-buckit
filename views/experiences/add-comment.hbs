@@ -42,37 +42,39 @@
     </div>
 </nav>
 {{!-- end navbar --}}
-
+{{!-- <div class="container h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-6 mx-auto"> --}}
 {{!-- start of the card --}}
+<div class="container container-items-profile h-100">
 
-<div class="row justify-content-center">
-    <div class="card text-center add-card" style=" width: 25rem;">
-        <div class="card-body">
-            <form action="/experiences/{{this._id}}/comments" method="POST" data-toggle="validator">
+    <div class="row align-items-center h-100">
+        <div class="col-6 mx-auto add-comment">
+            <div class="card text-center add-card" style=" width: 25rem;">
+                <div class="card-body">
+                    <form action="/experiences/{{this._id}}/comments" method="POST" data-toggle="validator">
 
-                {{!-- Name --}}
+                        {{!-- Name --}}
 
+                        <div class="form-group">
+                            <div class="input-group-prepend" style="height: 10rem; width: 21rem">
 
-                {{!--  --}}
+                                <label class="input-group-text" for="inputGroupSelect01"> Comment:</label>
+                                <textarea type="text" id="comment" name="comment" rows="2"
+                                    class="form-control md-textarea"></textarea>
 
-                {{!--  --}}
-                <div class="form-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"> Comment:</label>
+                            </div>
+                        </div>
 
-                        <input type="text" name="comment" class="form-control" placeholder="Enter comment here">
-                    </div>
+                        <div class="form-button">
+
+                            <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
+
+                        </div>
+
+                    </form>
                 </div>
-                {{!--  --}}
-
-
-                <div class="form-button">
-
-                    <button type="submit" class="btn btn-dark mt-auto">SUBMIT</button>
-
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
 </div>
