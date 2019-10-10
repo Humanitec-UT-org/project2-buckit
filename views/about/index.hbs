@@ -7,13 +7,6 @@
         </button>
         <div class="collapse navbar-collapse text-center" id="navbarsExample11">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">
-                        <b> GoBack</b>
-                        <img src="./images/buttonBack.svg" />
-                        <!-- IMG  class="d-inline-block align-top" -->
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/feed" title="BuckIt Feed">
@@ -23,6 +16,13 @@
                     <a class="nav-link" href="/people" title="Friends">
                         <b> Friends</b><img src="./images/friends.svg" /></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/inspiration">
+                        <b> Inspiration</b>
+                        <img src="./images/globe.svg" width="42px" />
+                        <!-- IMG  class="d-inline-block align-top" -->
+                    </a>
+                </li>
                 <li>
                     <a class="styleLogo" href="#"><span class="styleLogo">BUCK
                             <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
@@ -31,6 +31,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
                             src="./images/profile.svg" /></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about">
+                        <b> About</b>
+                        <img src="./images/info.svg" width="42px" />
+                        <!-- IMG  class="d-inline-block align-top" -->
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" title="Logout">
@@ -42,6 +49,17 @@
     </div>
 </nav>
 {{!-- end navbar --}}
+<div class="container container-profile">
+    <div class="row">
+
+        <div class="col-sm-12" style="text-align:center;">
+            <br>
+
+            <h4>If you ever wondered who are the persons behind this project, you can find the info in here.</h4>
+            <br>
+        </div>
+    </div>
+</div>
 <div class="container container-about">
     <div class="row">
         <div class="col-sm-4">
@@ -95,22 +113,19 @@
             </div>
         </div>
     </div>
+    <footer class="page-footer font-small" style="margin-top:20px">
+        <div class="container-fluid text-center text-md-left">
+            This website content sources
+            Images:
+            <ul>
+                <li>https://picsum.photos/
+                </li>
 
-    {{!-- sugesstion for inspiration --}}
-    <div class="container container-about">
-        <div class="row">
-            <div class="col-sm">
-                <div class="square" style="background-image: url('https://picsum.photos/200')"></div>
-            </div>
-            <div class="col-sm">
-                <div class="square" style="background-image: url('https://picsum.photos/seed/picsum/200')"></div>
-            </div>
-            <div class="col-sm">
-                <div class="square" style="background-image: url('https://loremflickr.com/200/200')"></div>
-            </div>
-            <div class="col-sm">
-                <div class="square" style="background-image: url('https://loremflickr.com/200/200/brazil,rio')"></div>
-            </div>
+                <li>http://placeimg.com/
+                </li>
 
+                <li>...what else?
+                </li>
+            </ul>
         </div>
-    </div>
+    </footer>
