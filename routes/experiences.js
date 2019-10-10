@@ -63,7 +63,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
   let { title, plan, comments, locations, expireDate } = req.body;
   Experience.create({ title, plan, comments, locations, expireDate, owner: req.user })
     .then((doc) => {
-      res.redirect(`experiences/${doc._id}/search-gif`);
+      res.redirect(`/experiences/${doc._id}/search-gif`);
     })
 })
 
@@ -84,7 +84,7 @@ router.post('/:experience_id', (req, res, next) => {
   // done: done === 'on'
   Experience.findByIdAndUpdate(experience_id,
     { title, plan, comments, locations, expireDate, owner: req.user, imageUrl }).then((doc) => {
-      res.redirect(`experiences/${doc._id}/search-gif`);
+      res.redirect(`/experiences/${doc._id}/search-gif`);
     })
 });
 
