@@ -1,18 +1,14 @@
-{{!-- OLD VERSION SIGN-UP
-<form action="/signup" method="post">
-    <input type="text" name="username" placeholder="username">
-
-    <input type="text" name="email" placeholder="email">
-
-    <br>
-    <input type="password" name="password" placeholder="password">
-
-    <button type="submit">SIGN UP</button>
-    {{#if errorMessage}}
-    <div class="error-message">{{ errorMessage }}</div>
-    {{/if}}
-</form> --}}
-
+<script>
+    src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+    function signUp() {
+        var x = document.getElementById("mySignup");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 <div class="loginBox">
     <div class="limiter">
         <div class="container-login100">
@@ -40,9 +36,13 @@
                         </div>
                         <!-- password -->
                         <div class="wrap-input100">
-                            <input type="text" name="password" placeholder="password" class="input100" id="myInput"
+                            <input type="password" name="password" placeholder="password" class="input100" id="mySignup"
                                 required />
                             <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" onclick="signUp()" /> Show Password
                         </div>
 
 
