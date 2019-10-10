@@ -26,20 +26,19 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     {{!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 
-</head>{{!-- OLD VERSION SIGN-UP
-<form action="/signup" method="post">
-    <input type="text" name="username" placeholder="username">
+<script>
+    src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+    function signUp() {
+        var x = document.getElementById("mySignup");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 
-    <input type="text" name="email" placeholder="email">
-
-    <br>
-    <input type="password" name="password" placeholder="password">
-
-    <button type="submit">SIGN UP</button>
-    {{#if errorMessage}}
-    <div class="error-message">{{ errorMessage }}</div>
-    {{/if}}
-</form> --}}
+</head>
 
 <div class="loginBox">
     <div class="limiter">
@@ -68,9 +67,13 @@
                         </div>
                         <!-- password -->
                         <div class="wrap-input100">
-                            <input type="text" name="password" placeholder="password" class="input100" id="myInput"
+                            <input type="password" name="password" placeholder="password" class="input100" id="mySignup"
                                 required />
                             <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" onclick="signUp()" /> Show Password
                         </div>
 
 
