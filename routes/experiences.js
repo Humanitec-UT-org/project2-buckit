@@ -78,12 +78,20 @@ router.get('/:experience_id/edit-experience', (req, res, next) => {
 
 //POST (edits) /:id/ 
 router.post('/:experience_id', (req, res, next) => {
-  const { title, plan, comments, locations, expireDate, imageUrl, done } = req.body;
+  let { title, plan, comments, locations, expireDate, imageUrl, done } = req.body;
   const experience_id = req.params.experience_id
   console.log(done);
-  // done: done === 'on'
+
+  // done is either 'on' or undefined
+  // if it is on we want to save true in the database
+  // otherwise false
+  if (done === 'on') {
+    done = true
+  } else {
+    done = false
+  }
   Experience.findByIdAndUpdate(experience_id,
-    { title, plan, comments, locations, expireDate, owner: req.user, imageUrl }).then((doc) => {
+    { title, plan, comments, locations, expireDate, owner: req.user, imageUrl, done }).then((doc) => {
       res.redirect(`/experiences/${doc._id}/search-gif`);
     })
 });
