@@ -41,7 +41,6 @@ router.post('/:experience_id/search-gif', (req, res) => {
   })
 });
 
-
 router.post('/:experience_id/store-gif', (req, res) => {
   const { title, plan, comments, locations, expireDate, imageUrl } = req.body;
   const experience_id = req.params.experience_id
@@ -80,12 +79,12 @@ router.get('/:experience_id/edit-experience', (req, res, next) => {
 //POST (edits) /:id/ 
 router.post('/:experience_id', (req, res, next) => {
   const { title, plan, comments, locations, expireDate, imageUrl, done } = req.body;
+  const experience_id = req.params.experience_id
   console.log(done);
   // done: done === 'on'
-  Experience.update(
-    { _id: req.params.experience_id },
-    { title, plan, comments, locations, expireDate, owner: req.user, imageUrl }).then(() => {
-      res.redirect('/profile')
+  Experience.findByIdAndUpdate(experience_id,
+    { title, plan, comments, locations, expireDate, owner: req.user, imageUrl }).then((doc) => {
+      res.redirect(`experiences/${doc._id}/search-gif`);
     })
 });
 
