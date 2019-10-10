@@ -1,103 +1,58 @@
-<header role="banner">
-    {{!-- already new navbar --}}
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse text-center" id="navbarsExample11">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">
-                            <b> GoBack</b>
-                            <img src="./images/buttonBack.svg" />
-                            <!-- IMG  class="d-inline-block align-top" -->
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/feed" title="BuckIt Feed">
-                            <b> Feed</b><img src="./images/feed.svg" /></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/people" title="Friends">
-                            <b> Friends</b><img src="./images/friends.svg" /></a>
-                    </li>
-                    <li>
-                        <a class="styleLogo" href="#"><span class="styleLogo">BUCK
-                                <img id="logo-navbar-middle" src="./images/bucket.svg" width="50"
-                                    alt="Logo Thing main logo" />IT</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile" title="Go to your Profile"><b>Profile</b><img
-                                src="./images/profile.svg" /></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout" title="Logout">
-                            <b>Logout</b> <img src="./images/logout.svg" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    {{!-- end navbar --}}
-    {{!-- 
+{{!-- 
 WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
-    <div class="container container-profile">
-        <div class="row">
+<hr>
+<div class="container container-profile">
+    <div class="row">
 
-            <div class="col-sm-12" style="text-align:center;">
-                <br>
-                <h1>Hi {{user.username}}!</h1>
-                <h4>Check out the community's latest ideas:</h4>
-                <br>
-            </div>
+        <div class="col-sm-12" style="text-align:center;">
+            <br>
+            <h1>Hi {{user.username}}!</h1>
+            <h4>Check out the community's latest ideas:</h4>
+            <br>
         </div>
     </div>
-    {{!-- Experience List --}}
-    <div class="container container-feed">
-        <div class="row">
-            <div class="col-sm-6">
-                {{#each experiences}}
-                <div class="card mb-3 border-exp" style="max-width: 20rem;">
+</div>
+{{!-- Experience List --}}
+<div class="container container-feed">
+    <div class="row">
+        <div class="col-sm-6">
+            {{#each experiences}}
+            <div class="card mb-3 border-exp" style="max-width: 20rem;">
 
-                    <div class="card-body">
+                <div class="card-body">
 
 
-                        {{> eachExperience this }}
-                        <div class="col text-center">
-                            <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment"
-                                role="button"><i class="fa fa-comment"> </i></a>
-                        </div>
-
+                    {{> eachExperience this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment" role="button"><i
+                                class="fa fa-comment"> </i></a>
                     </div>
 
                 </div>
-                {{/each}}
+
             </div>
-            {{!-- Location List  --}}
-
-
-            <div class="col-sm-6">
-                {{#each locations}}
-                <div class="card border-dark mb-3" style="max-width: 20rem;">
-                    <div class="card-body">
-
-
-
-
-
-                        {{> eachLocation this }}
-                        <div class="col text-center">
-                            <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment" role="button"><i
-                                    class="fa fa-comment"> </i></a>
-                        </div>
-                    </div>
-
-                </div>
-                {{/each}}
-            </div>
+            {{/each}}
         </div>
+        {{!-- Location List  --}}
+
+
+        <div class="col-sm-6">
+            {{#each locations}}
+            <div class="card border-dark mb-3" style="max-width: 20rem;">
+                <div class="card-body">
+
+
+
+
+
+                    {{> eachLocation this }}
+                    <div class="col text-center">
+                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment" role="button"><i
+                                class="fa fa-comment"> </i></a>
+                    </div>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </div>

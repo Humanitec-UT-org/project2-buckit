@@ -1,15 +1,32 @@
-{{!-- <h1>Welcome {{#if user}} {{user.email}} {{else}} Stranger {{/if}} !</h1>
+<head>
 
-{{#if user}}
-<a href="/logout">Log out</a>
-{{else}}
-<a href="/login">Log in</a>
-<br>
-<a href="/signup">Sign up</a>
-{{/if}} --}}
+    <title>{{title}}</title>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+    {{!-- Mapbox --}}
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.0/mapbox-gl.css' rel='stylesheet' />
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+        type="text/css">
 
-{{!-- // fill in the feed here // --}}
+    {{!--implement Bootstrap --}}
+    {{!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" /> --}}
+    {{!--Bootstrap CSS --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    {{!--implement font --}}
+    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet" />
 
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    {{!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+
+</head>
 <div class="loginBox landingpage">
     <div class="limiter landingpage">
         <div class="container-landingpage">
@@ -38,7 +55,7 @@
                                             <div class="login100-form-bgbtn"></div>
 
                                             <button class="login100-form-btn" type="submit" />
-                                            <a class="landing" href="/login"> Login</a>
+                                            Login
                                             </button>
 
                                         </div>
@@ -48,7 +65,7 @@
                                             <div class="wrap-login100-form-btn">
                                                 <div class="login100-form-bgbtn"></div>
                                                 <button class="login100-form-btn" type="submit" />
-                                                <a class="landing" href="/signup"> Sign Up</a>
+                                                Sign Up
                                                 </button>
 
                                             </div>

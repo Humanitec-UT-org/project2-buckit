@@ -11,12 +11,18 @@ const passport = require("passport")
 router.get('/login', function (req, res, next) {
     let messages = req.flash("messages")
     console.log("test", messages)
-    res.render('auth/login', { messages: messages });
+    res.render('auth/login', { messages: messages, layout: false });
 });
 
+// app.get('/teams', (req, res, next) => {
+//   let data = {
+//     layout: false
+//   }
+//   res.render('teams', data);
+//  });
 // GET /signup 
 router.get('/signup', function (req, res, next) {
-    res.render('auth/signup');
+    res.render('auth/signup', { layout: false });
 });
 
 // POST /signup

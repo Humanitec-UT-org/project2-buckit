@@ -12,7 +12,10 @@ const experienceSchema = new Schema({
         type: String,
         default: () => moment().format('MMM Do YY')
     },
-    done: { type: Boolean },
+    done: {
+        type: Boolean,
+        default: false
+    },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
         timestamps: true
