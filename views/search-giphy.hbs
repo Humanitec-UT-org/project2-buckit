@@ -1,17 +1,18 @@
+<br>
 <div class="row justify-content-center">
   <div class="card text-center add-card" style=" width: 25rem;">
 
     <div class="card-body">
       <h5>Choose a gif for your Buckit Item</h5>
       <div class="form-group">
-        <div class="input-group-prepend">
+        <div class="input-group-prepend justify-content-center">
           <form action="/experiences/{{experience_id}}/search-gif" method="POST">
-            <div class="card-body">
-              <input class="form-control" type="text" name="giphy-query" placeholder="Search Random Gif." />
-            </div>
-            <div class="card-body">
+            <div class="card-body justify-content-center">
+              <input class="form-control justify-content-center" type=" text" name="giphy-query"
+                placeholder="Search Random Gif." />
               <input class="form-control btn btn-outline-info btn-profile" type="submit" value="Search" />
             </div>
+
           </form>
         </div>
       </div>
@@ -22,7 +23,7 @@
     </div>
     <div class="card-body">
       <div class="form-group">
-        <div class="input-group-prepend">
+        <div class="input-group-prepend justify-content-center">
 
           <form action="/experiences/{{experience_id}}/store-gif" method="POST">
             <div class="card-body">

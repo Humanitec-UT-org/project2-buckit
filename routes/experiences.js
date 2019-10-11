@@ -44,7 +44,6 @@ router.post('/:experience_id/search-gif', (req, res) => {
 router.post('/:experience_id/store-gif', (req, res) => {
   const { title, plan, comments, locations, expireDate, imageUrl } = req.body;
   const experience_id = req.params.experience_id
-  /* let imageUrl = searchResultUrl; */
   Experience.findByIdAndUpdate(experience_id, { imageUrl }).then(() => {
     res.redirect('/profile')
   })

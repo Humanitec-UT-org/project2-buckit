@@ -10,7 +10,6 @@ const passport = require("passport")
 // GET /login 
 router.get('/login', function (req, res, next) {
     let messages = req.flash("messages")
-    console.log("test", messages)
     res.render('auth/login', { messages: messages, layout: false });
 });
 
