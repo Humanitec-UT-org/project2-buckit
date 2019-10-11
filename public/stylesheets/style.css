@@ -396,6 +396,15 @@ textarea:-ms-input-placeholder {
 }
 
 /*---------------------------------------------*/
+#TEST {
+  color: #aabe98;
+  border-color: #aabe98;
+}
+#TEST:hover {
+  color: #fff;
+  background-color: #aabe98;
+  border-color: #aabe98;
+}
 .btn-show-pass {
   font: "Poppins", sans-serif;
   font-size: 15px;
@@ -591,13 +600,6 @@ textarea:-ms-input-placeholder {
 
 /* profile start */
 
-.btn-outline-info {
-  color: #aabe98, #d1d8df;
-  background-color: transparent;
-  background-image: none;
-  border-color: #6e819a;
-  text-decoration: none;
-}
 .profile-bgbtn {
   background: #afa939;
   background: -webkit-linear-gradient(

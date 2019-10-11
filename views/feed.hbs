@@ -1,6 +1,5 @@
 {{!-- 
 WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
-<hr>
 <div class="container container-profile">
     <div class="row">
 
@@ -17,15 +16,15 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
     <div class="row">
         <div class="col-sm-6">
             {{#each experiences}}
-            <div class="card mb-3 border-exp" style="max-width: 20rem;">
+            <div class="card border-dark mb-3" style="max-width: 20rem;">
 
                 <div class="card-body">
 
 
                     {{> eachExperience this }}
                     <div class="col text-center">
-                        <a class="btn btn-outline-info" href="/experiences/{{this._id}}/add-comment" role="button"><i
-                                class="fa fa-comment"> </i></a>
+                        <a class="btn btn-outline-info" id="TEST" href="/experiences/{{this._id}}/add-comment"
+                            role="button"><i class="fa fa-comment"> </i></a>
                     </div>
 
                 </div>
@@ -47,8 +46,8 @@ WRONG CONNECTIONS: EXPERIENCES doesn't work and locations shows experiences --}}
 
                     {{> eachLocation this }}
                     <div class="col text-center">
-                        <a class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment" role="button"><i
-                                class="fa fa-comment"> </i></a>
+                        <a id="TEST" class="btn btn-outline-info" href="/locations/{{this._id}}/add-comment"
+                            role="button"><i class="fa fa-comment"> </i></a>
                     </div>
                 </div>
 
