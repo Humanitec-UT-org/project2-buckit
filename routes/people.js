@@ -87,40 +87,6 @@ router.get('/:user_id', isAuthenticated, function (req, res, next) {
 
 
 
-
-
-
-// // GET /rooms/:room_id/edit
-// router.get('/:room_id/edit', isAuthenticated, function (req, res, next) {
-//     Room.findById(req.params.room_id).then((room) => {
-//         if (!room.owner._id.equals(req.user._id)) {
-//             res.redirect('/login')
-//         } else {
-//             res.render('rooms/edit', { room })
-//         }
-
-//     }).catch((error) => res.send(error.toString()));
-
-// });
-
-// // POST /rooms/:room_id
-// router.post('/:room_id', isAuthenticated, function (req, res, next) {
-//     let { name, description } = req.body
-
-//     Room.findById(req.params.room_id).then((room) => {
-
-//         if (!room.owner.equals(req.user._id)) {
-//             res.redirect('/login')
-//         } else {
-//             Room.findByIdAndUpdate(req.params.room_id, { name, description }).then(() => {
-//                 res.redirect('/rooms')
-//             })
-
-//         }
-
-//     })
-// });
-
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
