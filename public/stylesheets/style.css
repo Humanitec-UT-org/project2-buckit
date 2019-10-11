@@ -205,16 +205,6 @@ textarea:-ms-input-placeholder {
 } */
 
 /*---------------------------------------------*/
-.login100-form-btn {
-  font-family: "Poppins", sans-serif;
-  outline: none !important;
-  border: none;
-  background: transparent;
-}
-
-.login100-form-btn button:hover {
-  cursor: pointer;
-}
 
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
@@ -536,6 +526,17 @@ textarea:-ms-input-placeholder {
 
 .login100-form-btn {
   font-family: "Poppins", sans-serif;
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+.login100-form-btn button:hover {
+  cursor: pointer;
+}
+
+.login100-form-btn {
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   color: #fff;
   line-height: 1.2;
@@ -552,6 +553,27 @@ textarea:-ms-input-placeholder {
   height: 50px;
 }
 
+.landingButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+  width: 100%;
+  height: 20px;
+}
+.landingButton text {
+  margin: 110 auto;
+  vertical-align: middle;
+}
 .wrap-login100-form-btn:hover .login100-form-bgbtn {
   left: 0;
 }
