@@ -564,7 +564,9 @@ textarea:-ms-input-placeholder {
   width: 100%;
   height: 50px;
 }
-
+.page-footer {
+  background-color: rgba(0, 0, 0, 0.03);
+}
 .landingButton {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
@@ -659,6 +661,7 @@ textarea:-ms-input-placeholder {
   width: auto;
   padding: 10px 0px 0px 10px;
 } */
+
 .profile-image-avatar {
   width: 120px;
   height: 120px;
@@ -684,6 +687,12 @@ textarea:-ms-input-placeholder {
 .profile-image img {
   border-radius: 50%;
   width: 7.7rem;
+}
+.image-about {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
 }
 .container-profile {
   justify-content: space-between;
