@@ -396,6 +396,9 @@ textarea:-ms-input-placeholder {
 }
 
 /*---------------------------------------------*/
+.form {
+  margin-bottom: 0px;
+}
 #TEST {
   color: #aabe98;
   border-color: #aabe98;
@@ -575,9 +578,9 @@ textarea:-ms-input-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 50px;
+  padding: 0 60px;
   width: 100%;
-  height: 20px;
+  height: 50px;
 }
 .landingButton text {
   margin: 110 auto;
