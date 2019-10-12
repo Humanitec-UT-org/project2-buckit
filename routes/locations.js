@@ -17,7 +17,7 @@ const isAuthenticated = (req, res, next) => {
 
 // GET /location/add
 router.get('/add-location', isAuthenticated, function (req, res, next) { //isAuthenticated?
-    res.render('locations/add-location')
+    res.render('locations/add-location', { mapboxToken: process.env.MAPBOX_GL_ACCESSTOKEN })
 });
 
 router.post('/', isAuthenticated, function (req, res, next) {
@@ -34,7 +34,7 @@ router.post('/', isAuthenticated, function (req, res, next) {
 router.get('/:location_id/edit-location', (req, res, next) => {
     Location.findById(req.params.location_id).then((result) => {
         //  console.log("result", result)
-        res.render('locations/edit-location', result);
+        res.render('locations/edit-location', { mapboxToken: process.env.MAPBOX_GL_ACCESSTOKEN, ...result });
     })
 });
 
